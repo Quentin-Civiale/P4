@@ -9,21 +9,24 @@ class NavigationController extends Controller
 {
     public function selectionAction()
     {
-        return $this->render('@GeneralBundle/Default/index.html.twig');
+//        $test2='test2';
+//        var_dump($test2);
+        
+        return $this->render('@General/Default/index.html.twig');
     }
     
-    public function recapAction()
-    {
-        return $this->render('@GeneralBundle/Default/index.html.twig');
-    }
-    
-    public function paiementAction()
-    {
-        return $this->render('@GeneralBundle/Default/index.html.twig');
-    }
-    
-    public function confirmationAction()
-    {
-        return $this->render('@GeneralBundle/Default/index.html.twig');
-    }
+//    public function recapAction()
+//    {
+//        return $this->render('@General/Default/recap.html.twig');
+//    }
+//    
+//    public function paiementAction()
+//    {
+//        return $this->render('@GeneralBundle/Default/index.html.twig');
+//    }
+//    
+//    public function confirmationAction()
+//    {
+//        return $this->render('@GeneralBundle/Default/index.html.twig');
+//    }
 }
