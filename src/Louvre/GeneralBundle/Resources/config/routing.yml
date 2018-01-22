@@ -1,4 +1,3 @@
 general_homepage:
     path:     /louvre
-    defaults: { _controller: GeneralBundle:Navigation:selection }
-    
+    defaults: { _controller: GeneralBundle:Navigation:selection }  
