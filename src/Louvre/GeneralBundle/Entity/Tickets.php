@@ -38,7 +38,7 @@ class Tickets
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateNaissance", type="datetime")
+     * @ORM\Column(name="dateNaissance", type="string")
      */
     private $dateNaissance;
 
@@ -118,7 +118,7 @@ class Tickets
     /**
      * Set dateNaissance
      *
-     * @param \DateTime $dateNaissance
+     * @param string $dateNaissance
      *
      * @return Tickets
      */
@@ -132,7 +132,7 @@ class Tickets
     /**
      * Get dateNaissance
      *
-     * @return \DateTime
+     * @return string
      */
     public function getDateNaissance()
     {
@@ -187,4 +187,3 @@ class Tickets
         return $this->idCommande;
     }
 }
-

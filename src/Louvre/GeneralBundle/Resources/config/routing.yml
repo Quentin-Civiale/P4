@@ -1,3 +1,8 @@
 general_homepage:
     path:     /louvre
     defaults: { _controller: GeneralBundle:Navigation:selection }  
+    
+tickets:
+    path:     /louvre/tickets
+    defaults: { _controller: GeneralBundle:Tickets:ticketsFormulaire }
+    
