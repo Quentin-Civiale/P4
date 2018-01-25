@@ -1,0 +1,14 @@
+{{ dump(alltickets) }}
+
+{% for tickets in alltickets %}
+    <section>
+       <ul>
+           <li>{{ tickets.nom }}</li>
+           <li>{{ tickets.prenom }}</li>
+           <li>{{ tickets.dateNaissance }}</li>
+           <li>{{ tickets.prix }}</li>
+           <li>{{ tickets.idCommande }}</li>
+       </ul>
+    </section>
+{% endfor %}
+
