@@ -1,14 +1,11 @@
-{{ dump(alltickets) }}
+<html>
+<body>
 
-{% for tickets in alltickets %}
-    <section>
-       <ul>
-           <li>{{ tickets.nom }}</li>
-           <li>{{ tickets.prenom }}</li>
-           <li>{{ tickets.dateNaissance }}</li>
-           <li>{{ tickets.prix }}</li>
-           <li>{{ tickets.idCommande }}</li>
-       </ul>
-    </section>
-{% endfor %}
+Formulaire :
 
+    <form action="{{ path('tickets') }}" method="post">
+        {{ form(form)}}
+    </form>
+
+</body>
+</html>
