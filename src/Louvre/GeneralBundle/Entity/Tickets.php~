@@ -192,28 +192,4 @@ class Tickets
     {
         return $this->idCommande;
     }
-
-    /**
-     * Set commande
-     *
-     * @param \Louvre\GeneralBundle\Entity\Commandes $commande
-     *
-     * @return Tickets
-     */
-    public function setCommande(\Louvre\GeneralBundle\Entity\Commandes $commande)
-    {
-        $this->commande = $commande;
-
-        return $this;
-    }
-
-    /**
-     * Get commande
-     *
-     * @return \Louvre\GeneralBundle\Entity\Commandes
-     */
-    public function getCommande()
-    {
-        return $this->commande;
-    }
 }
