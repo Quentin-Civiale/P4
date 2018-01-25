@@ -4,5 +4,5 @@ general_homepage:
     
 tickets:
     path:     /louvre/tickets
-    defaults: { _controller: GeneralBundle:Tickets:ajout }
+    defaults: { _controller: GeneralBundle:Tickets:ticketsFormulaire }
     
