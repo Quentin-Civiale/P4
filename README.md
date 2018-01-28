@@ -1,4 +1,6 @@
-Symfony
-=======
+# P4
+Développez un back-end pour un client - Le Louvre
 
-A Symfony project created on December 13, 2017, 2:05 pm.
+Création de la billeterie en ligne du musée du Louvre:
+
+- utilisation de Javascript, jQuery et le framework Symfony
