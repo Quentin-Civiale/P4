@@ -55,13 +55,6 @@ class Tickets
      */
     private $prix;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="idCommande", type="integer")
-     */
-    private $idCommande;
-
 
     /**
      * Get id
@@ -167,30 +160,6 @@ class Tickets
     public function getPrix()
     {
         return $this->prix;
-    }
-
-    /**
-     * Set idCommande
-     *
-     * @param integer $idCommande
-     *
-     * @return Tickets
-     */
-    public function setIdCommande($idCommande)
-    {
-        $this->idCommande = $idCommande;
-
-        return $this;
-    }
-
-    /**
-     * Get idCommande
-     *
-     * @return int
-     */
-    public function getIdCommande()
-    {
-        return $this->idCommande;
     }
 
     /**
