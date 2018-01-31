@@ -4,11 +4,12 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Le Louvre{% endblock %}</title>
         
-        <link rel="stylesheet" href="web/css/style.css" />
         <!--Import Google Icon Font-->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="../materialize-v0.98.2/materialize/css/materialize.min.css" media="screen,projection" />
+        
+        <link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
         <link rel="icon" type="image/x-icon" href="{{ asset('louvre_favicon.png') }}" />
     </head>
@@ -21,9 +22,13 @@
                     <div class="nav-wrapper amber darken-2">
                         <a href="#" class="brand-logo"><img src="{{ asset('louvre_site.png') }}"> Le Louvre</a>
                             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                                <li><a href="#">Accueil</a></li>
-                                <li><a href="#">...</a></li>
-                                <li><a href="#">Billetterie</a></li>
+                                <li><a href="#"><i class="material-icons left">home</i>Accueil</a></li>
+                                <li><a href="#">Informations pratiques</a></li>
+                                <li><a href="#">Visites et Activités</a></li>
+                                <li><a href="#">Expositions et Actualités</a></li>
+                                <li><a href="#">Oeuvres et Palais</a></li>
+                                <li><a href="#">Arts et Education</a></li>
+                                <li class="active"><a class="waves-effect waves-light btn grey lighten-1"><i class="material-icons left">store</i>Billetterie</a></li>
                             </ul>
                     </div>
                 </nav>
