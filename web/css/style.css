@@ -1,1 +1,59 @@
+/* label color nom prenom email */
 
+/*
+.input-field label {
+    color: #ff8f00 !important;
+}
+*/
+
+/* label underline focus color */
+
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #ff8f00 !important;
+    box-shadow: 0 1px 0 0 #ff8f00 !important;
+}
+
+.input-field input[type=date]:focus {
+    border-bottom: 1px solid #ff8f00 !important;
+    box-shadow: 0 1px 0 0 #ff8f00 !important;
+}
+
+.input-field input[type=number]:focus {
+    border-bottom: 1px solid #ff8f00 !important;
+    box-shadow: 0 1px 0 0 #ff8f00 !important;
+}
+
+.input-field input[type=email]:focus {
+    border-bottom: 1px solid #ff8f00 !important;
+    box-shadow: 0 1px 0 0 #ff8f00 !important;
+}
+
+.input-field label[type=checkbox]:focus {
+    border-bottom: 1px solid #ff8f00 !important;
+    box-shadow: 0 1px 0 0 #ff8f00 !important;
+}
+
+.input-field input[type=radio]:focus {
+    border-bottom: 1px solid #ff8f00 !important;
+    box-shadow: 0 1px 0 0 #ff8f00 !important;
+}
+
+/* Checkbox color */
+
+.checkbox[type="checkbox"].filled-in:checked + label:after {
+    border: 2px solid #ff8f00;
+    background-color: #ff8f00;
+}
+
+/* Radio color */
+
+[type="radio"]:checked + label::after,
+[type="radio"].with-gap:checked + label::after {
+    background-color: #ff8f00 !important;
+}
+
+[type="radio"]:checked + label::after,
+[type="radio"].with-gap:checked + label::before,
+[type="radio"].with-gap:checked + label::after {
+    border: 2px solid #ff8f00 !important;
+}
