@@ -2,18 +2,18 @@
    
 {% block navigation %}
     
-    <div class="navbar-fixed">
-        <nav class="grey lighten-1">
-            <div class="row">
-                <div class="col s12">
-                    <div class="col offset-s1 s2">Sélection</div>
-                    <div class="col offset-s1 s2">Récapitulatif de la commande</div>
-                    <div class="col offset-s1 s2">Paiement</div>
-                    <div class="col offset-s1 s2">Confirmation</div>
-                </div>
+<div class="navbar-fixed">
+    <nav class="grey lighten-1">
+        <div class="row">
+            <div class="col s12">
+                <div class="col offset-s1 s2"><i class="material-icons left">chevron_right</i>Sélection</div>
+                <div class="col offset-s1 s2">Récapitulatif de la commande</div>
+                <div class="col offset-s1 s2">Paiement</div>
+                <div class="col offset-s1 s2">Confirmation</div>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
+</div>
 
 <br/>
         
@@ -23,8 +23,8 @@
    
     <div class="part"> 
         <div class="row">
-            <div class="col offset-s1 s10 offset-s1 grey lighten-2">
-                    <h5>Nos tarifs</h5>
+            <div class="col offset-s1 s10 offset-s1 grey lighten-2 z-depth-5">
+                    <h4>Nos tarifs</h4>
                     <br/>                    
                       <table class="centered">
                         <thead>
@@ -63,20 +63,20 @@
    
 <div class="part"> 
     <div class="row">
-       <div class="col offset-s2 s8 offset-s2 grey lighten-2">
+       <div class="col offset-s2 s8 offset-s2 grey lighten-2 z-depth-5">
             <h4>1) Choix de la date</h4>
             <hr/><br/>
-            <p>Date de la visite</p>
-            <div class="col offset-s3 s3 offset-6">
-                <input type="date" name="date" />
-            </div>
-       </div>
-       <div class="col offset-s2 s8 offset-s2 grey lighten-2">
-            <p>
-               Cochez le type de journée voulue :<br /><br/>
-               <input type="radio" name="day" id="journée" /> <label for="journée">Journée</label><br />
-               <input type="radio" name="day" id="demi" /> <label for="demi">Demi-journée</label><br />
-            </p>
+                <p>Choisissez la date de votre visite au Musée du Louvre</p>
+                <div class="input-field col offset-s4 s4 offset-s4">
+                    <input type="date" name="date" />
+                </div>
+                <div class="col offset-s2 s8 offset-s2">
+                    <p>
+                       Cochez le type de journée voulue :<br /><br/>
+                       <input type="radio" name="day" id="journée" /> <label for="journée">Journée (de 9h à 18h)</label><br />
+                       <input type="radio" name="day" id="demi" /> <label for="demi">Demi-journée (de 14h à 18h)</label><br />
+                    </p>
+               </div>
        </div>
     </div>
 </div>
@@ -85,45 +85,56 @@
 
 <div class="part">
     <div class="row">
-       <div class="col offset-s2 s8 offset-s2 grey lighten-2">
+        <div class="col offset-s2 s8 offset-s2 grey lighten-2 z-depth-5">
             <h4>2) Nombre de personnes</h4>
             <hr/><br/>
-            <div class="col offset-s3 s3 offset-6">
-                <input type="number" min="0" />
-           </div>
-       </div>
-       <div class="col offset-s2 s8 offset-s2 grey lighten-2">
-            <div class="row">
-                <div class="input-field col s6">
-                    <label for="prenom">Votre prénom :</label>
-                    <input type="text" name="prenom" id="prenom" size="30" maxlength="15" class="validate"/>
+                <div class="row">
+                    <div class="input-field col offset-s4 s4 offset-s4">
+                       <label for="nbBillet">Veuillez indiquer le nombre de billets souhaité</label>
+                        <input type="number" min="0" />
+                    </div>
                 </div>
-                <div class="input-field col s6">
-                    <label for="nom">Votre nom :</label>
-                    <input type="text" name="nom" id="nom" size="30" maxlength="15" />
+                <div class="row">      
+                  <br/><hr/>
+                   <h5>Billet N°1</h5>
+                    <div class="input-field col s6">
+                        <label for="prenom">Votre prénom :</label>
+                        <input type="text" name="prenom" id="prenom" size="30" maxlength="15" class="validate"/>
+                    </div>
+                    <div class="input-field col s6">
+                        <label for="nom">Votre nom :</label>
+                        <input type="text" name="nom" id="nom" size="30" maxlength="15" />
+                    </div>
+                    <div class="input-field col s6 grey lighten-2">
+                        <p>Votre date de naissance</p>
+                         <input type="date" name="birthdate"/>
+                    </div>
+                    <div class="input-field col s6 grey lighten-2">
+                        <p>Personne bénéficiant d'un tarif réduit :</p>
+                         <input type="checkbox" name="reduit1" class="filled-in checkbox" id="filled-in-box-1" checked="checked" /> <label for="filled-in-box-1">Oui</label><br />
+                    </div>
                 </div>
-           </div>
-           <div class="row">
-                <p>Votre date de naissance</p>
-                 <input type="date" name="birthdate"/>
-           </div>
-       </div>
-       <div class="col offset-s2 s8 offset-s2 grey lighten-2">
-            <div class="row">
-                <div class="input-field col s6">
-                    <label for="prenom">Votre prénom :</label>
-                    <input type="text" name="prenom" id="prenom" size="30" maxlength="15" class="validate"/>
+                <div class="row">
+                  <br/><hr/>
+                   <h5>Billet N°2</h5>
+                    <div class="input-field col s6">
+                        <label for="prenom">Votre prénom :</label>
+                        <input type="text" name="prenom" id="prenom" size="30" maxlength="15" class="validate"/>
+                    </div>
+                    <div class="input-field col s6">
+                        <label for="nom">Votre nom :</label>
+                        <input type="text" name="nom" id="nom" size="30" maxlength="15" />
+                    </div>
+                    <div class="input-field col s6 grey lighten-2">
+                        <p>Votre date de naissance</p>
+                         <input type="date" name="birthdate"/>
+                    </div>
+                    <div class="input-field col s6 grey lighten-2">
+                        <p>Personne bénéficiant d'un tarif réduit :</p>
+                         <input type="checkbox" name="reduit2" class="filled-in checkbox" id="filled-in-box-2" checked="checked" /> <label for="filled-in-box-2">Oui</label><br />
+                    </div>
                 </div>
-                <div class="input-field col s6">
-                    <label for="nom">Votre nom :</label>
-                    <input type="text" name="nom" id="nom" size="30" maxlength="15" />
-                </div>
-           </div>
-           <div class="row">
-                <p>Votre date de naissance</p>
-                 <input type="date" name="birthdate"/>
-           </div>
-       </div>
+        </div>
     </div>
 </div>
 
@@ -131,7 +142,7 @@
 
 <div class="part">
     <div class="row">
-       <div class="col offset-s2 s8 offset-s2 grey lighten-2">
+       <div class="col offset-s2 s8 offset-s2 grey lighten-2 z-depth-5">
             <h4>3) Coordonnées</h4>
             <hr/><br/>
             <div class="input-field col s6">
@@ -142,19 +153,20 @@
                     <label for="nom">Votre nom :</label>
                     <input type="text" name="nom" id="nom" size="30" maxlength="15" />
                 </div>
-                <label for="email" data-error="wrong" data-success="right">Email</label>
-                <input id="email" type="email" class="validate">
+                <div class="input-field col offset-s3 s6 offset-s3">
+                    <label for="email" data-error="wrong" data-success="right">Email</label>
+                    <input id="email" type="email" class="validate">
+                </div>
        </div>
     </div>
 </div>
 
-    <div class="row">
-        <div class="col offset-s8 s2 offset-s2">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Commander
-            <i class="material-icons right">send</i>
-            </button>
-        </div>
+<div class="row">
+    <div class="col offset-s8 s2 offset-s2">
+        <button class="btn waves-effect waves-light amber darken-2" type="submit" name="action">Commander
+        <i class="material-icons right">send</i>
+        </button>
     </div>
-
+</div>
 
 {% endblock %}
