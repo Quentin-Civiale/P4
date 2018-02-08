@@ -11,7 +11,12 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Louvre\GeneralBundle\Entity\Tickets;
+
 
 class ticketsType extends AbstractType
 {
@@ -19,17 +24,21 @@ class ticketsType extends AbstractType
     {
         // Formulaire en php
         $builder
-            ->add('email', EmailType::class)
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
-            ->add('sexe', ChoiceType::class, array('choices' => array('homme' => 'homme', 'femme' => 'femme'), 'expanded' => true))
-            ->add('date', DateType::class)
-            ->add('envoyer', SubmitType::class)
-            ;
+            ->add('dateNaissance', DateType::class)
+            ->add('prix', MoneyType::class)
+            ->getForm();
     }
     
-    public function getName()
+//    public function getName()
+//    {
+//        return 'louvre_generalbundle_tickets';
+//    }
+    
+    public function configureOptions(OptionsResolver $resolver)
     {
-        return 'louvre_generalbundle_tickets';
+        $resolver->setDefaults([]);
     }
+    
 }
