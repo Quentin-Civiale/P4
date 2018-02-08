@@ -1,0 +1,17 @@
+<!doctype html>
+
+
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Liste des commandes</title>
+    </head>
+    <body>
+        <h2>Modification de la commande</h2>
+        
+        {% for commande in commandes %}
+            <p><a href="{{ path('edit', {'id':commande.id}) }}">{{ commande.nom }} - {{ commande.prenom }} - {{ commande.email }} - {{ commande.statut }}</a> <a href="{{ path ('delete', {'id':commande.id})}}">Supprimer</a></p>
+        {% endfor %}
+            
+    </body>
+</html>
