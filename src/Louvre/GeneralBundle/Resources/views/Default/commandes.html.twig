@@ -1,0 +1,17 @@
+<html>
+<body>
+
+Formulaire :
+<br/>
+    
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate' } } ) }}
+        {{ form_widget(form)}}
+        {{ form_row(form.tickets) }}
+        
+        <button type="submit">Ajouter</button>
+        
+        {{ form_end(form)}}
+    
+
+</body>
+</html>
