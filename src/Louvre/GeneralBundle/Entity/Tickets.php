@@ -3,6 +3,7 @@
 namespace Louvre\GeneralBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Tickets
@@ -22,7 +23,10 @@ class Tickets
     private $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Louvre\GeneralBundle\Entity\Commandes", inversedBy="tickets")
+     * 
+     * @var Commandes
+     *
+     * @ORM\ManyToOne(targetEntity="Louvre\GeneralBundle\Entity\Commandes", inversedBy="tickets", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $commande;
@@ -31,6 +35,8 @@ class Tickets
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=25)
+     * 
+     * @Assert\NotBlank(message="Veuillez renseigner votre nom")
      */
     private $nom;
 
@@ -42,9 +48,11 @@ class Tickets
     private $prenom;
 
     /**
-     * @var \DateTime
+     * @var Date
      *
-     * @ORM\Column(name="dateNaissance", type="string")
+     * @ORM\Column(name="dateNaissance", type="date")
+     *
+     * @Assert\Date()
      */
     private $dateNaissance;
 
@@ -52,6 +60,10 @@ class Tickets
      * @var float
      *
      * @ORM\Column(name="prix", type="float")
+     *
+     * @Assert\GreaterThan(value = 0, message = "Le prix doit être supèrieur à 0.")
+     *
+     * @Assert\NotBlank(message="Le prix est obligatoire")
      */
     private $prix;
 
@@ -117,7 +129,7 @@ class Tickets
     /**
      * Set dateNaissance
      *
-     * @param string $dateNaissance
+     * @param date $dateNaissance
      *
      * @return Tickets
      */
@@ -131,7 +143,7 @@ class Tickets
     /**
      * Get dateNaissance
      *
-     * @return string
+     * @return date
      */
     public function getDateNaissance()
     {
