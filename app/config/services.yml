@@ -36,6 +36,6 @@ services:
     
     
     #permet au doctrine fixtures bundle de load
-    Louvre\GeneralBundle\DataFixtures\:
-        resource: '../../src/Louvre/GeneralBundle/DataFixtures'
-        tags: ['doctrine.fixture.orm']
+#    Louvre\GeneralBundle\DataFixtures\:
+#        resource: '../../src/Louvre/GeneralBundle/DataFixtures'
+#        tags: ['doctrine.fixture.orm']
