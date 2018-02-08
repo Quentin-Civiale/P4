@@ -11,46 +11,34 @@ use Louvre\GeneralBundle\Form\ticketsType;
 
 class TicketsController extends Controller
 {
-    public function ticketsFormulaireAction(Request $request) {
+    public function ticketsFormulaireAction(Request $request)
+    {
+        //on crée un ticket
+        $ticket = new Tickets();
         
-        $form = $this->createForm(ticketsType::class);
+        //on récupère le formulaire
+        $form = $this->createForm(ticketsType::class, $ticket);
         
-        if ($request->getmethod() == 'POST')
+        //requête lors de l'envoi du formulaire
+        $form->handleRequest($request);
+        //si le formulaire a été soumis
+        if($form->isSubmitted() && $form->isValid())
         {
-            $form->handleRequest($request);
+            //on enregistre le ticket en bdd
+            $em = $this->getDoctrine()->getManager();
+            //préparation à l'insertion dans la bdd
+            $em->persist($ticket);
+            //envoi vers la bdd
+            $em->flush();
             
-//            afficher les infos remplies dans le formulaire
-            var_dump($form->getData());
-            
-//            afficher que l'email
-//            echo $form['email']->getData();
-            
-//            remplir automatiquement l'email dans le formulaire
-            $form = $this->createForm(ticketsType::class, array('email' => 'quentin.civiale@gmail.com'));
+            return new Response('Ticket enregistré !');
         }
         
-        return $this->render('@General/Default/tickets.html.twig', array ('form' => $form->createView()));
+        //on génère le html du formulaire
+        $formView = $form->createView();
+        
+        //on rend la vue
+        return $this->render('@General/Default/tickets.html.twig', array ('form' => $formView));
     }
     
-//    public function ajoutAction()
-//    {
-////        $test3='test3';
-////        var_dump($test3);
-//        
-//        $em = $this->getDoctrine()->getManager();
-//        
-//        /*$tickets = new Tickets();
-//        $tickets->setNom('Civiale');
-//        $tickets->setPrenom('Quentin');
-//        $tickets->setDateNaissance('20-05-1991');
-//        $tickets->setPrix('18.00');
-//        $tickets->setIdCommande('0001');
-//        
-//        $em->persist($tickets);
-//        $em->flush();*/
-//        
-//        $alltickets = $em->getRepository('GeneralBundle:Tickets')->findAll();
-//        
-//        return $this->render('@General/Default/tickets.html.twig', array('alltickets' => $alltickets));
-//    }
 }
