@@ -15,18 +15,4 @@ class NavigationController extends Controller
         return $this->render('@General/Default/index.html.twig');
     }
     
-//    public function recapAction()
-//    {
-//        return $this->render('@General/Default/recap.html.twig');
-//    }
-//    
-//    public function paiementAction()
-//    {
-//        return $this->render('@GeneralBundle/Default/index.html.twig');
-//    }
-//    
-//    public function confirmationAction()
-//    {
-//        return $this->render('@GeneralBundle/Default/index.html.twig');
-//    }
 }
