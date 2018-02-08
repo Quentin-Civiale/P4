@@ -2,10 +2,15 @@
 <body>
 
 Formulaire :
-
-    <form action="{{ path('tickets') }}" method="post">
-        {{ form(form)}}
-    </form>
+<br/>
+    
+        {{ form_start(form)}}
+        {{ form_widget(form)}}
+        
+        <button type="submit">Ajouter</button>
+        
+        {{ form_end(form)}}
+    
 
 </body>
 </html>
