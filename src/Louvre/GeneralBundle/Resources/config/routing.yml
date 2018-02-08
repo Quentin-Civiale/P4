@@ -6,3 +6,18 @@ tickets:
     path:     /louvre/tickets
     defaults: { _controller: GeneralBundle:Tickets:ticketsFormulaire }
     
+commandes:
+    path:     /louvre/commandes
+    defaults: { _controller: GeneralBundle:Commandes:commandesFormulaire }
+    
+list:
+    path:     /louvre/list
+    defaults: { _controller: GeneralBundle:Commandes:commandes_list }
+
+edit:
+    path:     /louvre/edit/{id}
+    defaults: { _controller: GeneralBundle:Commandes:edit }
+    
+delete:
+    path:     /louvre/delete/{id}
+    defaults: { _controller: GeneralBundle:Commandes:delete }
