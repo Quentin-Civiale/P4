@@ -3,6 +3,9 @@
 namespace Louvre\GeneralBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Commandes
@@ -22,7 +25,11 @@ class Commandes
     private $id;
     
     /**
-     * @ORM\OneToMany(targetEntity="Louvre\GeneralBundle\Entity\Tickets", mappedBy="commande")
+     * 
+     * @var Tickets
+     *
+     * @ORM\OneToMany(targetEntity="Louvre\GeneralBundle\Entity\Tickets", mappedBy="commandes", cascade={"persist", "remove"})
+     * @Assert\Valid()
      */
     private $tickets;
 
@@ -30,6 +37,8 @@ class Commandes
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=25)
+     * 
+     * @Assert\NotBlank(message="Veuillez renseigner votre nom")
      */
     private $nom;
 
@@ -37,6 +46,8 @@ class Commandes
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=25)
+     * 
+     * @Assert\NotBlank(message="Veuillez renseigner votre prénom")
      */
     private $prenom;
 
@@ -60,7 +71,7 @@ class Commandes
      * @ORM\Column(name="statut", type="string", length=40)
      */
     private $statut;
-
+    
 
     /**
      * Get id
@@ -209,6 +220,8 @@ class Commandes
     public function addTicket(\Louvre\GeneralBundle\Entity\Tickets $ticket)
     {
         $this->tickets[] = $ticket;
+        
+        $ticket->setCommande($this);
 
         return $this;
     }
