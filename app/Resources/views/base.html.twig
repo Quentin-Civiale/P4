@@ -7,7 +7,7 @@
         <!--Import Google Icon Font-->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="../materialize-v0.98.2/materialize/css/materialize.min.css" media="screen,projection" />
+        <link type="text/css" rel="stylesheet" href="{{ asset('materialize-v0.98.2/materialize/css/materialize.min.css')}}" media="screen,projection" />
         
         <link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
@@ -28,14 +28,13 @@
                                 <li><a href="#">Expositions et Actualités</a></li>
                                 <li><a href="#">Oeuvres et Palais</a></li>
                                 <li><a href="#">Arts et Education</a></li>
-                                <li class="active"><a class="waves-effect waves-light btn grey lighten-1"><i class="material-icons left">store</i>Billetterie</a></li>
+                                <li class="active"><a class="waves-effect waves-light btn grey lighten-1" href="{{ path('general_homepage')}}"><i class="material-icons left">store</i>Billetterie</a></li>
                             </ul>
                     </div>
                 </nav>
             </div>
         </header>
 
-       
         {% block navigation %}{% endblock %}  
         
         <div>
@@ -46,7 +45,7 @@
  
         {% block tarifs %}{% endblock %}
         {% block formulaire %}{% endblock %}
-        {% block selection %}{% endblock %}
+        {% block order %}{% endblock %}
 
         <hr/>
         
@@ -59,7 +58,7 @@
                 <p><i class="tiny material-icons">phone</i>&nbsp;Tel: 02 35 00 00 00</p>
                 <p><i class="tiny material-icons">print</i>&nbsp;Fax: 02 35 00 00 00</p>
               </div>
-              <div class="col l4 offset-l2 s12">
+              <div class="col l4 offset-l2">
                 <h5 class="white-text">Liens</h5>
                 <ul>
                   <li><a class="grey-text text-lighten-3" href="#!">CGV</a></li>
@@ -77,7 +76,7 @@
             
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="../materialize-v0.98.2/materialize/js/materialize.min.js"></script>
+        <script type="text/javascript" src="{{ asset('materialize-v0.98.2/materialize/js/materialize.min.js')}}"></script>
         
         {% block javascripts %}{% endblock %}
         
