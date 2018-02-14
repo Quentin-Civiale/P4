@@ -13,8 +13,10 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Louvre\GeneralBundle\Entity\Commandes;
 use Louvre\GeneralBundle\Entity\Tickets;
 
 
@@ -26,8 +28,11 @@ class ticketsType extends AbstractType
         $builder
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
-            ->add('dateNaissance', DateType::class)
-            ->add('prix', MoneyType::class)
+            ->add('dateNaissance', BirthdayType::class, array(
+                'placeholder' => array(
+                'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
+                )
+            ))
             ->getForm();
     }
     
@@ -38,7 +43,7 @@ class ticketsType extends AbstractType
     
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([]);
+        $resolver->setDefaults(array('data_class' => 'Louvre\GeneralBundle\Entity\Tickets'));
     }
     
 }
