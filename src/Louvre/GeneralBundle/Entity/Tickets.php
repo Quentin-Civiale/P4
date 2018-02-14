@@ -4,6 +4,8 @@ namespace Louvre\GeneralBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Tickets
@@ -28,6 +30,7 @@ class Tickets
      *
      * @ORM\ManyToOne(targetEntity="Louvre\GeneralBundle\Entity\Commandes", inversedBy="tickets", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
      */
     private $commande;
 
