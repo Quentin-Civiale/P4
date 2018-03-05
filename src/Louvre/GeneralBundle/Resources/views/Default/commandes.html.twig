@@ -1,17 +1,167 @@
-<html>
-<body>
+{% extends 'base.html.twig' %}
 
-Formulaire :
-<br/>
+{% block navigation %}
     
-        {{ form_start(form, {'attr': {'novalidate': 'novalidate' } } ) }}
-        {{ form_widget(form)}}
-        {{ form_row(form.tickets) }}
+    <div class="navbar-fixed">
+        <nav class="grey lighten-1">
+            <div class="row">
+                <div class="col s12">
+                    <div class="col offset-s1 s2"><i class="material-icons left">chevron_right</i>Sélection</div>
+                    <div class="col offset-s1 s2">Récapitulatif de la commande</div>
+                    <div class="col offset-s1 s2">Paiement</div>
+                    <div class="col offset-s1 s2">Confirmation</div>
+                </div>
+            </div>
+        </nav>
+    </div>
         
-        <button type="submit">Ajouter</button>
-        
-        {{ form_end(form)}}
-    
+{% endblock %}
 
-</body>
-</html>
+{% block tarifs %}
+   
+    <div class="part"> 
+        <div class="row">
+            <div class="col offset-s1 s10 grey lighten-2 z-depth-5">
+                    <h4>Nos tarifs</h4>
+                    <br/>                    
+                      <table class="centered">
+                        <thead>
+                          <tr>
+                              <th>Enfant</th>
+                              <th>Normal</th>
+                              <th>Sénior</th>
+                              <th>Réduit</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                         <tr>
+                            <td>8€</td>
+                            <td>16€</td>
+                            <td>12€</td>
+                            <td>10€</td>
+                          </tr>
+                          <tr>
+                            <td>de 4 ans à 12 ans <br/>(l’entrée est gratuite pour <br/>les enfants de moins de 4 ans)</td>
+                            <td>à partirde 12 ans</td>
+                            <td>à partir de 60 ans</td>
+                            <td>tarif réservé sous certaines conditions <br/>(étudiant, employé du musée, d’un <br/>service du Ministère de la Culture, militaire…)</td>
+                          </tr>
+                        </tbody>
+                      </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block form %}
+
+    <div class="row">
+        <div class="col offset-s2">
+            <h3>Sélection de la visite</h3>
+        </div>
+    </div>
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate' } }) }}
+
+    <div class="row">
+        <div class="col offset-s2 s8 grey lighten-2 z-depth-5">
+            <h4>1) Choix de la date</h4>
+            <hr/><br/>
+            <p>Choisissez la date de votre visite au Musée du Louvre</p>
+            <div class="col offset-s4 s4">
+                {{ form_row(form.date) }}
+            </div>
+            <div class="col offset-s2 s8">
+                <p>
+                    Cochez le type de journée voulue :<br/><br/>
+                    <input type="radio" name="day" id="journée" /> <label for="journée">Journée (de 9h à 18h)</label><br />
+                    <input type="radio" name="day" id="demi" /> <label for="demi">Demi-journée (de 14h à 18h)</label><br />
+                </p>
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <div class="col offset-s2 s8 grey lighten-2 z-depth-5">
+            <h4>2) Nombre de personnes</h4>
+            <hr/><br/>
+            <div class="row">
+                <div class="input-field col offset-s4 s4">
+                    <label for="nbBillet">Veuillez indiquer le nombre de billets souhaité</label>
+                    <input type="number" id="nbBillet" min="0" max="10"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <br/><hr/>
+                <h5>Billet N°1</h5>
+                <div class="col s6">
+                    {{ form_row(form.tickets) }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col offset-s5">
+            <button class="btn waves-effect waves-light amber darken-2" type="button" onclick="">Ajouter une personne
+                <i class="material-icons right">person_add</i>
+            </button>
+        </div>
+    </div>
+
+    <br/><hr/>
+
+    <ul class="ticketsType" data-prototype="&lt;div&gt;&lt;label class=&quot; required&quot;&gt;__name__&lt;/label&gt;&lt;div id=&quot;task_tags___name__&quot;&gt;&lt;div&gt;&lt;label for=&quot;task_tags___name___name&quot; class=&quot; required&quot;&gt;Name&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;task_tags___name___name&quot; name=&quot;task[tags][__name__][name]&quot; required=&quot;required&quot; maxlength=&quot;255&quot; /&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;">
+    </ul>
+
+    <ul class="tickets" data-prototype="{{ form_widget(form.tickets.vars.prototype)|e }}">
+        {{ dump(form.tickets.vars.prototype) }}
+        {#{{ form_widget(form.tickets.vars.prototype.nom)|e}}#}
+        {#{{ form_widget(form.tickets.vars.prototype.prenom)|e}}#}
+        {#{{ form_widget(form.tickets.vars.prototype.dateNaissance)|e}}#}
+        {#{{ form_widget(form.tickets.vars.prototype.prix)|e}}#}
+    </ul>
+
+    <br/><hr/>
+
+    <div class="row">
+        <div class="col offset-s2 s8 grey lighten-2 z-depth-5">
+            <h4>3) Coordonnées</h4>
+            <hr/><br/>
+            <div class="col s6">
+                {{ form_row(form.prenom) }}
+            </div>
+            <div class="col s6">
+                {{ form_row(form.nom) }}
+            </div>
+            <div class="col offset-s3 s6">
+                {{ form_row(form.email) }}
+            </div>
+            <div class="col offset-s3 s6">
+                {{ form_row(form.statut) }}
+            </div>
+            <br/>
+        </div>
+    </div>
+
+
+    {#{{ dump(form) }}#}
+
+    <div class="row">
+        <div class="col offset-s8 s2">
+            <button class="btn waves-effect waves-light amber darken-2" type="submit">Commander<i class="material-icons right">send</i></button>
+        </div>
+    </div>
+
+    {{ form_end(form)}}
+
+{% endblock %}
+
