@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Louvre\GeneralBundle\Entity\Tickets;
 
 /**
  * Commandes
@@ -29,6 +30,7 @@ class Commandes
      * @var Tickets
      *
      * @ORM\OneToMany(targetEntity="Louvre\GeneralBundle\Entity\Tickets", mappedBy="commandes", cascade={"persist", "remove"})
+     *
      * @Assert\Valid()
      */
     private $tickets;
@@ -72,7 +74,18 @@ class Commandes
      */
     private $statut;
     
-
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tickets = new ArrayCollection();
+        $newTicket = new Tickets();
+        $this->addTicket($newTicket);
+    }
+    
+    
     /**
      * Get id
      *
@@ -202,13 +215,7 @@ class Commandes
     {
         return $this->statut;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    
 
     /**
      * Add ticket
@@ -217,13 +224,16 @@ class Commandes
      *
      * @return Commandes
      */
-    public function addTicket(\Louvre\GeneralBundle\Entity\Tickets $ticket)
+    public function addTicket(Tickets $ticket)
     {
-        $this->tickets[] = $ticket;
+        if ($this->tickets->contains($ticket)) {
+           return;
+        }
+        
+        $this->tickets->add($ticket);
         
         $ticket->setCommande($this);
-
-        return $this;
+        
     }
 
     /**
