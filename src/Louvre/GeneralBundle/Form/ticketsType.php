@@ -29,11 +29,12 @@ class ticketsType extends AbstractType
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
             ->add('dateNaissance', BirthdayType::class, array(
+                'label' => 'Date de naissance',
                 'placeholder' => array(
                 'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
+                ))
                 )
-            ))
-            ->getForm();
+            ->add('prix', NumberType::class);
     }
     
 //    public function getName()
