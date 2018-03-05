@@ -12,6 +12,9 @@
         <link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}" />
 
         <link rel="icon" type="image/x-icon" href="{{ asset('louvre_favicon.png') }}" />
+
+        {#<script type="text/javascript" src="{{ asset('js/calcul.js') }}"></script>#}
+        <script type="text/javascript" src="{{ asset('js/ajoutForm.js') }}"></script>
     </head>
     
     <body>
@@ -45,7 +48,9 @@
  
         {% block tarifs %}{% endblock %}
         {% block formulaire %}{% endblock %}
+        {% block form %}{% endblock %}
         {% block order %}{% endblock %}
+        {% block recap %}{% endblock %}
 
         <hr/>
         
