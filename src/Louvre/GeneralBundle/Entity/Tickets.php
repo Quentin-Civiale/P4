@@ -60,13 +60,10 @@ class Tickets
     private $dateNaissance;
 
     /**
-     * @var float
+     * @var int
      *
-     * @ORM\Column(name="prix", type="float")
+     * @ORM\Column(name="prix", type="integer")
      *
-     * @Assert\GreaterThan(value = 0, message = "Le prix doit être supèrieur à 0.")
-     *
-     * @Assert\NotBlank(message="Le prix est obligatoire")
      */
     private $prix;
 
@@ -156,7 +153,7 @@ class Tickets
     /**
      * Set prix
      *
-     * @param float $prix
+     * @param int $prix
      *
      * @return Tickets
      */
@@ -170,7 +167,7 @@ class Tickets
     /**
      * Get prix
      *
-     * @return float
+     * @return \int
      */
     public function getPrix()
     {
