@@ -57,3 +57,9 @@
 [type="radio"].with-gap:checked + label::after {
     border: 2px solid #ff8f00 !important;
 }
+
+/* Affichage de selection de la date */
+
+select {
+    display: inherit !important;
+}
