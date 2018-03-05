@@ -2,13 +2,14 @@
 
 namespace Louvre\GeneralBundle\Controller;
 
+use Louvre\GeneralBundle\Entity\Commandes;
 use Louvre\GeneralBundle\Entity\Tickets;
 use Louvre\GeneralBundle\Form\commandesType;
 use Louvre\GeneralBundle\Form\ticketsType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Louvre\GeneralBundle\Entity\Commandes;
+
 
 
 class CommandesController extends Controller
@@ -23,17 +24,55 @@ class CommandesController extends Controller
         
         //requête lors de l'envoi du formulaire
         $form->handleRequest($request);
+
         //si le formulaire a été soumis
         if($form->isSubmitted() && $form->isValid())
         {
-            //on enregistre la commande en bdd
-            $em = $this->getDoctrine()->getManager();
-            //préparation à l'insertion dans la bdd
-            $em->persist($commande);
-            //envoi vers la bdd
-            $em->flush();
-            
-            return new Response('Commande enregistrée !');
+            /** @var $commande Commandes **/
+            $commande = $form->getData();
+            $totalPrix = 0;
+
+            /** @var $ticket Tickets **/
+            foreach($commande->getTickets() as $ticket) {
+
+                /** @var $dateDeNaissance \DateTime **/
+                $dateDeNaissance = $ticket->getDateNaissance();
+                $to = new \DateTime('today');
+                $age = $dateDeNaissance->diff($to)->y;
+                $tarif = 0;
+
+                dump($age);
+
+                if($age >= 4 && $age < 12){
+                    $tarif += 8;
+                }
+                elseif($age >= 12 && $age < 60){
+                    $tarif += 16;
+                }
+                elseif($age > 60) {
+                    $tarif += 12;
+                }
+                else {
+                    $tarif += 10;
+                }
+
+                $totalPrix = $tarif;
+
+                dump($totalPrix);
+
+                $prix = $ticket->setPrix($totalPrix);
+
+                dump($prix);
+            }
+
+//            //on enregistre la commande en bdd
+//            $em = $this->getDoctrine()->getManager();
+//            //préparation à l'insertion dans la bdd
+//            $em->persist($commande);
+//            //envoi vers la bdd
+//            $em->flush();
+//
+//            return new Response('Commande enregistrée !');
         }
         
         //on génère le html du formulaire
@@ -50,7 +89,7 @@ class CommandesController extends Controller
         
         $commandes = $repository->findAll();
         
-        return $this->render('@General/Default/commandesList.html.twig', array('commandes'=>$commandes));
+        return $this->render('@General/Default/commandesList.html.twig', array('commandes'=> $commandes));
     }
     
     public function editAction(Request $request, Commandes $commande)
