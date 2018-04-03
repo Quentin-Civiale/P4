@@ -1,52 +1,48 @@
 var $collectionHolder;
 
-// configure un lien "ajouter un ticket"
-var $ajoutTicketLien = $('<a href="#" class="tickets">Ajouter un ticket</a>');
-var $nouveauLienLi = $('<li></li>').append($ajoutTicketLien);
+// configure le lien "Ajouter une personne"
+var $addTicketLink = $('<a href="#" class="add_ticket_link btn btn-default btn-sm amber darken-2 col offset-s4">Ajouter une personne<i class="material-icons right">person_add</i></a>');
+var $newLinkLi = $('<div></div>').append($addTicketLink);
+
+
+function addTicketForm($collectionHolder, $newLinkLi) {
+    // Récupère le prototype de données
+    var prototype = $collectionHolder.data('prototype');
+
+    // obtention du nouvel index
+    var index = $collectionHolder.data('index');
+
+    var newForm = prototype;
+
+    newForm = newForm.replace(/__name__/g, index);
+
+    // augmente l'index avec un pour l'élément suivant
+    $collectionHolder.data('index', index + 1);
+
+    // Affiche le formulaire dans la page dans un div, avant le lien
+    var $newFormLi = $('<div class="ticketForm"><br/><hr/><h5>Billet N°</h5></div>').append(newForm);
+
+    $newLinkLi.prepend($newFormLi);
+}
 
 jQuery(document).ready(function() {
-    // obtenir le ul qui détient la collection de balises
-    $collectionHolder = $('ul.tickets');
+    debugger
+    // Récupère le ticket vierge qui contient la collection
+    $collectionHolder = $('#commande_tickets');
 
-    // ajoute l'ancre "ajouter un ticket" et li aux tags ul
-    $collectionHolder.append($nouveauLienLi);
+    // ajoute "Ajouter une personne" et le div
+    $collectionHolder.append($newLinkLi);
 
-    // compte les entrées de formulaire actuelles qu'il y a (par exemple 2), utiliser cela comme nouvel
-    // index lors de l'insertion d'un nouvel élément (par exemple 2)
+    // compte les entrées actuelles du formulaire
     $collectionHolder.data('index', $collectionHolder.find(':input').length);
 
-    $ajoutTicketLien.on('click', function(e) {
+    $addTicketLink.on('click', function(e) {
         // empêche le lien de créer un "#" sur l'URL
         e.preventDefault();
 
-        // ajoute un nouveau formulaire d'étiquette
-        ajoutTicketForm($collectionHolder, $nouveauLienLi);
+        // ajoute un nouveau formulaire
+        addTicketForm($collectionHolder, $newLinkLi);
     });
 });
 
-
-function ajoutTicketForm($collectionHolder, $nouveauLienLi) {
-    // obtenir le prototype
-    var prototype = $collectionHolder.data('prototype');
-
-    // obtenir le nouvel index
-    var index = $collectionHolder.data('index');
-
-    var nouveauForm = prototype;
-    // Uniquement si le 'label' n'est pas défini => false dans le champ de tags
-    // Remplace «__name__label__» dans le HTML du prototype
-    // au lieu d'être un nombre basé sur combien de tickets nous avons
-    // nouveauForm = nouveauForm.replace (/ __ nom__label __ / g, index);
-
-    // Remplace «__name__» dans le HTML du prototype
-    // au lieu d'être un nombre basé sur combien d'articles nous avons
-    nouveauForm = nouveauForm.replace(/__name__/g, index);
-
-    // augmente l'index avec un pour le prochain article
-    $collectionHolder.data('index', index + 1);
-
-    // Affiche le formulaire dans la page dans un li, avant le lien "Ajouter un tag"
-    var $nouveauFormLi = $('<li></li>').append(nouveauForm);
-    $nouveauLienLi.before($nouveauFormLi);
-}
 

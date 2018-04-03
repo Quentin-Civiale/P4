@@ -2,7 +2,7 @@
 
 //namespace Louvre\GeneralBundle\DataFixtures\ORM;
 //
-//use Louvre\GeneralBundle\Entity\Commandes;
+//use Louvre\GeneralBundle\Entity\Commande;
 //use Doctrine\Bundle\FixturesBundle\Fixture;
 //use Doctrine\Common\Persistence\ObjectManager;
 //

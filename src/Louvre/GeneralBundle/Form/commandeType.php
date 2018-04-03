@@ -16,7 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Louvre\GeneralBundle\Entity\Commandes;
+use Louvre\GeneralBundle\Entity\Commande;
 use Louvre\GeneralBundle\Entity\Tickets;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -56,7 +56,7 @@ class commandesType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Commandes::class
+            'data_class' => Commande::class
         ]);
     }
     

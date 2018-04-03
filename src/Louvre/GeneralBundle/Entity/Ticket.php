@@ -26,9 +26,9 @@ class Tickets
     
     /**
      * 
-     * @var Commandes
+     * @var Commande
      *
-     * @ORM\ManyToOne(targetEntity="Louvre\GeneralBundle\Entity\Commandes", inversedBy="tickets", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Commande.php", inversedBy="tickets", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
@@ -177,11 +177,11 @@ class Tickets
     /**
      * Set commande
      *
-     * @param \Louvre\GeneralBundle\Entity\Commandes $commande
+     * @param \Louvre\GeneralBundle\Entity\Commande $commande
      *
      * @return Tickets
      */
-    public function setCommande(\Louvre\GeneralBundle\Entity\Commandes $commande)
+    public function setCommande(\Louvre\GeneralBundle\Entity\Commande $commande)
     {
         $this->commande = $commande;
 
@@ -191,7 +191,7 @@ class Tickets
     /**
      * Get commande
      *
-     * @return \Louvre\GeneralBundle\Entity\Commandes
+     * @return \Louvre\GeneralBundle\Entity\Commande
      */
     public function getCommande()
     {

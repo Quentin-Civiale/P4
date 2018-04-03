@@ -2,7 +2,7 @@
 
 namespace Louvre\GeneralBundle\Controller;
 
-use Louvre\GeneralBundle\Entity\Commandes;
+use Louvre\GeneralBundle\Entity\Commande;
 use Louvre\GeneralBundle\Entity\Tickets;
 use Louvre\GeneralBundle\Form\commandesType;
 use Louvre\GeneralBundle\Form\ticketsType;
@@ -17,7 +17,7 @@ class CommandesController extends Controller
     public function commandesFormulaireAction(Request $request)
     {
         //on crée une commande
-        $commande = new Commandes();
+        $commande = new Commande();
         
         //on récupère le formulaire
         $form = $this->createForm(commandesType::class, $commande);
@@ -28,7 +28,7 @@ class CommandesController extends Controller
         //si le formulaire a été soumis
         if($form->isSubmitted() && $form->isValid())
         {
-            /** @var $commande Commandes **/
+            /** @var $commande Commande **/
             $commande = $form->getData();
             $totalPrix = 0;
 
@@ -85,14 +85,14 @@ class CommandesController extends Controller
     
     public function commandes_listAction()
     {
-        $repository = $this->getDoctrine()->getRepository('GeneralBundle:Commandes');
+        $repository = $this->getDoctrine()->getRepository('Commande.php');
         
         $commandes = $repository->findAll();
         
         return $this->render('@General/Default/commandesList.html.twig', array('commandes'=> $commandes));
     }
     
-    public function editAction(Request $request, Commandes $commande)
+    public function editAction(Request $request, Commande $commande)
     {
          //on récupère le formulaire
         $form = $this->createForm(commandesType::class, $commande);
@@ -119,7 +119,7 @@ class CommandesController extends Controller
         return $this->render('@General/Default/commandes.html.twig', array ('form' => $formView));
     }
     
-    public function deleteAction(Commandes $commande)
+    public function deleteAction(Commande $commande)
     {
         $em = $this->getDoctrine()->getManager();
         $em->remove($commande);
