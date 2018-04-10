@@ -79,4 +79,10 @@ function verifAge(ageVisiteur) {
     }
 }
 
+verifAge();
+
+var BilletDeBase = 1;
+var BilletEnPlus = BilletDeBase+1;
+// var BilletTotal = BilletDeBase + BilletEnPlus;
+document.write("Billet N°" + BilletEnPlus);
 
