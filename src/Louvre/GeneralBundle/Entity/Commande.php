@@ -6,16 +6,18 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Louvre\GeneralBundle\Entity\Tickets;
+use Louvre\GeneralBundle\Entity\Ticket;
 
 /**
- * Commandes
+ * Commande
  *
  * @ORM\Table(name="commandes")
- * @ORM\Entity(repositoryClass="Louvre\GeneralBundle\Repository\CommandesRepository")
+ * @ORM\Entity(repositoryClass="Louvre\GeneralBundle\Repository\CommandeRepository")
  */
-class Commandes
+class Commande
 {
+    const STATUT_EN_ATTENTE_DE_PAIEMENT = 'en_attente_de_paiement';
+
     /**
      * @var int
      *
@@ -27,9 +29,9 @@ class Commandes
     
     /**
      * 
-     * @var Tickets
+     * @var Ticket
      *
-     * @ORM\OneToMany(targetEntity="Louvre\GeneralBundle\Entity\Tickets", mappedBy="commandes", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Louvre\GeneralBundle\Entity\Ticket", mappedBy="commandes", cascade={"persist", "remove"})
      *
      * @Assert\Valid()
      */
@@ -73,7 +75,15 @@ class Commandes
      * @ORM\Column(name="statut", type="string", length=40)
      */
     private $statut;
-    
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prixTotal", type="decimal", precision=10, scale=2)
+     *
+     */
+    private $prixTotal;
+
     
     /**
      * Constructor
@@ -81,14 +91,12 @@ class Commandes
     public function __construct()
     {
         $this->tickets = new ArrayCollection();
-        $newTicket = new Tickets();
+        $newTicket = new Ticket();
         $this->addTicket($newTicket);
     }
     
     
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -100,19 +108,13 @@ class Commandes
      * Set nom
      *
      * @param string $nom
-     *
-     * @return Commandes
      */
     public function setNom($nom)
     {
         $this->nom = $nom;
-
-        return $this;
     }
 
     /**
-     * Get nom
-     *
      * @return string
      */
     public function getNom()
@@ -124,19 +126,13 @@ class Commandes
      * Set prenom
      *
      * @param string $prenom
-     *
-     * @return Commandes
      */
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
-
-        return $this;
     }
 
     /**
-     * Get prenom
-     *
      * @return string
      */
     public function getPrenom()
@@ -148,19 +144,13 @@ class Commandes
      * Set date
      *
      * @param \DateTime $date
-     *
-     * @return Commandes
      */
     public function setDate($date)
     {
         $this->date = $date;
-
-        return $this;
     }
 
     /**
-     * Get date
-     *
      * @return \DateTime
      */
     public function getDate()
@@ -172,19 +162,13 @@ class Commandes
      * Set email
      *
      * @param string $email
-     *
-     * @return Commandes
      */
     public function setEmail($email)
     {
         $this->email = $email;
-
-        return $this;
     }
 
     /**
-     * Get email
-     *
      * @return string
      */
     public function getEmail()
@@ -196,35 +180,48 @@ class Commandes
      * Set statut
      *
      * @param string $statut
-     *
-     * @return Commandes
      */
     public function setStatut($statut)
     {
         $this->statut = $statut;
 
-        return $this;
     }
 
     /**
-     * Get statut
-     *
      * @return string
      */
     public function getStatut()
     {
         return $this->statut;
     }
+
+    /**
+     * Set prixTotal
+     *
+     * @param float $prixTotal
+     */
+    public function setPrixTotal(float $prixTotal)
+    {
+        $this->prixTotal = $prixTotal;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrixTotal()
+    {
+        return $this->prixTotal;
+    }
     
 
     /**
      * Add ticket
      *
-     * @param \Louvre\GeneralBundle\Entity\Tickets $ticket
+     * @param Ticket $ticket
      *
-     * @return Commandes
+     * @return Commande
      */
-    public function addTicket(Tickets $ticket)
+    public function addTicket(Ticket $ticket)
     {
         if ($this->tickets->contains($ticket)) {
            return;
@@ -239,16 +236,14 @@ class Commandes
     /**
      * Remove ticket
      *
-     * @param \Louvre\GeneralBundle\Entity\Tickets $ticket
+     * @param \Louvre\GeneralBundle\Entity\Ticket $ticket
      */
-    public function removeTicket(\Louvre\GeneralBundle\Entity\Tickets $ticket)
+    public function removeTicket(\Louvre\GeneralBundle\Entity\Ticket $ticket)
     {
         $this->tickets->removeElement($ticket);
     }
 
     /**
-     * Get tickets
-     *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getTickets()
