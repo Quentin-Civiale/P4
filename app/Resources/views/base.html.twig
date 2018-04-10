@@ -31,6 +31,7 @@
                                 <li><a href="#">Expositions et Actualités</a></li>
                                 <li><a href="#">Oeuvres et Palais</a></li>
                                 <li><a href="#">Arts et Education</a></li>
+                                <li><a href="{{ path('connexion') }}">Connexion</a></li>
                                 <li class="active"><a class="waves-effect waves-light btn grey lighten-1" href="{{ path('general_homepage')}}"><i class="material-icons left">store</i>Billetterie</a></li>
                             </ul>
                     </div>
@@ -45,7 +46,8 @@
                 <img src="{{ asset('louvre_banniere.png') }}">
             </div>
         </div>
- 
+
+        {% block login %}{% endblock %}
         {% block tarifs %}{% endblock %}
         {% block formulaire %}{% endblock %}
         {% block form %}{% endblock %}
