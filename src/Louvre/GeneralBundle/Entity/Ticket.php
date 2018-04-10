@@ -8,12 +8,12 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Tickets
+ * Ticket
  *
  * @ORM\Table(name="tickets")
- * @ORM\Entity(repositoryClass="Louvre\GeneralBundle\Repository\TicketsRepository")
+ * @ORM\Entity(repositoryClass="Louvre\GeneralBundle\Repository\TicketRepository")
  */
-class Tickets
+class Ticket
 {
     /**
      * @var int
@@ -28,7 +28,7 @@ class Tickets
      * 
      * @var Commande
      *
-     * @ORM\ManyToOne(targetEntity="Commande.php", inversedBy="tickets", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Louvre\GeneralBundle\Entity\Commande", inversedBy="tickets", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
@@ -60,17 +60,22 @@ class Tickets
     private $dateNaissance;
 
     /**
-     * @var int
+     * @var float
      *
-     * @ORM\Column(name="prix", type="integer")
+     * @ORM\Column(name="prix", type="decimal", precision=10, scale=2)
      *
      */
     private $prix;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="tarifReduit", type="boolean", options={"default":false})
+     *
+     */
+    private $tarifReduit = false;
 
     /**
-     * Get id
-     *
      * @return int
      */
     public function getId()
@@ -82,19 +87,13 @@ class Tickets
      * Set nom
      *
      * @param string $nom
-     *
-     * @return Tickets
      */
     public function setNom($nom)
     {
         $this->nom = $nom;
-
-        return $this;
     }
 
     /**
-     * Get nom
-     *
      * @return string
      */
     public function getNom()
@@ -106,19 +105,13 @@ class Tickets
      * Set prenom
      *
      * @param string $prenom
-     *
-     * @return Tickets
      */
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
-
-        return $this;
     }
 
     /**
-     * Get prenom
-     *
      * @return string
      */
     public function getPrenom()
@@ -130,19 +123,13 @@ class Tickets
      * Set dateNaissance
      *
      * @param date $dateNaissance
-     *
-     * @return Tickets
      */
     public function setDateNaissance($dateNaissance)
     {
         $this->dateNaissance = $dateNaissance;
-
-        return $this;
     }
 
     /**
-     * Get dateNaissance
-     *
      * @return date
      */
     public function getDateNaissance()
@@ -153,21 +140,15 @@ class Tickets
     /**
      * Set prix
      *
-     * @param int $prix
-     *
-     * @return Tickets
+     * @param float $prix
      */
     public function setPrix($prix)
     {
         $this->prix = $prix;
-
-        return $this;
     }
 
     /**
-     * Get prix
-     *
-     * @return \int
+     * @return float
      */
     public function getPrix()
     {
@@ -175,22 +156,34 @@ class Tickets
     }
 
     /**
+     * Set tarifReduit
+     *
+     * @param bool $tarifReduit
+     */
+    public function setTarifReduit(bool $tarifReduit)
+    {
+        $this->tarifReduit = $tarifReduit;
+    }
+
+    /**
+     * @return \bool
+     */
+    public function isTarifReduit(): bool
+    {
+        return $this->tarifReduit;
+    }
+
+    /**
      * Set commande
      *
      * @param \Louvre\GeneralBundle\Entity\Commande $commande
-     *
-     * @return Tickets
      */
     public function setCommande(\Louvre\GeneralBundle\Entity\Commande $commande)
     {
         $this->commande = $commande;
-
-        return $this;
     }
 
     /**
-     * Get commande
-     *
      * @return \Louvre\GeneralBundle\Entity\Commande
      */
     public function getCommande()
