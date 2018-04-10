@@ -4,34 +4,38 @@ general_homepage:
     
 tickets:
     path:     /louvre/tickets
-    defaults: { _controller: GeneralBundle:Tickets:ticketsFormulaire }
+    defaults: { _controller: GeneralBundle:Ticket:ticketFormulaire }
     
 selection:
     path:     /louvre/billetterie/selection
-    defaults: { _controller: GeneralBundle:Commandes:commandesFormulaire }
+    defaults: { _controller: GeneralBundle:Commande:commandeFormulaire }
     
 récapitulatif:
     path:     /louvre/billetterie/recapitulatif
-    defaults: { _controller: GeneralBundle:Recap:commandesRecap }
+    defaults: { _controller: GeneralBundle:Recap:commandeRecap }
     
 modification:
     path:     /louvre/billetterie/recapitulatif/modification/{id}
     defaults: { _controller: GeneralBundle:Recap:edit }
+
+connexion:
+    path:     /louvre/billetterie/connexion
+    defaults: { _controller: GeneralBundle:Security:login }
 
 
 
 
 list:
     path:     /louvre/list
-    defaults: { _controller: GeneralBundle:Commandes:commandes_list }
+    defaults: { _controller: GeneralBundle:Commande:commandes_list }
     
 edit:
     path:     /louvre/edit/{id}
-    defaults: { _controller: GeneralBundle:Commandes:edit }
+    defaults: { _controller: GeneralBundle:Commande:edit }
     
 delete:
     path:     /louvre/delete/{id}
-    defaults: { _controller: GeneralBundle:Commandes:delete }
+    defaults: { _controller: GeneralBundle:Commande:delete }
 
 
 
