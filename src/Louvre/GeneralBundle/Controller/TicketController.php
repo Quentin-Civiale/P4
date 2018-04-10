@@ -5,19 +5,19 @@ namespace Louvre\GeneralBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Louvre\GeneralBundle\Entity\Tickets;
-use Louvre\GeneralBundle\Form\ticketsType;
+use Louvre\GeneralBundle\Entity\Ticket;
+use Louvre\GeneralBundle\Form\ticketType;
 
 
-class TicketsController extends Controller
+class TicketController extends Controller
 {
-    public function ticketsFormulaireAction(Request $request)
+    public function ticketFormulaireAction(Request $request)
     {
         //on crée un ticket
-        $ticket = new Tickets();
+        $ticket = new Ticket();
         
         //on récupère le formulaire
-        $form = $this->createForm(ticketsType::class, $ticket);
+        $form = $this->createForm(ticketType::class, $ticket);
         
         //requête lors de l'envoi du formulaire
         $form->handleRequest($request);
@@ -38,7 +38,7 @@ class TicketsController extends Controller
         $formView = $form->createView();
         
         //on rend la vue
-        return $this->render('@General/Default/tickets.html.twig', array ('form' => $formView));
+        return $this->render('ticket.html.twig', array ('form' => $formView));
     }
     
 }
