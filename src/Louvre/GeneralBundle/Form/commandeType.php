@@ -17,11 +17,11 @@ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Louvre\GeneralBundle\Entity\Commande;
-use Louvre\GeneralBundle\Entity\Tickets;
+use Louvre\GeneralBundle\Entity\Ticket;
 use Symfony\Component\HttpFoundation\Request;
 
 
-class commandesType extends AbstractType
+class commandeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -37,16 +37,12 @@ class commandesType extends AbstractType
                  'label' => 'Date de visite',
                ))
             ->add('email', EmailType::class)
-            ->add('statut', TextType::class)
-//            ->add('tickets', ticketsType::class);
+//            ->add('statut', TextType::class)
             ->add('tickets', CollectionType::class, array(
-                'entry_type' => ticketsType::class,
+                'entry_type' => ticketType::class,
                 'allow_add' => true,
-//                'allow_delete' => true,
-                'prototype' => true,
+                'allow_delete' => true,
                 'by_reference' => false,
-                'entry_options'  => array(
-                'attr' => array('class' => 'tickets')),
             ))
             ->getForm();
         
