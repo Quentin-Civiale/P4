@@ -17,10 +17,10 @@ use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Louvre\GeneralBundle\Entity\Commande;
-use Louvre\GeneralBundle\Entity\Tickets;
+use Louvre\GeneralBundle\Entity\Ticket;
 
 
-class ticketsType extends AbstractType
+class ticketType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -34,17 +34,17 @@ class ticketsType extends AbstractType
                 'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
                 ))
                 )
-            ->add('prix', NumberType::class);
+            ->add('tarifReduit', CheckboxType::class, array(
+                'label' => 'Tarif réduit *',
+            ));
     }
-    
-//    public function getName()
-//    {
-//        return 'louvre_generalbundle_tickets';
-//    }
+
     
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array('data_class' => 'Louvre\GeneralBundle\Entity\Tickets'));
+        $resolver->setDefaults([
+            'data_class' => Ticket::class
+        ]);
     }
     
 }
