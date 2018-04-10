@@ -2,7 +2,7 @@
 
 //namespace Louvre\GeneralBundle\DataFixtures\ORM;
 //
-//use Louvre\GeneralBundle\Entity\Tickets;
+//use Louvre\GeneralBundle\Entity\Ticket;
 //use Doctrine\Bundle\FixturesBundle\Fixture;
 //use Doctrine\Common\Persistence\ObjectManager;
 //
