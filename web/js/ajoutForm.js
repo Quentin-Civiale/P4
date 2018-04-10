@@ -20,14 +20,18 @@ function addTicketForm($collectionHolder, $newLinkLi) {
     $collectionHolder.data('index', index + 1);
 
     // Affiche le formulaire dans la page dans un div, avant le lien
-    var $newFormLi = $('<div class="ticketForm"><br/><hr/><h5>Billet N°</h5></div>').append(newForm);
+    var $newFormLi = $('<div class="ticketForm"><br/><br/><hr/><h5>Billet N°</h5></div>').append(newForm);
 
     $newLinkLi.prepend($newFormLi);
+
+    // Ajoute un lien de suppression au nouveau formulaire
+    addTicketFormDeleteLink($newFormLi);
 }
+
 
 jQuery(document).ready(function() {
     debugger
-    // Récupère le ticket vierge qui contient la collection
+    // Récupère le ticket qui contient la collection
     $collectionHolder = $('#commande_tickets');
 
     // ajoute "Ajouter une personne" et le div
@@ -43,6 +47,25 @@ jQuery(document).ready(function() {
         // ajoute un nouveau formulaire
         addTicketForm($collectionHolder, $newLinkLi);
     });
+
+    // Ajoute un lien de suppression pour l'élément ticket
+    $collectionHolder.find('index').each(function() {
+        addTicketFormDeleteLink($(this));
+    });
 });
+
+
+function addTicketFormDeleteLink($ticketFormLi) {
+    var $removeTicketLink = $('<a href="#" class="remove_ticket_link btn btn-default btn-sm red darken-2 col offset-s4">Supprimer ce billet<i class="material-icons right">close</i></a>');
+    $ticketFormLi.append($removeTicketLink);
+
+    $removeTicketLink.on('click', function(e) {
+        // empêche le lien de créer un # sur l'URL
+        e.preventDefault();
+
+        // supprimer le formulaire ticket
+        $ticketFormLi.remove();
+    });
+}
 
 

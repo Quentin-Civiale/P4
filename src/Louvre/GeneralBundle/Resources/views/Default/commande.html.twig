@@ -45,7 +45,7 @@
                             <td>de 4 ans à 12 ans <br/>(l’entrée est gratuite pour <br/>les enfants de moins de 4 ans)</td>
                             <td>à partirde 12 ans</td>
                             <td>à partir de 60 ans</td>
-                            <td>tarif réservé sous certaines conditions <br/>(étudiant, employé du musée, d’un <br/>service du Ministère de la Culture, militaire…)</td>
+                            <td>* tarif réservé sous présentation d'un justificatif <br/>(étudiant, employé du musée, d’un <br/>service du Ministère de la Culture, militaire…)</td>
                           </tr>
                         </tbody>
                       </table>
@@ -101,36 +101,13 @@
             <div class="row">
                 <br/><hr/>
                 <h5>Billet N°1</h5>
-                <div class="col s6">
+                <div class="col s12">
                     {{ form_row(form.tickets) }}
                 </div>
             </div>
 
         </div>
     </div>
-
-    <div class="row">
-        <div class="col offset-s5">
-            <button class="btn waves-effect waves-light amber darken-2" type="button" onclick="">Ajouter une personne
-                <i class="material-icons right">person_add</i>
-            </button>
-        </div>
-    </div>
-
-    <br/><hr/>
-
-    <ul class="ticketsType" data-prototype="&lt;div&gt;&lt;label class=&quot; required&quot;&gt;__name__&lt;/label&gt;&lt;div id=&quot;task_tags___name__&quot;&gt;&lt;div&gt;&lt;label for=&quot;task_tags___name___name&quot; class=&quot; required&quot;&gt;Name&lt;/label&gt;&lt;input type=&quot;text&quot; id=&quot;task_tags___name___name&quot; name=&quot;task[tags][__name__][name]&quot; required=&quot;required&quot; maxlength=&quot;255&quot; /&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;">
-    </ul>
-
-    <ul class="tickets" data-prototype="{{ form_widget(form.tickets.vars.prototype)|e }}">
-        {{ dump(form.tickets.vars.prototype) }}
-        {#{{ form_widget(form.tickets.vars.prototype.nom)|e}}#}
-        {#{{ form_widget(form.tickets.vars.prototype.prenom)|e}}#}
-        {#{{ form_widget(form.tickets.vars.prototype.dateNaissance)|e}}#}
-        {#{{ form_widget(form.tickets.vars.prototype.prix)|e}}#}
-    </ul>
-
-    <br/><hr/>
 
     <div class="row">
         <div class="col offset-s2 s8 grey lighten-2 z-depth-5">
@@ -144,9 +121,6 @@
             </div>
             <div class="col offset-s3 s6">
                 {{ form_row(form.email) }}
-            </div>
-            <div class="col offset-s3 s6">
-                {{ form_row(form.statut) }}
             </div>
             <br/>
         </div>
