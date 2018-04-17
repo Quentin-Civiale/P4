@@ -30,7 +30,6 @@ function addTicketForm($collectionHolder, $newLinkLi) {
 
 
 jQuery(document).ready(function() {
-    debugger
     // Récupère le ticket qui contient la collection
     $collectionHolder = $('#commande_tickets');
 
@@ -46,11 +45,6 @@ jQuery(document).ready(function() {
 
         // ajoute un nouveau formulaire
         addTicketForm($collectionHolder, $newLinkLi);
-    });
-
-    // Ajoute un lien de suppression pour l'élément ticket
-    $collectionHolder.find('index').each(function() {
-        addTicketFormDeleteLink($(this));
     });
 });
 
