@@ -1,61 +1,76 @@
 {% extends 'base.html.twig' %}
    
-{% block navigation %}
-    
-    <div class="navbar-fixed">
-        <nav class="grey lighten-1">
-            <div class="row">
-                <div class="col s12">
-                    <div class="col offset-s1 s2"><i class="material-icons left">chevron_right</i>Sélection</div>
-                    <div class="col offset-s1 s2">Récapitulatif de la commande</div>
-                    <div class="col offset-s1 s2">Paiement</div>
-                    <div class="col offset-s1 s2">Confirmation</div>
-                </div>
-            </div>
-        </nav>
-    </div>
-        
-{% endblock %}
+{#{% block navigation %}#}
 
-{% block tarifs %}
-   
-    <div class="part"> 
+    {#<div class="navbar-fixed">#}
+        {#<nav class="grey lighten-1">#}
+            {#<div class="row">#}
+                {#<div class="col s12">#}
+                    {#<div class="col offset-s1 s2"><i class="material-icons left">chevron_right</i>Sélection</div>#}
+                    {#<div class="col offset-s1 s2">Récapitulatif de la commande</div>#}
+                    {#<div class="col offset-s1 s2">Paiement</div>#}
+                    {#<div class="col offset-s1 s2">Confirmation</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</nav>#}
+    {#</div>#}
+
+{#{% endblock %}#}
+
+{#{% block tarifs %}#}
+
+    {#<div class="part">#}
+        {#<div class="row">#}
+            {#<div class="col offset-s1 s10 grey lighten-2 z-depth-5">#}
+                    {#<h4>Nos tarifs</h4>#}
+                    {#<br/>#}
+                      {#<table class="centered">#}
+                        {#<thead>#}
+                          {#<tr>#}
+                              {#<th>Enfant</th>#}
+                              {#<th>Normal</th>#}
+                              {#<th>Sénior</th>#}
+                              {#<th>Réduit</th>#}
+                          {#</tr>#}
+                        {#</thead>#}
+
+                        {#<tbody>#}
+                         {#<tr>#}
+                            {#<td>8€</td>#}
+                            {#<td>16€</td>#}
+                            {#<td>12€</td>#}
+                            {#<td>10€</td>#}
+                          {#</tr>#}
+                          {#<tr>#}
+                            {#<td>de 4 ans à 12 ans <br/>(l’entrée est gratuite pour <br/>les enfants de moins de 4 ans)</td>#}
+                            {#<td>à partirde 12 ans</td>#}
+                            {#<td>à partir de 60 ans</td>#}
+                            {#<td>tarif réservé sous présentation d'un justificatif <br/>(étudiant, employé du musée, d’un <br/>service du Ministère de la Culture, militaire…)</td>#}
+                          {#</tr>#}
+                        {#</tbody>#}
+                      {#</table>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+
+{#{% endblock %}#}
+
+{% block accueil %}
+
+    <div class="accueil">
         <div class="row">
-            <div class="col offset-s1 s10 grey lighten-2 z-depth-5">
-                    <h4>Nos tarifs</h4>
-                    <br/>                    
-                      <table class="centered">
-                        <thead>
-                          <tr>
-                              <th>Enfant</th>
-                              <th>Normal</th>
-                              <th>Sénior</th>
-                              <th>Réduit</th>
-                          </tr>
-                        </thead>
+            <div class="col offset-s1 s10">
+                <h4>Accueil</h4>
+                <h5>Bienvenue sur le site du Musée du Louvre</h5>
 
-                        <tbody>
-                         <tr>
-                            <td>8€</td>
-                            <td>16€</td>
-                            <td>12€</td>
-                            <td>10€</td>
-                          </tr>
-                          <tr>
-                            <td>de 4 ans à 12 ans <br/>(l’entrée est gratuite pour <br/>les enfants de moins de 4 ans)</td>
-                            <td>à partirde 12 ans</td>
-                            <td>à partir de 60 ans</td>
-                            <td>tarif réservé sous présentation d'un justificatif <br/>(étudiant, employé du musée, d’un <br/>service du Ministère de la Culture, militaire…)</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                <p>
+                    Ancien palais des rois, le Louvre épouse l’histoire de France depuis huit siècles.
+                    Conçu dès sa création en 1793 comme un musée universel, ses collections, qui figurent parmi les plus belles au monde, couvrent plusieurs millénaires et un territoire qui s’étend de l’Amérique aux frontières de l’Asie.
+                    Réparties en huit départements, elles contiennent des œuvres universellement admirées, comme La Joconde, la Victoire de Samothrace ou la Vénus de Milo. Le Louvre est aujourd’hui le musée le plus visité au monde.
+                </p>
             </div>
         </div>
     </div>
-
-{% endblock %}
-
-{% block formulaire %}
 
 <br/>
    
