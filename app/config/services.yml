@@ -15,8 +15,14 @@ services:
         public: false
 
     louvre.general.security.login_form_authenticator:
-        class: 'Louvre\GeneralBundle\Security\LoginFormAuthenticator'
+        class: Louvre\GeneralBundle\Security\LoginFormAuthenticator
         autowire: true
+
+    app.doctrine.hash_password_listener:
+        class: Louvre\GeneralBundle\Doctrine\HashPasswordListener
+        autowire: true
+        tags:
+            - { name: doctrine.event_subscriber }
 
 
     # makes classes in src/AppBundle available to be used as services
@@ -41,6 +47,6 @@ services:
     
     
     #permet au doctrine fixtures bundle de load
-#    Louvre\GeneralBundle\DataFixtures\:
-#        resource: '../../src/Louvre/GeneralBundle/DataFixtures'
-#        tags: ['doctrine.fixture.orm']
+    Louvre\GeneralBundle\DataFixtures\:
+        resource: '../../src/Louvre/GeneralBundle/DataFixtures'
+        tags: ['doctrine.fixture.orm']

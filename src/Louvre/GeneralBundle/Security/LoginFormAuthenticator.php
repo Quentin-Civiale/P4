@@ -8,7 +8,9 @@ use Louvre\GeneralBundle\Form\loginFormType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
@@ -18,19 +20,22 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     private $formFactory;
     private $em;
     private  $router;
+//    private $passwordEncoder;
 
     public function __construct(FormFactoryInterface $formFactory, EntityManagerInterface $em, RouterInterface $router)
     {
         $this->formFactory = $formFactory;
         $this->em = $em;
         $this->router = $router;
+//        $this->passwordEncoder = $passwordEncoder;
     }
 
     public function getCredentials(Request $request)
     {
         $isLoginSubmit = $request->getPathInfo() == '/louvre/billetterie/connexion' && $request->isMethod('POST');
         if (!$isLoginSubmit) {
-            // skip authentification
+
+            // ignorer l'authentification
             return;
         }
 
@@ -38,8 +43,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         $form->handleRequest($request);
 
         $data = $form->getData();
+        $request->getSession()->set(
+            Security::LAST_USERNAME,
+            $data['_username']
+        );
 
         return $data;
+
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)

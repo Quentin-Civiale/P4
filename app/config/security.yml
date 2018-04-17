@@ -2,6 +2,9 @@
 # https://symfony.com/doc/current/security.html
 security:
 
+    encoders:
+        Louvre\GeneralBundle\Entity\User: bcrypt
+
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         our_users:
@@ -19,6 +22,9 @@ security:
             guard:
               authenticators:
                 - louvre.general.security.login_form_authenticator
+
+            logout:
+                path: /louvre/billetterie/deconnexion
 
             # activate different ways to authenticate
 

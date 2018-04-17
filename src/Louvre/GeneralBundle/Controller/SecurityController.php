@@ -11,9 +11,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class SecurityController extends Controller
 {
 
-    public function loginAction()
+    public function loginAction(Request $request)
     {
         $authenticationUtils = $this->get('security.authentication_utils');
+        dump($request);
 
         // obtention de l'erreur de connexion s'il y en a un
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -30,5 +31,10 @@ class SecurityController extends Controller
             'error' => $error,
         ));
 
+    }
+
+    public function logoutAction()
+    {
+        throw new \Exception('This should not be reached!');
     }
 }

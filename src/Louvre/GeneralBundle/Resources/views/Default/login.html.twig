@@ -1,5 +1,43 @@
 {% extends 'base.html.twig' %}
 
+{% block tarifs %}
+
+    <div class="part">
+        <div class="row">
+            <div class="col offset-s1 s10 grey lighten-2 z-depth-5">
+                <h4>Nos tarifs</h4>
+                <br/>
+                <table class="centered">
+                    <thead>
+                    <tr>
+                        <th>Enfant</th>
+                        <th>Normal</th>
+                        <th>Sénior</th>
+                        <th>Réduit</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>8€</td>
+                        <td>16€</td>
+                        <td>12€</td>
+                        <td>10€</td>
+                    </tr>
+                    <tr>
+                        <td>de 4 ans à 12 ans <br/>(l’entrée est gratuite pour <br/>les enfants de moins de 4 ans)</td>
+                        <td>à partirde 12 ans</td>
+                        <td>à partir de 60 ans</td>
+                        <td>* tarif réservé sous présentation d'un justificatif <br/>(étudiant, employé du musée, d’un <br/>service du Ministère de la Culture, militaire…)</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
 {% block login %}
     <div class="container">
         <div class="row">
@@ -15,7 +53,13 @@
                 {{ form_start(form) }}
                     {{ form_row(form._username) }}
                     {{ form_row(form._password) }}
-                <button class="btn waves-effect waves-light amber darken-2" type="submit">Connexion<i class="material-icons right">send</i></button>
+
+                    <div class="row">
+                        <div class="col offset-s8 s2">
+                    <button class="btn waves-effect waves-light amber darken-2" type="submit">Connexion<i class="material-icons right">send</i></button>
+                        </div>
+                    </div>
+
                 {{ form_end(form) }}
             </div>
         </div>

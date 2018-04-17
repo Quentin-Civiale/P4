@@ -1,6 +1,6 @@
 general_homepage:
-    path:     /louvre/billetterie
-    defaults: { _controller: GeneralBundle:Navigation:selection }  
+    path:     /louvre
+    defaults: { _controller: GeneralBundle:Navigation:accueil }
     
 tickets:
     path:     /louvre/tickets
@@ -21,6 +21,10 @@ modification:
 connexion:
     path:     /louvre/billetterie/connexion
     defaults: { _controller: GeneralBundle:Security:login }
+
+deconnexion:
+    path:     /louvre/billetterie/deconnexion
+    defaults: { _controller: GeneralBundle:Security:logout}
 
 
 
