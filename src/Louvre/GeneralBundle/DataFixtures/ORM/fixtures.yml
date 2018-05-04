@@ -1,4 +1,0 @@
-Louvre\GeneralBundle\Entity\User:
-  user_{1..10}:
-    email: quentin.civiale+<current()>@gmail.com
-    plainPassword: quentin

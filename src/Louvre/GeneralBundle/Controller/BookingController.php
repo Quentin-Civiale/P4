@@ -2,9 +2,9 @@
 
 namespace Louvre\GeneralBundle\Controller;
 
-use Louvre\GeneralBundle\Entity\Commande;
+use Louvre\GeneralBundle\Entity\Booking;
 use Louvre\GeneralBundle\Entity\Ticket;
-use Louvre\GeneralBundle\Form\commandeType;
+use Louvre\GeneralBundle\Form\bookingType;
 use Louvre\GeneralBundle\Form\ticketType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,15 +12,15 @@ use Symfony\Component\HttpFoundation\Request;
 
 
 
-class CommandeController extends Controller
+class BookingController extends Controller
 {
-    public function commandeFormulaireAction(Request $request)
+    public function bookingFormAction(Request $request)
     {
         //on crée une commande
-        $commande = new Commande();
+        $commande = new Booking();
         
         //on récupère le formulaire
-        $form = $this->createForm(commandeType::class, $commande);
+        $form = $this->createForm(bookingType::class, $commande);
         
         //requête lors de l'envoi du formulaire
         $form->handleRequest($request);
@@ -29,20 +29,20 @@ class CommandeController extends Controller
         if($form->isSubmitted() && $form->isValid())
         {
 //            Statut de la commande
-            /** @var $commande Commande **/
+            /** @var $commande Booking **/
             $commande = $form->getData();
-            $commande->setStatut(Commande::STATUT_EN_ATTENTE_DE_PAIEMENT);
+            $commande->setStatut(Booking::STATUT_EN_ATTENTE_DE_PAIEMENT);
 
-//            dump(Commande::STATUT_EN_ATTENTE_DE_PAIEMENT);
+//            dump(Booking::STATUT_EN_ATTENTE_DE_PAIEMENT);
 
 //            Calcul du prix du ticket
-            /** @var $commande Commande **/
+            /** @var $commande Booking **/
             $commande = $form->getData();
             $totalPrix = 0;
 
             /** @var $ticket Ticket **/
             foreach($commande->getTickets() as $ticket) {
-                $prixTicket = $this->calculerPrixTicketAction($ticket);
+                $prixTicket = $this->calculTicketPriceAction($ticket);
 
                 $ticket->setPrix($prixTicket);
 
@@ -65,23 +65,23 @@ class CommandeController extends Controller
         $formView = $form->createView();
 
         //on rend la vue
-        return $this->render('@General/Default/commande.html.twig', array ('form' => $formView));
+        return $this->render('@General/Default/booking.html.twig', array ('form' => $formView));
     }
     
     
-    public function commandeRecapAction()
-    {
-        $repository = $this->getDoctrine()->getRepository('GeneralBundle:Commande');
-
-        $commande = $repository->findAll();
-
-        return $this->render('@General/Default/recapCommande.html.twig', array('commande'=> $commande));
-    }
+//    public function bookingSummaryAction()
+//    {
+//        $repository = $this->getDoctrine()->getRepository('GeneralBundle:Booking');
 //
-//    public function editAction(Request $request, Commande $commande)
+//        $commande = $repository->findAll();
+//
+//        return $this->render('@General/Default/bookingSummary.html.twig', array('commande'=> $commande));
+//    }
+//
+//    public function editAction(Request $request, Booking $commande)
 //    {
 //         //on récupère le formulaire
-//        $form = $this->createForm(commandeType::class, $commande);
+//        $form = $this->createForm(bookingType::class, $commande);
 //
 //        //requête lors de l'envoi du formulaire
 //        $form->handleRequest($request);
@@ -95,26 +95,26 @@ class CommandeController extends Controller
 //            //envoi vers la bdd
 //            $em->flush();
 //
-//            return new Response('Commande modifiée !');
+//            return new Response('Booking modifiée !');
 //        }
 //
 //        //on génère le html du formulaire
 //        $formView = $form->createView();
 //
 //        //on rend la vue
-//        return $this->render('@General/Default/commande.html.twig', array ('form' => $formView));
+//        return $this->render('@General/Default/booking.html.twig', array ('form' => $formView));
 //    }
 //
-//    public function deleteAction(Commande $commande)
+//    public function deleteAction(Booking $commande)
 //    {
 //        $em = $this->getDoctrine()->getManager();
 //        $em->remove($commande);
 //        $em->flush();
 //
-//        return new Response('Commande supprimée');
+//        return new Response('Booking supprimée');
 //    }
 
-    private function calculerPrixTicketAction(Ticket $ticket): int
+    private function calculTicketPriceAction(Ticket $ticket): int
     {
         /** @var $dateDeNaissance \DateTime **/
         $dateDeNaissance = $ticket->getDateNaissance();

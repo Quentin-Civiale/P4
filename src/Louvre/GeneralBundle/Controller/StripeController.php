@@ -8,9 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Ce contrôleur simule  une commande faites par un client.
- * Class OrderController
+ * Class StripeController
  */
-class OrderController extends Controller
+class StripeController extends Controller
 {
     
     public function prepareAction()

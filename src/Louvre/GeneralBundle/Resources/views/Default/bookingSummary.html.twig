@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col s12">
                     <div class="col offset-s1 s2"><i class="material-icons left">chevron_right</i>Sélection</div>
-                    <div class="col offset-s1 s2"><i class="material-icons left">chevron_right</i>Récapitulatif de la commande</div>
+                    <div class="col offset-s1 s2"><i class="material-icons left">chevron_right</i>Résumé de la commande</div>
                     <div class="col offset-s1 s2">Paiement</div>
                     <div class="col offset-s1 s2">Confirmation</div>
                 </div>
@@ -65,11 +65,19 @@
 
     <div class="row">
         <div class="col offset-s2">
-            {% for commande in commandes %}
+            {% for commande in commande %}
                 <p>
-                    {{ commande.nom }} - {{ commande.prenom }} - {{ commande.email }} - {{ commande.statut }}
+                    <strong>Commande du</strong> ........... <br/><br/>
+
+                    <strong>Nom :</strong> {{ commande.nom }} <br/>
+                    <strong>Prénom :</strong> {{ commande.prenom }} <br/>
+                    <strong>Email :</strong> {{ commande.email }} <br/>
+                    <strong>Statut de la commande :</strong> {{ commande.statut }} <br/>
+                    <strong>Prix total de la commande :</strong> {{ commande.prixTotal }} €<br/><br/>
+
+                    <a href="{{ path('modification', {'id':commande.id}) }}">Modifier la commande</a>
+                    <hr/>
                 </p>
-                <a href="{{ path('modification', {'id':commande.id}) }}">Modifier la commande</a>
             {% endfor %}
         </div>
     </div>

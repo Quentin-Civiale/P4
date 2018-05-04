@@ -31,7 +31,7 @@ function addTicketForm($collectionHolder, $newLinkLi) {
 
 jQuery(document).ready(function() {
     // Récupère le ticket qui contient la collection
-    $collectionHolder = $('#commande_tickets');
+    $collectionHolder = $('#booking_tickets');
 
     // ajoute "Ajouter une personne" et le div
     $collectionHolder.append($newLinkLi);
@@ -61,5 +61,6 @@ function addTicketFormDeleteLink($ticketFormLi) {
         $ticketFormLi.remove();
     });
 }
+
 
 

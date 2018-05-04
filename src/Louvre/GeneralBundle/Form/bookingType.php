@@ -16,12 +16,12 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Louvre\GeneralBundle\Entity\Commande;
+use Louvre\GeneralBundle\Entity\Booking;
 use Louvre\GeneralBundle\Entity\Ticket;
 use Symfony\Component\HttpFoundation\Request;
 
 
-class commandeType extends AbstractType
+class bookingType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -52,7 +52,7 @@ class commandeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Commande::class
+            'data_class' => Booking::class
         ]);
     }
     

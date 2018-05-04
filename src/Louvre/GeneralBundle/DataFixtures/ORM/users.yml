@@ -1,0 +1,4 @@
+Louvre\GeneralBundle\Entity\User:
+  quentin:
+    email: quentin.civiale@gmail.com
+    plainPassword: quentin

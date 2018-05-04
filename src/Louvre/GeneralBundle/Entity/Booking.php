@@ -9,12 +9,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Louvre\GeneralBundle\Entity\Ticket;
 
 /**
- * Commande
+ * Booking
  *
- * @ORM\Table(name="commandes")
- * @ORM\Entity(repositoryClass="Louvre\GeneralBundle\Repository\CommandeRepository")
+ * @ORM\Table(name="booking")
+ * @ORM\Entity(repositoryClass="Louvre\GeneralBundle\Repository\BookingRepository")
  */
-class Commande
+class Booking
 {
     const STATUT_EN_ATTENTE_DE_PAIEMENT = 'en_attente_de_paiement';
 
@@ -31,7 +31,7 @@ class Commande
      * 
      * @var Ticket
      *
-     * @ORM\OneToMany(targetEntity="Louvre\GeneralBundle\Entity\Ticket", mappedBy="commandes", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="Louvre\GeneralBundle\Entity\Ticket", mappedBy="booking", cascade={"persist", "remove"})
      *
      * @Assert\Valid()
      */
@@ -219,7 +219,7 @@ class Commande
      *
      * @param Ticket $ticket
      *
-     * @return Commande
+     * @return Booking
      */
     public function addTicket(Ticket $ticket)
     {
@@ -229,7 +229,7 @@ class Commande
         
         $this->tickets->add($ticket);
         
-        $ticket->setCommande($this);
+        $ticket->setBooking($this);
         
     }
 
