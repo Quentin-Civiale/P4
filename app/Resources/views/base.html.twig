@@ -13,7 +13,7 @@
 
         <link rel="icon" type="image/x-icon" href="{{ asset('louvre_favicon.png') }}" />
 
-        {#<script type="text/javascript" src="{{ asset('js/calcul.js') }}"></script>#}
+        <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
 
     </head>
     
@@ -31,6 +31,7 @@
                                 <li><a href="#">Expositions et Actualités</a></li>
                                 <li><a href="#">Oeuvres et Palais</a></li>
                                 <li><a href="#">Arts et Education</a></li>
+                                <li><a href="{{ path('register')}}">Inscription</a></li>
 
                                 {% if is_granted('ROLE_USER') %}
                                     <li><a href="{{ path('deconnexion') }}">Déconnexion</a></li>
@@ -39,6 +40,13 @@
                                 {% endif %}
 
                                 <li class="active"><a class="waves-effect waves-light btn grey lighten-1" href="{{ path('connexion')}}"><i class="material-icons left">store</i>Billetterie</a></li>
+                                <li>
+                                    <div class="languages">
+                                        {#<i class="material-icons left">language</i>#}
+                                        <a class="waves-effect waves-light btn grey lighten-1" href="#">fr</a>
+                                        <a class="waves-effect waves-light btn grey lighten-1" href="#">en</a>
+                                    </div>
+                                </li>
                             </ul>
                     </div>
                 </nav>
@@ -55,12 +63,11 @@
 
         {% block accueil %}{% endblock %}
         {% block tarifs %}{% endblock %}
+        {% block inscription %}{% endblock %}
         {% block login %}{% endblock %}
         {% block form %}{% endblock %}
         {% block order %}{% endblock %}
         {% block recap %}{% endblock %}
-
-        <hr/>
         
         <footer class="page-footer amber darken-2">
           <div class="container">
@@ -91,7 +98,7 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="{{ asset('materialize-v0.98.2/materialize/js/materialize.min.js')}}"></script>
 
-        <script type="text/javascript" src="{{ asset('js/ajoutForm.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/addForm.js') }}"></script>
         
         {% block javascripts %}{% endblock %}
         
