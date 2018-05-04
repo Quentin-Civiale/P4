@@ -1,22 +1,26 @@
 general_homepage:
-    path:     /louvre
-    defaults: { _controller: GeneralBundle:Navigation:accueil }
+    path:     /louvre/accueil
+    defaults: { _controller: GeneralBundle:Navigation:home }
     
-tickets:
-    path:     /louvre/tickets
-    defaults: { _controller: GeneralBundle:Ticket:ticketFormulaire }
+#tickets:
+#    path:     /louvre/tickets
+#    defaults: { _controller: GeneralBundle:Ticket:ticketForm }
     
 selection:
     path:     /louvre/billetterie/selection
-    defaults: { _controller: GeneralBundle:Commande:commandeFormulaire }
+    defaults: { _controller: GeneralBundle:Booking:bookingForm }
     
 récapitulatif:
     path:     /louvre/billetterie/recapitulatif
-    defaults: { _controller: GeneralBundle:Recap:commandeRecap }
+    defaults: { _controller: GeneralBundle:BookingSummary:bookingSummary }
     
 modification:
     path:     /louvre/billetterie/recapitulatif/modification/{id}
-    defaults: { _controller: GeneralBundle:Recap:edit }
+    defaults: { _controller: GeneralBundle:BookingSummary:edit }
+
+register:
+    path:     /louvre/billetterie/inscription
+    defaults: { _controller: GeneralBundle:User:register }
 
 connexion:
     path:     /louvre/billetterie/connexion
@@ -28,18 +32,24 @@ deconnexion:
 
 
 
+louvre_test_translation:
+    path:     /traduction/{name}
+    defaults: { _controller: GeneralBundle:Translation:translate }
+
+
+
 
 list:
     path:     /louvre/list
-    defaults: { _controller: GeneralBundle:Commande:commandes_list }
+    defaults: { _controller: GeneralBundle:Booking:commandes_list }
     
 edit:
     path:     /louvre/edit/{id}
-    defaults: { _controller: GeneralBundle:Commande:edit }
+    defaults: { _controller: GeneralBundle:Booking:edit }
     
 delete:
     path:     /louvre/delete/{id}
-    defaults: { _controller: GeneralBundle:Commande:delete }
+    defaults: { _controller: GeneralBundle:Booking:delete }
 
 
 
@@ -47,10 +57,10 @@ delete:
 
 
 order_prepare:
-    path:     /louvre/billetterie/order/prepare
-    defaults: { _controller: GeneralBundle:Order:prepare }
+    path:     /louvre/billetterie/commande/prepare
+    defaults: { _controller: GeneralBundle:Stripe:prepare }
     
 order_checkout:
-    path:     /louvre/billetterie/order/checkout
-    defaults: { _controller: GeneralBundle:Order:checkout }
+    path:     /louvre/billetterie/commande/checkout
+    defaults: { _controller: GeneralBundle:Stripe:checkout }
     
