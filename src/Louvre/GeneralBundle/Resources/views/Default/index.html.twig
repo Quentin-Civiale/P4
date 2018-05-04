@@ -1,59 +1,4 @@
 {% extends 'base.html.twig' %}
-   
-{#{% block navigation %}#}
-
-    {#<div class="navbar-fixed">#}
-        {#<nav class="grey lighten-1">#}
-            {#<div class="row">#}
-                {#<div class="col s12">#}
-                    {#<div class="col offset-s1 s2"><i class="material-icons left">chevron_right</i>Sélection</div>#}
-                    {#<div class="col offset-s1 s2">Récapitulatif de la commande</div>#}
-                    {#<div class="col offset-s1 s2">Paiement</div>#}
-                    {#<div class="col offset-s1 s2">Confirmation</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</nav>#}
-    {#</div>#}
-
-{#{% endblock %}#}
-
-{#{% block tarifs %}#}
-
-    {#<div class="part">#}
-        {#<div class="row">#}
-            {#<div class="col offset-s1 s10 grey lighten-2 z-depth-5">#}
-                    {#<h4>Nos tarifs</h4>#}
-                    {#<br/>#}
-                      {#<table class="centered">#}
-                        {#<thead>#}
-                          {#<tr>#}
-                              {#<th>Enfant</th>#}
-                              {#<th>Normal</th>#}
-                              {#<th>Sénior</th>#}
-                              {#<th>Réduit</th>#}
-                          {#</tr>#}
-                        {#</thead>#}
-
-                        {#<tbody>#}
-                         {#<tr>#}
-                            {#<td>8€</td>#}
-                            {#<td>16€</td>#}
-                            {#<td>12€</td>#}
-                            {#<td>10€</td>#}
-                          {#</tr>#}
-                          {#<tr>#}
-                            {#<td>de 4 ans à 12 ans <br/>(l’entrée est gratuite pour <br/>les enfants de moins de 4 ans)</td>#}
-                            {#<td>à partirde 12 ans</td>#}
-                            {#<td>à partir de 60 ans</td>#}
-                            {#<td>tarif réservé sous présentation d'un justificatif <br/>(étudiant, employé du musée, d’un <br/>service du Ministère de la Culture, militaire…)</td>#}
-                          {#</tr>#}
-                        {#</tbody>#}
-                      {#</table>#}
-            {#</div>#}
-        {#</div>#}
-    {#</div>#}
-
-{#{% endblock %}#}
 
 {% block accueil %}
 
@@ -74,122 +19,145 @@
 
 <br/>
    
-<div class="part"> 
+{#<div class="accueil">#}
+    {#<div class="row">#}
+       {#<div class="col offset-s4 s4 grey lighten-2 z-depth-5">#}
+            {#<h4>Informations pratiques</h4>#}
+            {#<hr/><br/>#}
+                {#<h5>Horaires</h5>#}
+                {#<p>#}
+                    {#Ouvert tous les jours de 9h à 18h sauf le mardi<br/>#}
+                    {#Nocturnes jusqu’à 21h45 le mercredi et le vendredi#}
+                {#</p>#}
+               {#<h5>Fermetures</h5>#}
+               {#<p>#}
+                   {#Les 1er janvier, 1er mai, 8 mai et 25 décembre#}
+               {#</p>#}
+               {#<h5>Entrez au musée en moins de 30 minutes</h5>#}
+               {#<p>#}
+                   {#en achetant votre billet en ligne:<br/><br/>#}
+                   {#<a class="waves-effect waves-light btn amber darken-2" href="{{ path('register') }}"><i class="material-icons left">account_box</i>Créer votre compte</a>#}
+               {#</p>#}
+           {#<br/>#}
+       {#</div>#}
+    {#</div>#}
+{#</div>#}
+
+<br/>
+
+<div class="accueil">
     <div class="row">
-       <div class="col offset-s2 s8 grey lighten-2 z-depth-5">
-            <h4>1) Choix de la date</h4>
-            <hr/><br/>
-                <p>Choisissez la date de votre visite au Musée du Louvre</p>
-                <div class="input-field col offset-s4 s4">
-                    <input type="date" name="date" />
-                </div>
-                <div class="col offset-s2 s8">
-                    <p>
-                       Cochez le type de journée voulue :<br /><br/>
-                       <input type="radio" name="day" id="journée" /> <label for="journée">Journée (de 9h à 18h)</label><br />
-                       <input type="radio" name="day" id="demi" /> <label for="demi">Demi-journée (de 14h à 18h)</label><br />
-                    </p>
-               </div>
-       </div>
+        <div class="col offset-s1 s10 grey lighten-2 z-depth-5">
+            <h4>Le Domaine Louvre</h4>
+            <p>Saviez-vous que le Louvre ne se limite pas aux murs du palais ? Les jardins du Carrousel et des Tuileries, le musée Eugène-Delacroix et la gypsothèque à Versailles lui sont également rattachés et attendent votre visite.</p>
+
+            <h5>Le palais et le musée</h5>
+            <p>À l’origine simple forteresse défensive, le Louvre a longtemps été l’une des principales résidences des rois de France.
+                Devenu musée en 1793, il présente sur plus de 73 000 m² les œuvres de l’art occidental du Moyen Âge à 1848, ainsi que des civilisations antiques qui l’ont précédé et influencé. Environ 35 000 œuvres d’art y sont exposées, dont les plus anciennes remontent à plus de sept mille ans.
+                Les collections du musée sont réparties dans huit départements : le département des Antiquités égyptiennes, le département des Antiquités grecques, étrusques et romaines, le département des Antiquités orientales, le département des Arts de l’Islam, le département des Peintures, le département des Sculptures, le département des Objets d’art et le département des Arts graphiques.
+            </p>
+
+            <h5>Le musée national Eugène-Delacroix</h5>
+            <p>
+                Rattaché depuis 2004 à l’établissement public du musée du Louvre, le musée national Eugène-Delacroix est installé au sein de l’appartement où vécut le peintre à partir de 1857, place Furstenberg, dans le VIe arrondissement de Paris. Le musée réunit un ensemble de collections liées au peintre – peintures, pastels, dessins, lithographies, lettres et souvenirs. La rénovation récente du jardin offre aux visiteurs un havre de paix et de calme au cœur de Paris.<br/>
+                <strong>Visiter le site du musée Eugène-Delacroix :</strong> <a href="http://www.musee-delacroix.fr/fr/">http://www.musee-delacroix.fr/fr/</a>
+            </p>
+
+            <h5>Les jardins du Carrousel et des Tuileries</h5>
+            <p>
+                Ils sont situés dans le prolongement immédiat du musée, entre celui-ci et la Place de la Concorde.
+                Le jardin des Tuileries est le plus vaste et le plus ancien jardin public de Paris. Avec son art paysager, ses perspectives et ses sculptures, il offre un lieu de détente et de repos au cœur de la ville.
+                Une visite du jardin est organisée à 15h30 les samedis, dimanches et jours fériés, de fin avril à fin octobre. Départ au pied de l’Arc de triomphe du Carrousel.<br/>
+                <strong>Pour en savoir plus :</strong> <a href="http://www.louvre.fr/departments/jardin-du-carrousel-et-des-tuileries">http://www.louvre.fr/departments/jardin-du-carrousel-et-des-tuileries</a>
+            </p>
+
+            <h5>La gypsothèque du Louvre à Versailles</h5>
+            <p>
+                Dans le cadre somptueux de la Petite Ecurie du Roy construite par Jules Hardouin-Mansart face au château de Versailles, la gypsothèque du Louvre présente un ensemble exceptionnel de moulages d’après l’antique, ainsi qu’un riche fonds d’architecture.
+                La gypsothèque est accessible dans le cadre de promenades et de visites guidées.
+            </p>
+
+            <h5>Le Louvre, c’est aussi</h5>
+            <p>
+                Le musée du Louvre est également à l’origine de nombreux  projets en France et à l’étranger dont deux d’ampleur exceptionnelle :<br/>
+                <br/>
+                <strong>Le musée du Louvre-Lens</strong>, inauguré en décembre 2012, est l’occasion de porter un regard neuf sur les collections du Louvre. S’étendant sur 120 mètres, la Galerie du temps offre au visiteur un panorama inédit. Le choix d’un espace unique d’exposition et d’une présentation chronologique, permet de mettre en relation 205 œuvres de nature et d’origines très différentes : statuettes mésopotamiennes, sculptures antiques et tableaux de maîtres.<br/>
+                <strong>Pour en savoir plus :</strong> <a href="http://www.louvrelens.fr/">http://www.louvrelens.fr/</a><br/>
+                <br/>
+                <strong>Le Louvre Abu Dhabi</strong>, qui a ouvert ses portes en 2017, est le premier musée universel créé au Moyen-Orient.  En lien avec l’agence France-Muséums, le Louvre y met à disposition son savoir-faire muséographique et son expertise scientifique.<br/>
+                <strong>Pour en savoir plus :</strong> <a href="http://www.louvre.fr/louvre-abou-dabi">http://www.louvre.fr/louvre-abou-dabi</a>
+            </p>
+        </div>
     </div>
 </div>
 
 <br/>
 
-<div class="part">
+<div class="accueil">
     <div class="row">
-        <div class="col offset-s2 s8 grey lighten-2 z-depth-5">
-            <h4>2) Nombre de personnes</h4>
+        <div class="col offset-s1 s3 grey lighten-2 z-depth-5">
+            <h4>Informations pratiques</h4>
             <hr/><br/>
-                <div class="row">
-                    <div class="input-field col offset-s4 s4">
-                       <label for="nbBillet">Veuillez indiquer le nombre de billets souhaité</label>
-                        <input type="number" id="nbBillet" min="0" max="10"/>
-                    </div>
-                </div>
-
-                <div class="row">      
-                  <br/><hr/>
-                   <h5>Billet N°1</h5>
-                    <div class="input-field col s6">
-                        <label for="prenom">Votre prénom :</label>
-                        <input type="text" name="prenom" id="prenom" size="30" maxlength="15" class="validate"/>
-                    </div>
-                    <div class="input-field col s6">
-                        <label for="nom">Votre nom :</label>
-                        <input type="text" name="nom" id="nom" size="30" maxlength="15" />
-                    </div>
-                    <div class="input-field col s6 grey lighten-2">
-                        <p>Votre date de naissance</p>
-                         <input type="date" name="birthdate"/>
-                    </div>
-                    <div class="input-field col s6 grey lighten-2">
-                        <p>Personne bénéficiant d'un tarif réduit :</p>
-                         <input type="checkbox" name="reduit1" class="filled-in checkbox" id="filled-in-box-1" checked="checked" /> <label for="filled-in-box-1">Oui</label><br />
-                    </div>
-                </div>
-
-                {#<div class="row">#}
-                  {#<br/><hr/>#}
-                   {#<h5>Billet N°2</h5>#}
-                    {#<div class="input-field col s6">#}
-                        {#<label for="prenom">Votre prénom :</label>#}
-                        {#<input type="text" name="prenom" id="prenom" size="30" maxlength="15" class="validate"/>#}
-                    {#</div>#}
-                    {#<div class="input-field col s6">#}
-                        {#<label for="nom">Votre nom :</label>#}
-                        {#<input type="text" name="nom" id="nom" size="30" maxlength="15" />#}
-                    {#</div>#}
-                    {#<div class="input-field col s6 grey lighten-2">#}
-                        {#<p>Votre date de naissance</p>#}
-                         {#<input type="date" name="birthdate"/>#}
-                    {#</div>#}
-                    {#<div class="input-field col s6 grey lighten-2">#}
-                        {#<p>Personne bénéficiant d'un tarif réduit :</p>#}
-                         {#<input type="checkbox" name="reduit2" class="filled-in checkbox" id="filled-in-box-2" checked="checked" /> <label for="filled-in-box-2">Oui</label><br />#}
-                    {#</div>#}
-                {#</div>#}
-                
+            <h5>Horaires</h5>
+            <p>
+                Ouvert tous les jours de 9h à 18h sauf le mardi<br/>
+                Nocturnes jusqu’à 21h45 le mercredi et le vendredi
+            </p>
+            <h5>Fermetures</h5>
+            <p>
+                Les 1er janvier, 1er mai, 8 mai et 25 décembre
+            </p>
+            <h5>Entrez au musée en moins de 30 minutes</h5>
+            <p>
+                en achetant votre billet en ligne:<br/><br/>
+                <a class="waves-effect waves-light btn amber darken-2" href="{{ path('register') }}"><i class="material-icons left">account_box</i>Créer votre compte</a>
+            </p>
+            <br/>
         </div>
-    </div>
-</div>
-
-    <div class="row">
-        <div class="col offset-s5">
-            <button class="btn waves-effect waves-light amber darken-2" type="button" onclick="ajoutForm()">Ajouter une personne
-                <i class="material-icons right">person_add</i>
-            </button>
+        <div class="col offset-s1 s2 grey lighten-2 z-depth-5">
+            <h4>Respecter les collections</h4>
+            <p>
+                <strong>
+                    Au fil de votre parcours, vous retrouverez des pictogrammes représentant chacun les six principales règles à respecter dans le cadre d’une visite au musée. En appliquant ces principes vous contribuez à la mise en valeur du patrimoine, à sa protection et au confort de visite de tous.
+                </strong>
+            </p>
+           <p>
+               Dans les salles des collections permanentes, il est permis de photographier et de filmer. L’usage du flash et des autres dispositifs d’éclairage n’est en revanche pas autorisé.<br/>
+               Dans les salles d’expositions temporaires, il est interdit de photographier et de filmer.
+           </p>
+           <p>
+               Il est interdit :
+           </p>
+           <ul>
+               <li><i class="tiny material-icons">arrow_forward</i> de fumer</li>
+               <li><i class="tiny material-icons">arrow_forward</i> de boire</li>
+               <li><i class="tiny material-icons">arrow_forward</i> de manger</li>
+               <li><i class="tiny material-icons">arrow_forward</i> de parler fort</li>
+               <li><i class="tiny material-icons">arrow_forward</i> de toucher les oeuvres</li>
+               <li><i class="tiny material-icons">arrow_forward</i> de courir dans les salles du musée</li>
+           </ul>
         </div>
-    </div>
 
-<br/>
+        <div class="col offset-s1 s3 grey lighten-2 z-depth-5">
+            <h4>Règlement de visite</h4>
+            <p>
+                Le règlement de visite <strong>autorise la prise de photographies sans l'usage des flashes</strong>, sous certaines conditions :<br/>
 
-<div class="part">
-    <div class="row">
-       <div class="col offset-s2 s8 grey lighten-2 z-depth-5">
-            <h4>3) Coordonnées</h4>
-            <hr/><br/>
-                <div class="input-field col s6">
-                    <label for="prenom">Votre prénom :</label>
-                    <input type="text" name="prenom" id="prenom" size="30" maxlength="15" class="validate"/>
-                </div>
-                <div class="input-field col s6">
-                    <label for="nom">Votre nom :</label>
-                    <input type="text" name="nom" id="nom" size="30" maxlength="15" />
-                </div>
-                <div class="input-field col offset-s3 s6">
-                    <label for="email" data-error="wrong" data-success="right">Email</label>
-                    <input id="email" type="email" class="validate">
-                </div>
-       </div>
-    </div>
-</div>
+                <p>"Dans les salles des collections permanentes, les œuvres peuvent être photographiées ou filmées pour l’usage privé de l’opérateur.
+                L’usage des flashes, et autres dispositifs d’éclairage est prohibé.
+                Dans les salles d'expositions temporaires, il est interdit de photographier et de filmer.
+                Il est également interdit de filmer et de photographier les installations et les équipements techniques."</p>
 
-<div class="row">
-    <div class="col offset-s8 s2">
-        <button class="btn waves-effect waves-light amber darken-2" type="submit" name="action">Commander
-        <i class="material-icons right">send</i>
-        </button>
+                <p>Des dérogations exceptionnelles, motivées par des actions éducatives ou des travaux de recherche, pourront être accordées sur demande écrite adressée à :<br/>
+                Musée du Louvre<br/>
+                Délégation à la communication<br/>
+                75058 Paris cedex 01<br/>
+                Les quelque 35 000 œuvres exposées dans le musée sont dans leur grande majorité présentes sur Atlas.</p>
+
+                <p><strong>N. B. : seule la reproduction des images à usage privé est autorisée.</strong></p>
+
+                <p><strong>Un arrêté préfectoral interdit la consommation de boissons alcooliques</strong> sur tout le domaine du Louvre, notamment le Jardin du Carrousel et la Cour Napoléon, du 1er mai au 31 octobre de 16h à 7h. Cette interdiction repose sur l'Arrêté n°2009-00917.</p>
+        </div>
     </div>
 </div>
 
