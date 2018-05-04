@@ -11,7 +11,7 @@ use Louvre\GeneralBundle\Form\ticketType;
 
 class TicketController extends Controller
 {
-    public function ticketFormulaireAction(Request $request)
+    public function ticketFormAction(Request $request)
     {
         //on crée un ticket
         $ticket = new Ticket();
