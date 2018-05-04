@@ -11,13 +11,16 @@ class LoadFixtures implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-//        $objects = Fixtures::load(__DIR__.'/fixtures.yml', $manager);
+        $objects = Fixtures::load(
+            [
+                __DIR__.'/users.yml',
 
-        $user = new User();
-        $user->setEmail('quentin.civiale@gmail.com');
-
-        $manager->persist($user);
-        $manager->flush();
+            ],
+            $manager,
+            [
+                'providers' => [$this],
+            ]
+        );
 
     }
 }
