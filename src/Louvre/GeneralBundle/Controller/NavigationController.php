@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class NavigationController extends Controller
 {
-    public function accueilAction()
+    public function homeAction()
     {
 //        $test2='test2';
 //        var_dump($test2);
