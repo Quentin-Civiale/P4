@@ -4,14 +4,19 @@ namespace Louvre\GeneralBundle\Entity;
 
 use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="user")
+ * @UniqueEntity(fields={"email"}, message="Vous avez déjà un compte lié à cet email !")
  */
 class User implements UserInterface
 {
+    const ROLE_DEFAULT = "ROLE_USER";
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -20,6 +25,8 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Veuillez indiquez un email valide !")
+     * @Assert\Email()
      * @ORM\Column(type="string", unique=true)
      */
     private $email;
@@ -32,12 +39,26 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+
+    private $role = self::ROLE_DEFAULT;
+
+    /**
      * A non-persisted field that's used to create the encoded password.
      *
+     * @Assert\NotBlank(groups={"Registration"}, message="Veuillez renseigner un mot de passe !")
      * @var string
      */
     private $plainPassword;
 
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
     public function getUsername()
     {
@@ -46,7 +67,7 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        return [$this->role];
     }
 
     public function getPassword()
@@ -80,8 +101,24 @@ class User implements UserInterface
         $this->password = null;
     }
 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
     public function setEmail($email)
     {
         $this->email = $email;
     }
+
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role)
+    {
+        $this->role = $role;
+    }
+
 }
