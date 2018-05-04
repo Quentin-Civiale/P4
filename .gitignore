@@ -11,3 +11,6 @@
 /web/config
 /web/favicon
 /web/robots
+
+.idea/
+.php_cs.cache
