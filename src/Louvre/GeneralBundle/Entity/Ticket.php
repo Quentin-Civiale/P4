@@ -6,11 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Louvre\GeneralBundle\Entity\Booking;
 
 /**
  * Ticket
  *
- * @ORM\Table(name="tickets")
+ * @ORM\Table(name="ticket")
  * @ORM\Entity(repositoryClass="Louvre\GeneralBundle\Repository\TicketRepository")
  */
 class Ticket
@@ -26,13 +27,13 @@ class Ticket
     
     /**
      * 
-     * @var Commande
+     * @var Booking
      *
-     * @ORM\ManyToOne(targetEntity="Louvre\GeneralBundle\Entity\Commande", inversedBy="tickets", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Louvre\GeneralBundle\Entity\Booking", inversedBy="ticket", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid()
      */
-    private $commande;
+    private $booking;
 
     /**
      * @var string
@@ -122,7 +123,7 @@ class Ticket
     /**
      * Set dateNaissance
      *
-     * @param date $dateNaissance
+     * @param Date $dateNaissance
      */
     public function setDateNaissance($dateNaissance)
     {
@@ -130,7 +131,7 @@ class Ticket
     }
 
     /**
-     * @return date
+     * @return Date
      */
     public function getDateNaissance()
     {
@@ -174,20 +175,20 @@ class Ticket
     }
 
     /**
-     * Set commande
+     * Set booking
      *
-     * @param \Louvre\GeneralBundle\Entity\Commande $commande
+     * @param \Louvre\GeneralBundle\Entity\Booking $booking
      */
-    public function setCommande(\Louvre\GeneralBundle\Entity\Commande $commande)
+    public function setBooking(Booking $booking)
     {
-        $this->commande = $commande;
+        $this->booking = $booking;
     }
 
     /**
-     * @return \Louvre\GeneralBundle\Entity\Commande
+     * @return \Louvre\GeneralBundle\Entity\Booking
      */
-    public function getCommande()
+    public function getBooking()
     {
-        return $this->commande;
+        return $this->booking;
     }
 }
