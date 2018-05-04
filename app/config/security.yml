@@ -26,6 +26,12 @@ security:
             logout:
                 path: /louvre/billetterie/deconnexion
 
+    access_control:
+
+        # expression régulière indiquant que l'accés à ce chemin sera autorisé que si le user est enregistré sous ROLE_USER
+        - { path: ^/admin, roles: ROLE_USER }
+
+
             # activate different ways to authenticate
 
             # activate different ways to authenticate
