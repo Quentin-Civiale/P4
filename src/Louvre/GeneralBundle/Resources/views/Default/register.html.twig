@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block inscription %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Inscription :</h1>
+
+                {{ form_start(form) }}
+
+                    {{ form_row(form.email, {
+                        'label': 'Votre e-mail'
+                    }) }}
+
+                    {{ form_row(form.plainPassword.first, {
+                        'label': 'Votre mot de passe'
+                    }) }}
+                    {{ form_row(form.plainPassword.second, {
+                        'label': 'Veuillez répéter votre mot de passe'
+                    }) }}
+
+                    <div class="row">
+                        <div class="col offset-s8 s2">
+                            <button class="btn waves-effect waves-light amber darken-2" type="submit" formnovalidate>S'inscrire<i class="material-icons right">send</i></button>
+                        </div>
+                    </div>
+
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+
+    <div class="container">
+        <div class="row">
+            <div class="col offset-s2 s8">
+                <div class="account">
+                    <br/>
+                    <hr/>
+                    <h4>Déjà un compte sur le site du Louvre ?</h4>
+                    <br/>
+                    {#<button class="btn waves-effect waves-light amber darken-2" type="submit"><a href="{{ path('register') }}">Créer votre compte</a></button> <br/>#}
+                    <a href="{{ path('connexion') }}"><input type="button" class="btn waves-effect waves-light amber darken-2" value="Connexion à votre compte"/></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
