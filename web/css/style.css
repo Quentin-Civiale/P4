@@ -63,3 +63,23 @@
 select {
     display: inherit !important;
 }
+
+/* Affichage création de compte sur la page connexion */
+
+.account {
+    text-align: center;
+}
+
+/* Affichage page d'accueil */
+
+.accueil {
+    text-align: justify;
+}
+
+/* Affichage boutons des langues */
+
+.languages {
+    width: auto;
+    background-color: grey;
+    height: auto;
+}
