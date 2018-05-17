@@ -6,6 +6,7 @@ use Symfony\Component\Security\Core\Role\Role;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,6 +26,21 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $firstname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $lastname;
+
+    /**
+     *
      * @Assert\NotBlank(message="Veuillez indiquez un email valide !")
      * @Assert\Email()
      * @ORM\Column(type="string", unique=true)
@@ -54,10 +70,29 @@ class User implements UserInterface
      */
     private $plainPassword;
 
-
     public function getId(): int
     {
         return $this->id;
+    }
+
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname)
+    {
+        $this->firstname = $firstname;
+    }
+
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname)
+    {
+        $this->lastname = $lastname;
     }
 
     public function getUsername()
