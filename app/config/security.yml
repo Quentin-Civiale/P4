@@ -1,7 +1,8 @@
 # To get started with security, check out the documentation:
 # https://symfony.com/doc/current/security.html
 security:
-
+    role_hierarchy:
+            ROLE_ADMIN: ROLE_USER
     encoders:
         Louvre\GeneralBundle\Entity\User: bcrypt
 
@@ -15,21 +16,17 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
         main:
             anonymous: ~
-
             guard:
               authenticators:
                 - louvre.general.security.login_form_authenticator
-
             logout:
                 path: /louvre/billetterie/deconnexion
 
     access_control:
-
         # expression régulière indiquant que l'accés à ce chemin sera autorisé que si le user est enregistré sous ROLE_USER
-        - { path: ^/admin, roles: ROLE_USER }
+        - { path: ^/billetterie, roles: ROLE_USER }
 
 
             # activate different ways to authenticate

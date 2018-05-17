@@ -14,7 +14,7 @@ class loginFormType extends AbstractType
     {
         $builder
         ->add('_username', EmailType::class, array(
-            'label' => 'Nom de l\'utilisateur',
+            'label' => 'Email de l\'utilisateur',
         ))
         ->add('_password', PasswordType::class, array(
             'label' => 'Mot de passe',

@@ -33,9 +33,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     public function getCredentials(Request $request)
     {
-        $isLoginSubmit = $request->getPathInfo() == '/louvre/billetterie/connexion' && $request->isMethod('POST');
+        $isLoginSubmit = $request->getPathInfo() === '/louvre/billetterie/connexion' && $request->isMethod('POST');
         if (!$isLoginSubmit) {
-
             // ignorer l'authentification
             return;
         }
@@ -50,7 +49,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         );
 
         return $data;
-
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)
@@ -81,6 +79,4 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     {
         return $this->router->generate('selection');
     }
-
-
 }
