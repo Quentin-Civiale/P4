@@ -30,6 +30,10 @@ deconnexion:
     path:     /louvre/billetterie/deconnexion
     defaults: { _controller: GeneralBundle:Security:logout}
 
+confirmation:
+    path:     /louvre/billetterie/confirmation
+    defaults: { _controller: GeneralBundle:Confirmation:confirmation}
+
 
 
 louvre_test_translation:
