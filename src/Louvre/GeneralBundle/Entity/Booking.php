@@ -84,10 +84,15 @@ class Booking
      */
     private $prixTotal;
 
-    
     /**
-     * Constructor
+     *
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Louvre\GeneralBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
      */
+    private $user;
+
     public function __construct()
     {
         $this->tickets = new ArrayCollection();
@@ -249,5 +254,23 @@ class Booking
     public function getTickets()
     {
         return $this->tickets;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Louvre\GeneralBundle\Entity\User $user
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return \Louvre\GeneralBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
