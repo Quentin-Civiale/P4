@@ -22,7 +22,8 @@ security:
               authenticators:
                 - louvre.general.security.login_form_authenticator
             logout:
-                path: /louvre/billetterie/deconnexion
+                path: /louvre/deconnexion
+                target: /louvre/accueil
 
     access_control:
         # expression régulière indiquant que l'accés à ce chemin sera autorisé que si le user est enregistré sous ROLE_USER
