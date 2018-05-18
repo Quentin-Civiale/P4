@@ -31,13 +31,13 @@ class StripeController extends Controller
                 "amount" => 1000, // Montant en centimes
                 "currency" => "eur",
                 "source" => $token,
-                "description" => "Paiement Stripe - P4 Exemple"
+                "description" => "Paiement Billetterie Le Louvre"
             ));
-            $this->addFlash("success","Bravo ça marche !");
+            $this->addFlash("success","Votre paiement a été accepté !");
             return $this->redirectToRoute("order_prepare");
         } catch(\Stripe\Error\Card $e) {
 
-            $this->addFlash("error","Snif ça marche pas :(");
+            $this->addFlash("error","Paiement refusé :(");
             return $this->redirectToRoute("order_prepare");
             // La carte a été refusée
         }
