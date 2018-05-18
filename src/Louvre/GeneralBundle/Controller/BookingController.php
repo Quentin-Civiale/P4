@@ -17,10 +17,10 @@ class BookingController extends Controller
     public function bookingFormAction(Request $request)
     {
         //on crée une commande
-        $commande = new Booking();
+        $booking = new Booking();
         
         //on récupère le formulaire
-        $form = $this->createForm(bookingType::class, $commande);
+        $form = $this->createForm(bookingType::class, $booking);
         
         //requête lors de l'envoi du formulaire
         $form->handleRequest($request);
@@ -29,19 +29,19 @@ class BookingController extends Controller
         if($form->isSubmitted() && $form->isValid())
         {
 //            Statut de la commande
-            /** @var $commande Booking **/
-            $commande = $form->getData();
-            $commande->setStatut(Booking::STATUT_EN_ATTENTE_DE_PAIEMENT);
+            /** @var $booking Booking **/
+            $booking = $form->getData();
+            $booking->setStatut(Booking::STATUT_EN_ATTENTE_DE_PAIEMENT);
+
+            $user = $this->getUser();
 
 //            dump(Booking::STATUT_EN_ATTENTE_DE_PAIEMENT);
 
 //            Calcul du prix du ticket
-            /** @var $commande Booking **/
-            $commande = $form->getData();
             $totalPrix = 0;
 
             /** @var $ticket Ticket **/
-            foreach($commande->getTickets() as $ticket) {
+            foreach($booking->getTickets() as $ticket) {
                 $prixTicket = $this->calculTicketPriceAction($ticket);
 
                 $ticket->setPrix($prixTicket);
@@ -49,16 +49,19 @@ class BookingController extends Controller
                 $totalPrix += $prixTicket;
             }
 
-            $commande->setPrixTotal($totalPrix);
+            $booking->setPrixTotal($totalPrix);
+            $booking->setUser($user);
 
             //on enregistre la commande en bdd
             $em = $this->getDoctrine()->getManager();
             //préparation à l'insertion dans la bdd
-            $em->persist($commande);
+            $em->persist($booking);
             //envoi vers la bdd
             $em->flush();
 
-            return new Response('Commande enregistrée !');
+//            return new Response('Commande enregistrée !');
+            return $this->render('@General/Default/bookingSummary.html.twig');
+
         }
         
         //on génère le html du formulaire
@@ -145,5 +148,7 @@ class BookingController extends Controller
 
         return $tarif;
     }
+
+
     
 }

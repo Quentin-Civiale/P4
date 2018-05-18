@@ -18,15 +18,15 @@ class BookingSummaryController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository('GeneralBundle:Booking');
 
-        $commande = $repository->findAll();
+        $booking = $repository->findAll();
 
-        return $this->render('@General/Default/bookingSummary.html.twig', array('commande'=> $commande));
+        return $this->render('@General/Default/bookingSummary.html.twig', array('booking'=> $booking));
     }
     
-    public function editAction(Request $request, Booking $commande)
+    public function editAction(Request $request, Booking $booking)
     {
          //on récupère le formulaire
-        $form = $this->createForm(bookingType::class, $commande);
+        $form = $this->createForm(bookingType::class, $booking);
 
         //requête lors de l'envoi du formulaire
         $form->handleRequest($request);

@@ -65,17 +65,17 @@
 
     <div class="row">
         <div class="col offset-s2">
-            {% for commande in commande %}
+            {% for booking in booking %}
                 <p>
                     <strong>Commande du</strong> ........... <br/><br/>
 
-                    <strong>Nom :</strong> {{ commande.nom }} <br/>
-                    <strong>Prénom :</strong> {{ commande.prenom }} <br/>
-                    <strong>Email :</strong> {{ commande.email }} <br/>
-                    <strong>Statut de la commande :</strong> {{ commande.statut }} <br/>
-                    <strong>Prix total de la commande :</strong> {{ commande.prixTotal }} €<br/><br/>
+                    <strong>Nom :</strong> {{ booking.nom }} <br/>
+                    <strong>Prénom :</strong> {{ booking.prenom }} <br/>
+                    <strong>Email :</strong> {{ booking.email }} <br/>
+                    <strong>Statut de la commande :</strong> {{ booking.statut }} <br/>
+                    <strong>Prix total de la commande :</strong> {{ booking.prixTotal }} €<br/><br/>
 
-                    <a href="{{ path('modification', {'id':commande.id}) }}">Modifier la commande</a>
+                    <a href="{{ path('modification', {'id':booking.id}) }}">Modifier la commande</a>
                     <hr/>
                 </p>
             {% endfor %}
