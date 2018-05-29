@@ -59,8 +59,9 @@ class BookingController extends Controller
             //envoi vers la bdd
             $em->flush();
 
-//            return new Response('Commande enregistrée !');
-            return $this->render('@General/Default/bookingSummary.html.twig');
+            return $this->redirectToRoute('recapitulatif', [
+                'id' => $booking->getId()
+            ]);
 
         }
         
@@ -68,7 +69,7 @@ class BookingController extends Controller
         $formView = $form->createView();
 
         //on rend la vue
-        return $this->render('@General/Default/booking.html.twig', array ('form' => $formView));
+        return $this->render('@General/Default/booking.html.twig', ['form' => $formView]);
     }
     
     

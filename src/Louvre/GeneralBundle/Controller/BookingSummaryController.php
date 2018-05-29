@@ -11,18 +11,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 
-
 class BookingSummaryController extends Controller
 {
-    public function bookingSummaryAction()
+    public function bookingSummaryAction(Booking $booking)
     {
-        $repository = $this->getDoctrine()->getRepository('GeneralBundle:Booking');
-
-        $booking = $repository->findAll();
-
-        return $this->render('@General/Default/bookingSummary.html.twig', array('booking'=> $booking));
+        //on renvoi la vue
+        return $this->render('@General/Default/bookingSummary.html.twig', [
+            'booking' => $booking
+        ] );
     }
-    
+
     public function editAction(Request $request, Booking $booking)
     {
          //on récupère le formulaire
