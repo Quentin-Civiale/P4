@@ -10,8 +10,8 @@ selection:
     path:     /louvre/billetterie/selection
     defaults: { _controller: GeneralBundle:Booking:bookingForm }
     
-récapitulatif:
-    path:     /louvre/billetterie/recapitulatif
+recapitulatif:
+    path:     /louvre/billetterie/recapitulatif/{id}
     defaults: { _controller: GeneralBundle:BookingSummary:bookingSummary }
     
 modification:
@@ -45,25 +45,8 @@ louvre_test_translation:
 
 
 
-list:
-    path:     /louvre/list
-    defaults: { _controller: GeneralBundle:Booking:commandes_list }
-    
-edit:
-    path:     /louvre/edit/{id}
-    defaults: { _controller: GeneralBundle:Booking:edit }
-    
-delete:
-    path:     /louvre/delete/{id}
-    defaults: { _controller: GeneralBundle:Booking:delete }
-
-
-
-
-
-
 order_prepare:
-    path:     /louvre/billetterie/commande/prepare
+    path:     /louvre/billetterie/commande/prepare/{id}
     defaults: { _controller: GeneralBundle:Stripe:prepare }
     
 order_checkout:
