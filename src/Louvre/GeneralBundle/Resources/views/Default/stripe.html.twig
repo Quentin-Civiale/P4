@@ -30,18 +30,36 @@
 
     <!--                    <svg id="icon-status" width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="<a href="<a href="URL_3WORG/2000/svg"><a href="<a href="URL_3WORG/2000/svg">URL_3WORG/2000/svg</a>"><a href="URL_3WORG/2000/svg">URL_3WORG.org/2000/svg</a></a></a>"><a href="URL_3WORG/2000/svg"><a href="URL_3WORG/2000/svg"><a href="URL_3WORG/2000/svg">URL_3WORG/2000/svg</a></a></a></a>"><path d="M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z" fill="#759E1A"></path></svg>-->
 
-                        <p>Vous êtes sur le point de payer votre commande.</p>
+                        <p>{{ booking.prenom }} {{ booking.nom }}, vous êtes sur le point de payer votre commande du {{ booking.date|date('d F Y') }} d'un montant de {{ booking.prixTotal }} €.</p>
                         <form action="{{ path('order_checkout') }}" method="POST">
                             <script
-                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                    data-key="pk_test_rCP3SL76FiKDez8nzhtuMJNp"
-                                    data-amount="1500"
-                                    data-name="Billetterie"
-                                    data-description="Louvre"
-                                    data-locale="auto"
-                                    data-currency="eur">
+                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="pk_test_rCP3SL76FiKDez8nzhtuMJNp"
+                                data-image="{{ asset('louvre_favicon.png') }}"
+                                data-label="Payer avec ma carte"
+                                data-email="{{ booking.email }}"
+                                data-amount="{{ booking.prixTotal*100 }}"
+                                data-name="Billetterie du Louvre"
+                                data-description="Musée du Louvre"
+                                data-locale="auto"
+                                data-currency="eur">
                             </script>
+                            <input type="hidden" name="inputValue" value="{{ booking.prixTotal*100 }}">
                         </form>
+
+                        {#ajout d'un message lors de la validation de paiement d'une commande#}
+                        {% for message in app.flashes('success') %}
+                            <div class="flash-success">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+
+                        {#ajout d'un message lors du refus de paiement d'une commande#}
+                        {% for message in app.flashes('error') %}
+                            <div class="flash-error">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
                 </div>
             </div>
         </div>
