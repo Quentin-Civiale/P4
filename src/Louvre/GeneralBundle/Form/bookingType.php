@@ -34,7 +34,7 @@ class bookingType extends AbstractType
                  'years' => range(date('Y'), date('Y')+10),
                  'months' => range(date('m'), 12),
                  'days' => range(date('d'), 31),
-                 'label' => 'Date de visite',
+                 'label' => 'Date de la visite',
                ))
             ->add('email', EmailType::class)
 //            ->add('statut', TextType::class)
