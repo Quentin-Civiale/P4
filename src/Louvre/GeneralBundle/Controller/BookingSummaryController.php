@@ -18,7 +18,7 @@ class BookingSummaryController extends Controller
         //on renvoi la vue
         return $this->render('@General/Default/bookingSummary.html.twig', [
             'booking' => $booking
-        ] );
+        ]);
     }
 
     public function editAction(Request $request, Booking $booking)
@@ -38,7 +38,13 @@ class BookingSummaryController extends Controller
             //envoi vers la bdd
             $em->flush();
 
-            return new Response('Commande modifiée !');
+            //ajout d'un message lors de la modification d'une commande
+            $this->addFlash("notice","Votre commande a été modifiée !");
+
+            //on renvoi la vue
+            return $this->render('@General/Default/bookingSummary.html.twig', [
+                'booking' => $booking
+            ]);
         }
 
         //on génère le html du formulaire
@@ -47,4 +53,5 @@ class BookingSummaryController extends Controller
         //on rend la vue
         return $this->render('@General/Default/booking.html.twig', array ('form' => $formView));
     }
+
 }
