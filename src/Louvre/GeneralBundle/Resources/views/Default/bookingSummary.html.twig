@@ -64,10 +64,17 @@
     </div>
 
     <div class="row">
-        <div class="col offset-s2">
+        <div class="col offset-s3">
             {#{% for booking in booking %}#}
                 <p>
-                    <strong>Commande du</strong> ........... <br/><br/>
+                    {#ajout d'un message lors de l'enregistrement ou la modification d'une commande#}
+                    {% for message in app.flashes('notice') %}
+                        <div class="flash-notice">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+
+                    <h5><strong>Commande N°</strong>{{ booking.id }} <strong>du</strong> {{ booking.date|date('d F Y') }}</h5> <br/>
 
                     <strong>Nom :</strong> {{ booking.nom }} <br/>
                     <strong>Prénom :</strong> {{ booking.prenom }} <br/>
@@ -77,6 +84,12 @@
 
                     <a href="{{ path('modification', {'id':booking.id}) }}">Modifier la commande</a>
                     <hr/>
+
+                    <div class="row">
+                        <div class="col offset-s8 s4">
+                            <a class="waves-effect waves-light btn amber darken-2" href="{{ path('order_prepare', {'id':booking.id}) }}"><i class="material-icons left">payment</i>Payer votre commande</a>
+                        </div>
+                    </div>
                 </p>
             {#{% endfor %}#}
         </div>
