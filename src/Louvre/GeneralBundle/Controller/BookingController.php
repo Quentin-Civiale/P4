@@ -59,6 +59,9 @@ class BookingController extends Controller
             //envoi vers la bdd
             $em->flush();
 
+            //ajout d'un message lors de l'enregistrement d'une commande
+            $this->addFlash("notice","Votre commande a bien été enregistrée !");
+
             return $this->redirectToRoute('recapitulatif', [
                 'id' => $booking->getId()
             ]);
