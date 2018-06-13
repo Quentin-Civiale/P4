@@ -3,7 +3,6 @@
 /tests
 /vendor
 /var
-/web/materialize-v0.98.2
 /web/.htaccess
 /web/app
 /web/app_dev
