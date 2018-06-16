@@ -23,14 +23,14 @@
             <div class="navbar-fixed">
                 <nav>
                     <div class="nav-wrapper amber darken-2">
-                        <a href="#" class="brand-logo"><img src="{{ asset('louvre_site.png') }}"> Le Louvre</a>
+                        <a href="{{ path('general_homepage')}}" class="brand-logo"><img src="{{ asset('louvre_site.png') }}"> Le Louvre</a>
                             <ul id="nav-mobile" class="right hide-on-med-and-down">
                                 <li><a href="{{ path('general_homepage')}}"><i class="material-icons left">home</i>Accueil</a></li>
-                                <li><a href="#">Informations pratiques</a></li>
+                                {#<li><a href="#">Informations pratiques</a></li>#}
                                 <li><a href="#">Visites et Activités</a></li>
                                 <li><a href="#">Expositions et Actualités</a></li>
                                 <li><a href="#">Oeuvres et Palais</a></li>
-                                <li><a href="#">Arts et Education</a></li>
+                                {#<li><a href="#">Arts et Education</a></li>#}
                                 <li><a href="{{ path('register')}}">Inscription</a></li>
 
                                 {% if is_granted('ROLE_USER') %}
