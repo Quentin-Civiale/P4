@@ -78,6 +78,7 @@
 
                     <strong>Nom :</strong> {{ booking.nom }} <br/>
                     <strong>Prénom :</strong> {{ booking.prenom }} <br/>
+                    <strong>Date de la visite :</strong> le {{  booking.date|date('d F Y') }} en <strong>{{ booking.type }}</strong> <br/>
                     <strong>Email :</strong> {{ booking.email }} <br/>
                     <strong>Statut de la commande :</strong> {{ booking.statut }} <br/>
                     <strong>Prix total de la commande :</strong> {{ booking.prixTotal }} €<br/><br/>
