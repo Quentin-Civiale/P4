@@ -36,6 +36,15 @@ class bookingType extends AbstractType
                  'days' => range(date('d'), 31),
                  'label' => 'Date de la visite',
                ))
+            ->add('type', ChoiceType::class, array(
+                'choices' => array(
+                    'Journée (de 9h à 18h)' => 'journée',
+                    'Demi-journée ( de 14h à 18h)' => 'demi-journée',
+                ),
+                'expanded' => true,
+                'multiple' => false,
+                'data' => "journee"
+            ))
             ->add('email', EmailType::class)
 //            ->add('statut', TextType::class)
             ->add('tickets', CollectionType::class, array(
