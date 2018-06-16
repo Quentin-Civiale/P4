@@ -27,6 +27,7 @@
                       <table class="centered">
                         <thead>
                           <tr>
+                              <th>Type de visite</th>
                               <th>Enfant</th>
                               <th>Normal</th>
                               <th>Sénior</th>
@@ -36,17 +37,26 @@
 
                         <tbody>
                          <tr>
+                             <th>Journée</th>
                             <td>8€</td>
                             <td>16€</td>
                             <td>12€</td>
                             <td>10€</td>
-                          </tr>
-                          <tr>
+                         </tr>
+                         <tr>
+                             <th>Demi-journée</th>
+                             <td>4€</td>
+                             <td>8€</td>
+                             <td>6€</td>
+                             <td>5€</td>
+                         </tr>
+                         <tr>
+                             <td></td>
                             <td>de 4 ans à 12 ans <br/>(l’entrée est gratuite pour <br/>les enfants de moins de 4 ans)</td>
                             <td>à partirde 12 ans</td>
                             <td>à partir de 60 ans</td>
                             <td>* tarif réservé sous présentation d'un justificatif <br/>(étudiant, employé du musée, d’un <br/>service du Ministère de la Culture, militaire…)</td>
-                          </tr>
+                         </tr>
                         </tbody>
                       </table>
             </div>
@@ -70,15 +80,16 @@
         <div class="col offset-s2 s8 grey lighten-2 z-depth-5">
             <h4>1) Choix de la date</h4>
             <hr/><br/>
-            <p>Choisissez la date de votre visite au Musée du Louvre</p>
+            <p>Choisissez la date de votre visite au Musée du Louvre :</p>
             <div class="col offset-s4 s4">
-                {{ form_row(form.date) }}
+                {{ form_widget(form.date) }}
             </div>
             <div class="col offset-s2 s8">
                 <p>
-                    Cochez le type de journée voulue :<br/><br/>
-                    <input type="radio" name="day" id="journée" /> <label for="journée">Journée (de 9h à 18h)</label><br />
-                    <input type="radio" name="day" id="demi" /> <label for="demi">Demi-journée (de 14h à 18h)</label><br />
+                    Cochez le type de journée voulue :<br/>
+                    {#<input type="radio" name="day" id="journée" /> <label for="journée">Journée (de 9h à 18h)</label><br />#}
+                    {#<input type="radio" name="day" id="demi" /> <label for="demi">Demi-journée (de 14h à 18h)</label><br />#}
+                    {{ form_widget(form.type) }}
                 </p>
                 <p></p>
             </div>
@@ -90,19 +101,19 @@
     <div class="row">
         <div class="col offset-s2 s8 grey lighten-2 z-depth-5">
             <h4>2) Nombre de personnes</h4>
-            <hr/><br/>
-            <div class="row">
-                <div class="input-field col offset-s4 s4">
-                    <label for="nbBillet">Veuillez indiquer le nombre de billets souhaité</label>
-                    <input type="number" id="nbBillet" min="0" max="10"/>
-                </div>
-            </div>
+            {#<hr/><br/>#}
+            {#<div class="row">#}
+                {#<div class="input-field col offset-s4 s4">#}
+                    {#<label for="nbBillet">Veuillez indiquer le nombre de billets souhaité</label>#}
+                    {#<input type="number" id="nbBillet" min="0" max="10"/>#}
+                {#</div>#}
+            {#</div>#}
 
             <div class="row">
                 <br/><hr/>
                 <h5>Billet N°1</h5>
                 <div class="col s12">
-                    {{ form_row(form.tickets) }}
+                    {{ form_widget(form.tickets) }}
                 </div>
             </div>
 
