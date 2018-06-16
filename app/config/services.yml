@@ -37,3 +37,6 @@ services:
     Louvre\GeneralBundle\DataFixtures\:
         resource: '../../src/Louvre/GeneralBundle/DataFixtures'
         tags: ['doctrine.fixture.orm']
+
+    louvre_general.price:
+        class: Louvre\GeneralBundle\Services\Price
