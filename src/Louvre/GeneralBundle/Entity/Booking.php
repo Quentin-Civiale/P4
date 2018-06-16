@@ -65,6 +65,13 @@ class Booking
     /**
      * @var string
      *
+     * @ORM\Column(name="type", type="string", length=40)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="email", type="string", length=40)
      */
     private $email;
@@ -161,6 +168,24 @@ class Booking
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**
