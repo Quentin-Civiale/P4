@@ -1,3 +1,7 @@
+root_homepage:
+    path:     /
+    defaults: { _controller: GeneralBundle:Navigation:home }
+
 general_homepage:
     path:     /louvre/accueil
     defaults: { _controller: GeneralBundle:Navigation:home }
