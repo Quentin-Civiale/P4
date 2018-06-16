@@ -42,7 +42,7 @@ class BookingController extends Controller
 
             /** @var $ticket Ticket **/
             foreach($booking->getTickets() as $ticket) {
-                $prixTicket = $this->calculTicketPriceAction($ticket);
+                $prixTicket = $this->calculTicketPriceAction($ticket, $booking);
 
                 $ticket->setPrix($prixTicket);
 
@@ -121,7 +121,7 @@ class BookingController extends Controller
 //        return new Response('Booking supprimée');
 //    }
 
-    private function calculTicketPriceAction(Ticket $ticket): int
+    private function calculTicketPriceAction(Ticket $ticket, Booking $booking): int
     {
         /** @var $dateDeNaissance \DateTime **/
         $dateDeNaissance = $ticket->getDateNaissance();
@@ -131,28 +131,50 @@ class BookingController extends Controller
 
         /** @var $tarifReduit Ticket **/
 
-        if ($ticket->isTarifReduit()) {
+        if ($booking->getType('demi-journée')) {
 
-            //Tarif réduit pour les personnes ayant un justificatif
-            $tarif = 10;
+            if ($ticket->isTarifReduit()) {
+
+                //Tarif réduit pour les personnes ayant un justificatif
+                $tarif = 5;
+            }
+            else {
+
+                if ($age >= 4 && $age < 12) {
+                    $tarif = 4;
+                } // Tarif gratuit avant 4 ans
+                elseif ($age < 4 && $ticket->isTarifReduit()) {
+                    $tarif = 0;
+                } elseif ($age >= 12 && $age < 60) {
+                    $tarif = 8;
+                } else($age > 60){
+                $tarif = 6
+                };
+            }
         }
         else {
 
-            // Tarif gratuit avant 4 ans
-            if($age >= 4 && $age < 12){
-                $tarif = 8;
+            if ($ticket->isTarifReduit()) {
+
+                //Tarif réduit pour les personnes ayant un justificatif
+                $tarif = 10;
             }
-            elseif($age >= 12 && $age < 60){
-                $tarif = 16;
-            }
-            else($age > 60) {
+            else {
+
+                if ($age >= 4 && $age < 12) {
+                    $tarif = 8;
+                } // Tarif gratuit avant 4 ans
+                elseif ($age < 4 && $ticket->isTarifReduit()) {
+                    $tarif = 0;
+                } elseif ($age >= 12 && $age < 60) {
+                    $tarif = 16;
+                } else($age > 60){
                 $tarif = 12
-            };
+                };
+            }
         }
 
         return $tarif;
     }
 
-
-    
 }
