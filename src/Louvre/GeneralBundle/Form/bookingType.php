@@ -38,8 +38,8 @@ class bookingType extends AbstractType
                ))
             ->add('type', ChoiceType::class, array(
                 'choices' => array(
-                    'Journée (de 9h à 18h)' => 'journée',
-                    'Demi-journée ( de 14h à 18h)' => 'demi-journée',
+                    'Journée (de 9h à 18h)' => 'journee',
+                    'Demi-journée ( de 14h à 18h)' => 'demi-journee',
                 ),
                 'expanded' => true,
                 'multiple' => false,
