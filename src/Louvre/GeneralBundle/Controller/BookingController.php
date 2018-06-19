@@ -131,7 +131,7 @@ class BookingController extends Controller
 
         /** @var $tarifReduit Ticket **/
 
-        if ($booking->getType('demi-journée')) {
+        if ($booking->getType() == 'demi-journee') {
 
             if ($ticket->isTarifReduit()) {
 
@@ -148,11 +148,11 @@ class BookingController extends Controller
                 } elseif ($age >= 12 && $age < 60) {
                     $tarif = 8;
                 } else($age > 60){
-                $tarif = 6
+                    $tarif = 6
                 };
             }
         }
-        else {
+        else  {
 
             if ($ticket->isTarifReduit()) {
 
@@ -169,7 +169,7 @@ class BookingController extends Controller
                 } elseif ($age >= 12 && $age < 60) {
                     $tarif = 16;
                 } else($age > 60){
-                $tarif = 12
+                    $tarif = 12
                 };
             }
         }
