@@ -13,11 +13,15 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BookingSummaryController extends Controller
 {
-    public function bookingSummaryAction(Booking $booking)
+    public function bookingSummaryAction(Booking $booking, Ticket $ticket)
     {
+        $repository = $this->getDoctrine()->getRepository('GeneralBundle:Ticket');
+        $ticket = $repository->findBy(array('booking' => $booking->getId()));
+
         //on renvoi la vue
         return $this->render('@General/Default/bookingSummary.html.twig', [
-            'booking' => $booking
+            'booking' => $booking,
+            'ticket' => $ticket
         ]);
     }
 
