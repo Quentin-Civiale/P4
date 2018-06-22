@@ -20,7 +20,7 @@ class StripeController extends Controller
         ]);
     }
 
-    public function checkoutAction(Booking $booking)
+    public function checkoutAction()
     {
         \Stripe\Stripe::setApiKey("sk_test_V9G72YZX893d8bKBrXH8k4Ts");
 
@@ -49,7 +49,7 @@ class StripeController extends Controller
                 ->setTo($recipientEmail)
                 ->setCharset('utf-8')
                 ->setContentType('text/html')
-                ->setBody($this->renderView("@General/Default/mail.html.twig", array('booking' => $booking)));
+                ->setBody($this->renderView("@General/Default/mail.html.twig"));
 //                ->attach(\Swift_Attachment::fromPath('general_homepage'));
 
             $this->get('mailer')->send($message);
