@@ -6,6 +6,7 @@ use Louvre\GeneralBundle\Entity\Booking;
 use Louvre\GeneralBundle\Entity\Ticket;
 use Louvre\GeneralBundle\Form\bookingType;
 use Louvre\GeneralBundle\Form\ticketType;
+use Louvre\GeneralBundle\Services\Price;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -127,7 +128,9 @@ class BookingController extends Controller
         $dateDeNaissance = $ticket->getDateNaissance();
         $to = new \DateTime('today');
         $age = $dateDeNaissance->diff($to)->y;
-        $tarif = 0;
+        $price = 0;
+
+//        $this->container->get('louvre_general.price');
 
         /** @var $tarifReduit Ticket **/
 
@@ -136,20 +139,24 @@ class BookingController extends Controller
             if ($ticket->isTarifReduit()) {
 
                 //Tarif réduit pour les personnes ayant un justificatif
-                $tarif = 5;
+                $price = Price::REDUCED_PRICE * Price::HALF_PRICE;
             }
             else {
 
                 if ($age >= 4 && $age < 12) {
-                    $tarif = 4;
+                    $price = Price::CHILD_PRICE * Price::HALF_PRICE;
                 } // Tarif gratuit avant 4 ans
-                elseif ($age < 4 && $ticket->isTarifReduit()) {
-                    $tarif = 0;
+                elseif ($age < 4) {
+                    $price = Price::FREE_PRICE;
                 } elseif ($age >= 12 && $age < 60) {
-                    $tarif = 8;
+                    $price = Price::NORMAL_PRICE * Price::HALF_PRICE;
                 } else($age > 60){
-                    $tarif = 6
+                    $price = Price::SENIOR_PRICE * Price::HALF_PRICE
                 };
+
+//                if ($price < $tarifReduit) {
+//                    $price;
+//                }
             }
         }
         else  {
@@ -157,24 +164,38 @@ class BookingController extends Controller
             if ($ticket->isTarifReduit()) {
 
                 //Tarif réduit pour les personnes ayant un justificatif
-                $tarif = 10;
+                $price = Price::REDUCED_PRICE;
             }
             else {
 
                 if ($age >= 4 && $age < 12) {
-                    $tarif = 8;
+                    $price = Price::CHILD_PRICE;
                 } // Tarif gratuit avant 4 ans
-                elseif ($age < 4 && $ticket->isTarifReduit()) {
-                    $tarif = 0;
+                elseif ($age < 4) {
+                    $price = Price::FREE_PRICE;
                 } elseif ($age >= 12 && $age < 60) {
-                    $tarif = 16;
+                    $price = Price::NORMAL_PRICE;
                 } else($age > 60){
-                    $tarif = 12
+                    $price = Price::SENIOR_PRICE
                 };
             }
+
+//                if ($age >= 4 && $age < 12) {
+//                    $price = 8;
+//                } // Tarif gratuit avant 4 ans
+//                elseif ($age < 4) {
+//                    $price = 0;
+//                } elseif ($age >= 12 && $age < 60) {
+//                    $price = 16;
+//                } elseif ($age > 60) {
+//                    $price = 12;
+//                } else ($ticket->isTarifReduit()){
+//                    $price = 10
+//                };
+
         }
 
-        return $tarif;
+        return $price;
     }
 
 }
