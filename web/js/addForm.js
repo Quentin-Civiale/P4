@@ -19,7 +19,7 @@ function addTicketForm($collectionHolder, $newLinkLi) {
     // augmente l'index avec un pour l'élément suivant
     $collectionHolder.data('index', index + 1);
 
-    // Affiche le formulaire dans la page dans un div, avant le lien
+    // Affiche le formulaire dans un div, avant le lien et après chaque nouvel ajout de billets
     var $newFormLi = $('<div class="ticketForm"><br/><br/><hr/><h5>Billet N°</h5></div>').append(newForm);
 
     $newLinkLi.before($newFormLi);
