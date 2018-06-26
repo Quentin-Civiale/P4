@@ -29,7 +29,7 @@ class BookingController extends Controller
         //si le formulaire a été soumis
         if($form->isSubmitted() && $form->isValid())
         {
-//            Statut de la commande
+            //Statut de la commande
             /** @var $booking Booking **/
             $booking = $form->getData();
             $booking->setStatut(Booking::STATUT_EN_ATTENTE_DE_PAIEMENT);
@@ -38,7 +38,7 @@ class BookingController extends Controller
 
 //            dump(Booking::STATUT_EN_ATTENTE_DE_PAIEMENT);
 
-//            Calcul du prix du ticket
+            //Calcul du prix du ticket
             $totalPrix = 0;
 
             /** @var $ticket Ticket **/
@@ -129,73 +129,40 @@ class BookingController extends Controller
         $to = new \DateTime('today');
         $age = $dateDeNaissance->diff($to)->y;
         $price = 0;
-
-//        $this->container->get('louvre_general.price');
+        $priceCoef = 1;
 
         /** @var $tarifReduit Ticket **/
 
         if ($booking->getType() == 'demi-journee') {
 
-            if ($ticket->isTarifReduit()) {
-
-                //Tarif réduit pour les personnes ayant un justificatif
-                $price = Price::REDUCED_PRICE * Price::HALF_PRICE;
-            }
-            else {
-
-                if ($age >= 4 && $age < 12) {
-                    $price = Price::CHILD_PRICE * Price::HALF_PRICE;
-                } // Tarif gratuit avant 4 ans
-                elseif ($age < 4) {
-                    $price = Price::FREE_PRICE;
-                } elseif ($age >= 12 && $age < 60) {
-                    $price = Price::NORMAL_PRICE * Price::HALF_PRICE;
-                } else($age > 60){
-                    $price = Price::SENIOR_PRICE * Price::HALF_PRICE
-                };
-
-//                if ($price < $tarifReduit) {
-//                    $price;
-//                }
-            }
-        }
-        else  {
-
-            if ($ticket->isTarifReduit()) {
-
-                //Tarif réduit pour les personnes ayant un justificatif
-                $price = Price::REDUCED_PRICE;
-            }
-            else {
-
-                if ($age >= 4 && $age < 12) {
-                    $price = Price::CHILD_PRICE;
-                } // Tarif gratuit avant 4 ans
-                elseif ($age < 4) {
-                    $price = Price::FREE_PRICE;
-                } elseif ($age >= 12 && $age < 60) {
-                    $price = Price::NORMAL_PRICE;
-                } else($age > 60){
-                    $price = Price::SENIOR_PRICE
-                };
-            }
-
-//                if ($age >= 4 && $age < 12) {
-//                    $price = 8;
-//                } // Tarif gratuit avant 4 ans
-//                elseif ($age < 4) {
-//                    $price = 0;
-//                } elseif ($age >= 12 && $age < 60) {
-//                    $price = 16;
-//                } elseif ($age > 60) {
-//                    $price = 12;
-//                } else ($ticket->isTarifReduit()){
-//                    $price = 10
-//                };
-
+            $priceCoef = Price::HALF_PRICE;
         }
 
-        return $price;
+        switch (true){
+            case $age >= 4 && $age < 12:
+                $price = Price::CHILD_PRICE;
+                break;
+            case $age < 4:
+                $price = Price::FREE_PRICE;
+                break;
+            case $age >= 12 && $age < 60:
+                $price = Price::NORMAL_PRICE;
+                break;
+            case $age > 60:
+                $price = Price::SENIOR_PRICE;
+                break;
+            default:
+                break;
+        }
+
+        if ($ticket->isTarifReduit()) {
+
+            //Tarif réduit pour les personnes ayant un justificatif
+            $reducedPrice = Price::REDUCED_PRICE;
+            $price = min($price, $reducedPrice);
+        }
+
+        return $price * $priceCoef;
     }
 
 }
