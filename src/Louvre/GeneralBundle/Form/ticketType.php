@@ -29,9 +29,10 @@ class ticketType extends AbstractType
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
             ->add('dateNaissance', BirthdayType::class, array(
+                'widget' => 'single_text',
                 'label' => 'Date de naissance',
                 'placeholder' => array(
-                'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
+                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
                 ))
                 )
             ->add('tarifReduit', CheckboxType::class, array(

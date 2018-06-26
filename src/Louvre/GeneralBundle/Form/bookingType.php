@@ -30,16 +30,17 @@ class bookingType extends AbstractType
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
             ->add('date', DateType::class, array(
-                 'widget' => 'choice',
-                 'years' => range(date('Y'), date('Y')+10),
-                 'months' => range(date('m'), 12),
-                 'days' => range(date('d'), 31),
+                 'widget' => 'single_text',
+                 'years' => range(date('Y'), date('Y')+2),
+                 'months' => range(1,12),
+                 'days' => range(1, 31),
                  'label' => 'Date de la visite',
+                 'placeholder' => 'Sélectionner une valeur',
                ))
             ->add('type', ChoiceType::class, array(
                 'choices' => array(
                     'Journée (de 9h à 18h)' => 'journee',
-                    'Demi-journée ( de 14h à 18h)' => 'demi-journee',
+                    'Demi-journée (de 14h à 18h)' => 'demi-journee',
                 ),
                 'expanded' => true,
                 'multiple' => false,
