@@ -22,7 +22,7 @@ function addTicketForm($collectionHolder, $newLinkLi) {
     // Affiche le formulaire dans la page dans un div, avant le lien
     var $newFormLi = $('<div class="ticketForm"><br/><br/><hr/><h5>Billet N°</h5></div>').append(newForm);
 
-    $newLinkLi.prepend($newFormLi);
+    $newLinkLi.before($newFormLi);
 
     // Ajoute un lien de suppression au nouveau formulaire
     addTicketFormDeleteLink($newFormLi);
