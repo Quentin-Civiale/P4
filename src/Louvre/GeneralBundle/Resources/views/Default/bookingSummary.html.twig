@@ -84,7 +84,14 @@
                         </div>
                     {% endfor %}
 
-                    <h5><strong>Commande N°</strong>{{ booking.id }} <strong>du</strong> {{ booking.date|date('d/m/Y') }}</h5> <br/>
+                    <script type="text/javascript">
+                        today = new Date();
+                        document.write("<h5><strong>Commande N°</strong>{{ booking.id }} <strong>du </strong>");
+                        document.write(today.toLocaleDateString());
+                        document.write("</h5>");
+                    </script>
+
+                    <br/>
 
                     <strong>Nom :</strong> {{ booking.nom }} <br/>
                     <strong>Prénom :</strong> {{ booking.prenom }} <br/>
