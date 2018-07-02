@@ -52,6 +52,14 @@ class Ticket
     private $prenom;
 
     /**
+     * @var string
+     *
+     * @ORM\column(name="country", type="string", length=40)
+     *
+     */
+    private $country;
+
+    /**
      * @var Date
      *
      * @ORM\Column(name="dateNaissance", type="date")
@@ -118,6 +126,24 @@ class Ticket
     public function getPrenom()
     {
         return $this->prenom;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 
     /**
