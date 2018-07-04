@@ -29,14 +29,17 @@ class ticketType extends AbstractType
         $builder
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
-            ->add('country', CountryType::class)
+            ->add('country', CountryType::class, array(
+                'placeholder' => 'Choix du pays',
+                'label' => 'Choix du pays'
+            ))
             ->add('dateNaissance', BirthdayType::class, array(
                 'widget' => 'single_text',
                 'label' => 'Date de naissance',
                 'placeholder' => array(
                     'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
-                ))
                 )
+            ))
             ->add('tarifReduit', CheckboxType::class, array(
                 'label' => 'Tarif réduit *',
             ));
