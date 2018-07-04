@@ -19,6 +19,7 @@ class BookingController extends Controller
     {
         //on crée une commande
         $booking = new Booking();
+        $booking->setDate(new \DateTime('now'));
         
         //on récupère le formulaire
         $form = $this->createForm(bookingType::class, $booking);
@@ -52,6 +53,14 @@ class BookingController extends Controller
 
             $booking->setPrixTotal($totalPrix);
             $booking->setUser($user);
+
+//            /** @var $booking Booking **/
+//            foreach($booking->getDate() as $booking) {
+//                $checkDate = $this->checkingDateAction($booking);
+//
+//                $booking->setDate($checkDate);
+//
+//            }
 
             //on enregistre la commande en bdd
             $em = $this->getDoctrine()->getManager();
@@ -163,6 +172,44 @@ class BookingController extends Controller
         }
 
         return $price * $priceCoef;
+    }
+
+    private function checkingDateAction(Booking $booking)
+    {
+        /** @var $date \DateTime **/
+        $dateVisit = $booking->getDate();
+        $dateToday = new \DateTime('now');
+        $hour = new \DateTime('14:00:00');
+        $day = $booking->getType('journee');
+        $halfDay = $booking->getType('demi-journee');
+
+        if ($dateVisit == $dateToday && $dateToday > $hour ) {
+
+            return $halfDay;
+        }
+        else ($dateVisit != $dateToday);
+
+        return $day and $halfDay;
+    }
+
+    private function checkingNumberVisitorAction(Ticket $ticket)
+    {
+        /** @var $ticket Ticket */
+        $numberVisitor = count(array($ticket->getId()));
+        $maxVisitor = 1000;
+        $today = new \DateTime('now');
+
+        if($numberVisitor > $maxVisitor && $today) {
+
+            return new response (
+                "Impossible de réserver ce jour car la limite de visiteurs est dépassée !"
+            );
+        }
+
+        return new response (
+            "Il reste ... billets d'entrée pour aujourd'hui !"
+        );
+
     }
 
 }
