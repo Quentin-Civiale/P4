@@ -12,11 +12,10 @@ use Louvre\GeneralBundle\Entity\Booking;
 
 class StripeController extends Controller
 {
-    public function prepareAction(Booking $booking, Ticket $ticket)
+    public function prepareAction(Booking $booking)
     {
         return $this->render('@General/Default/stripe.html.twig', [
-            'booking' => $booking,
-            'ticket' => $ticket
+            'booking' => $booking
         ]);
     }
 
