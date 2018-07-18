@@ -6,6 +6,13 @@
 {#<p>Bonjour {{ booking.prenom }} {{ booking.nom }}, nous vous confirmons votre achat du {{ booking.date|date('d/m/Y') }} concernant vos billets d'entrée au Musée du Louvre.#}
 {#</p>#}
 
+<script type="text/javascript">
+    today = new Date();
+    document.write("<p>Commande du : ");
+    document.write(today.toLocaleDateString());
+    document.write("</p>");
+</script>
+
 <p>Vous trouverez ci-dessous vos billets, imprimables ou sur présentation de ce mail auprès de nos agents d'accueil.</p>
 
 <hr/>
