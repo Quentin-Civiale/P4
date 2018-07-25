@@ -174,7 +174,7 @@ class BookingController extends Controller
         return $price * $priceCoef;
     }
 
-    private function checkingDateAction(Booking $booking)
+    public function checkingDateAction(Booking $booking)
     {
         /** @var $date \DateTime **/
         $dateVisit = $booking->getDate();
@@ -192,7 +192,7 @@ class BookingController extends Controller
         return $day and $halfDay;
     }
 
-    private function checkingNumberVisitorAction(Ticket $ticket)
+    public function checkingNumberVisitorAction(Ticket $ticket)
     {
         /** @var $ticket Ticket */
         $numberVisitor = count(array($ticket->getId()));
