@@ -15,11 +15,11 @@ selection:
     defaults: { _controller: GeneralBundle:Booking:bookingForm }
     
 recapitulatif:
-    path:     /louvre/billetterie/recapitulatif/{id}
+    path:     /louvre/billetterie/{id}/recapitulatif
     defaults: { _controller: GeneralBundle:BookingSummary:bookingSummary }
     
 modification:
-    path:     /louvre/billetterie/recapitulatif/modification/{id}
+    path:     /louvre/billetterie/{id}/modification
     defaults: { _controller: GeneralBundle:BookingSummary:edit }
 
 confirmation:
@@ -50,10 +50,10 @@ louvre_test_translation:
 
 
 order_prepare:
-    path:     /louvre/billetterie/commande/prepare/{id}
+    path:     /louvre/billetterie/{id}/preparation
     defaults: { _controller: GeneralBundle:Stripe:prepare }
     
 order_checkout:
-    path:     /louvre/billetterie/commande/checkout
+    path:     /louvre/billetterie/traitement
     defaults: { _controller: GeneralBundle:Stripe:checkout }
-    
+    methods: [POST]
