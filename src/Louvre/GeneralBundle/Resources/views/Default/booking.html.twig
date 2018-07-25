@@ -113,6 +113,11 @@
                 <br/><hr/>
                 <h5>Billet N°1</h5>
                 <div class="col s12">
+                    {#{% set prototype_ticket = form.tickets.vars.prototype %}#}
+                        {#{{ form_row(prototype_ticket.nom) }}#}
+                        {#{{ form_row(prototype_ticket.prenom) }}#}
+                        {#{{ form_row(prototype_ticket.dateNaissance) }}#}
+                        {#{{ form_row(prototype_ticket.tarifReduit) }}#}
                     {{ form_widget(form.tickets) }}
                 </div>
             </div>
