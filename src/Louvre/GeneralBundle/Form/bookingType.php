@@ -36,7 +36,7 @@ class bookingType extends AbstractType
                  'days' => range(1, 31),
                  'label' => 'Date de la visite',
                  'placeholder' => 'Sélectionner une valeur',
-               ))
+            ))
             ->add('type', ChoiceType::class, array(
                 'choices' => array(
                     'Journée (de 9h à 18h)' => 'journee',
