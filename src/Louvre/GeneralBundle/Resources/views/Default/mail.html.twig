@@ -17,74 +17,66 @@
 
 <hr/>
 
-{#<div class="row">#}
+    {#<div class="row">#}
     {#<div class="col offset-s3">#}
-        {#<p>#}
-            {#<h5><strong>Commande N°</strong>{{ booking.id }} <strong>du</strong> {{ booking.date|date('d/m/Y') }}</h5> <br/>#}
+    {#<p>#}
+    {#<h5><strong>Commande N°</strong>{{ booking.id }} <strong>du</strong> {{ booking.date|date('d/m/Y') }}</h5> <br/>#}
 
-            {#<strong>Nom :</strong> {{ booking.nom }} <br/>#}
-            {#<strong>Prénom :</strong> {{ booking.prenom }} <br/>#}
-            {#<strong>Date de la visite :</strong> le {{  booking.date|date('d/m/Y') }} en <strong>{{ booking.type }}</strong> <br/>#}
-            {#<strong>Email :</strong> {{ booking.email }} <br/>#}
-            {#<strong>Statut de la commande :</strong> {{ booking.statut }} <br/>#}
-            {#<strong>Prix total de la commande :</strong> {{ booking.prixTotal }} €<br/><br/>#}
+    {#<strong>Nom :</strong> {{ booking.nom }} <br/>#}
+    {#<strong>Prénom :</strong> {{ booking.prenom }} <br/>#}
+    {#<strong>Date de la visite :</strong> le {{  booking.date|date('d/m/Y') }} en <strong>{{ booking.type }}</strong> <br/>#}
+    {#<strong>Email :</strong> {{ booking.email }} <br/>#}
+    {#<strong>Statut de la commande :</strong> {{ booking.statut }} <br/>#}
+    {#<strong>Prix total de la commande :</strong> {{ booking.prixTotal }} €<br/><br/>#}
 
-            {#<table class="centered responsive-table">#}
-                {#<thead>#}
-                {#<tr>#}
-                    {#<th>Nom</th>#}
-                    {#<th>Prénom</th>#}
-                    {#<th>Date de naissance</th>#}
-                    {#<th>Réduction</th>#}
-                    {#<th>Tarifs</th>#}
-                    {#<th>Numéro de la commande</th>#}
-                {#</tr>#}
-                {#</thead>#}
+    {#<table class="centered responsive-table">#}
+    {#<thead>#}
+    {#<tr>#}
+    {#<th>Nom</th>#}
+    {#<th>Prénom</th>#}
+    {#<th>Date de naissance</th>#}
+    {#<th>Réduction</th>#}
+    {#<th>Tarifs</th>#}
+    {#<th>Numéro de la commande</th>#}
+    {#</tr>#}
+    {#</thead>#}
 
-                {#{% for ticket in ticket %}#}
-                    {#<tbody>#}
-                    {#<tr>#}
-                        {#<td> {{ ticket.nom }} </td>#}
-                        {#<td> {{ ticket.prenom }} </td>#}
-                        {#<td> {{ ticket.dateNaissance|date('d/m/Y') }} </td>#}
-                        {#<td> {{ ticket.tarifReduit }} </td>#}
-                        {#<td> {{ ticket.prix }} € </td>#}
-                        {#<td> {{ ticket.booking.id }} </td>#}
-                    {#</tr>#}
-                    {#</tbody>#}
-                {#{% endfor %}#}
+    {#{% for ticket in ticket %}#}
+    {#<tbody>#}
+    {#<tr>#}
+    {#<td> {{ ticket.nom }} </td>#}
+    {#<td> {{ ticket.prenom }} </td>#}
+    {#<td> {{ ticket.dateNaissance|date('d/m/Y') }} </td>#}
+    {#<td> {{ ticket.tarifReduit }} </td>#}
+    {#<td> {{ ticket.prix }} € </td>#}
+    {#<td> {{ ticket.booking.id }} </td>#}
+    {#</tr>#}
+    {#</tbody>#}
+    {#{% endfor %}#}
 
-                {#<tbody>#}
-                {#<tr>#}
-                    {#<td></td>#}
-                    {#<td></td>#}
-                    {#<td></td>#}
-                    {#<td><strong>Total</strong></td>#}
-                    {#<td><strong> {{ booking.prixTotal }} € </strong></td>#}
-                {#</tr>#}
-                {#</tbody>#}
-            {#</table>#}
+    {#<tbody>#}
+    {#<tr>#}
+    {#<td></td>#}
+    {#<td></td>#}
+    {#<td></td>#}
+    {#<td><strong>Total</strong></td>#}
+    {#<td><strong> {{ booking.prixTotal }} € </strong></td>#}
+    {#</tr>#}
+    {#</tbody>#}
+    {#</table>#}
 
-            {#<br/>#}
-            {#<br/>#}
+    {#<br/>#}
+    {#<br/>#}
 
-            {#<a href="{{ path('modification', {'id':booking.id}) }}">Modifier la commande</a>#}
-            {#<hr/>#}
+    {#<a href="{{ path('modification', {'id':booking.id}) }}">Modifier la commande</a>#}
+    {#<hr/>#}
 
-            {#<div class="row">#}
-                {#<div class="col offset-s8 s4">#}
-                    {#<a class="waves-effect waves-light btn amber darken-2" href="{{ path('order_prepare', {'id':booking.id}) }}"><i class="material-icons left">payment</i>Payer votre commande</a>#}
-                {#</div>#}
-            {#</div>#}
-        {#</p>#}
-        {#{% endfor %}#}
+    {#<div class="row">#}
+    {#<div class="col offset-s8 s4">#}
+    {#<a class="waves-effect waves-light btn amber darken-2" href="{{ path('order_prepare', {'id':booking.id}) }}"><i class="material-icons left">payment</i>Payer votre commande</a>#}
     {#</div>#}
-{#</div>#}
-
-
-
-
-
-
-
-
+    {#</div>#}
+    {#</p>#}
+    {#{% endfor %}#}
+    {#</div>#}
+    {#</div>#}
