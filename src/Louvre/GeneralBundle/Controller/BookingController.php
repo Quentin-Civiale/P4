@@ -11,8 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
-
-
 class BookingController extends Controller
 {
     public function bookingFormAction(Request $request)
@@ -54,13 +52,7 @@ class BookingController extends Controller
             $booking->setPrixTotal($totalPrix);
             $booking->setUser($user);
 
-//            /** @var $booking Booking **/
-//            foreach($booking->getDate() as $booking) {
-//                $checkDate = $this->checkingDateAction($booking);
-//
-//                $booking->setDate($checkDate);
-//
-//            }
+
 
             //on enregistre la commande en bdd
             $em = $this->getDoctrine()->getManager();
@@ -68,6 +60,47 @@ class BookingController extends Controller
             $em->persist($booking);
             //envoi vers la bdd
             $em->flush();
+
+
+            // Calcul de limite de 1000 visiteurs par jour
+            $bookingId = $booking->getId();
+            $bookingDate = $booking->getDate();
+
+            $bookingListByDate = $this->getDoctrine()
+                ->getRepository('GeneralBundle:Booking')
+                ->findBy(array('date' => $booking->getDate()));
+            $bookingNumberByDate = count($bookingListByDate);
+
+            $visitorFirstName = array($ticket->getPrenom());
+
+            $dateToday = new \DateTime('now');
+
+            $ticketListByBooking = $this->getDoctrine()
+                ->getRepository('GeneralBundle:Ticket')
+                ->findBy(array('booking' => $ticket->getBooking()));
+            $ticketNumberByBooking = count($ticketListByBooking);
+
+            var_dump($bookingId);
+            var_dump($bookingDate);
+
+            var_dump($bookingListByDate);
+            var_dump($bookingNumberByDate);
+
+            var_dump($visitorFirstName);
+
+            var_dump($ticketListByBooking);
+            var_dump($ticketNumberByBooking);
+
+            die();
+
+            if (($ticketNumberByBooking && $bookingDate === $dateToday) > 5) {
+
+                //ajout d'un message lors du dépassement de visiteurs par jour
+                $this->addFlash("error","Le nombre maximum de visiteurs pour cette date est atteint, veuillez sélectionner une nouvelle date !");
+
+//                return $this->redirectToRoute("selection");
+            }
+
 
             //ajout d'un message lors de l'enregistrement d'une commande
             $this->addFlash("notice","Votre commande a bien été enregistrée !");
@@ -84,52 +117,6 @@ class BookingController extends Controller
         //on rend la vue
         return $this->render('@General/Default/booking.html.twig', ['form' => $formView]);
     }
-    
-    
-//    public function bookingSummaryAction()
-//    {
-//        $repository = $this->getDoctrine()->getRepository('GeneralBundle:Booking');
-//
-//        $commande = $repository->findAll();
-//
-//        return $this->render('@General/Default/bookingSummary.html.twig', array('commande'=> $commande));
-//    }
-//
-//    public function editAction(Request $request, Booking $commande)
-//    {
-//         //on récupère le formulaire
-//        $form = $this->createForm(bookingType::class, $commande);
-//
-//        //requête lors de l'envoi du formulaire
-//        $form->handleRequest($request);
-//
-//        //si le formulaire a été soumis
-//        if($form->isSubmitted() && $form->isValid())
-//        {
-//            //on enregistre la commande en bdd
-//            $em = $this->getDoctrine()->getManager();
-//
-//            //envoi vers la bdd
-//            $em->flush();
-//
-//            return new Response('Booking modifiée !');
-//        }
-//
-//        //on génère le html du formulaire
-//        $formView = $form->createView();
-//
-//        //on rend la vue
-//        return $this->render('@General/Default/booking.html.twig', array ('form' => $formView));
-//    }
-//
-//    public function deleteAction(Booking $commande)
-//    {
-//        $em = $this->getDoctrine()->getManager();
-//        $em->remove($commande);
-//        $em->flush();
-//
-//        return new Response('Booking supprimée');
-//    }
 
     private function calculTicketPriceAction(Ticket $ticket, Booking $booking): int
     {
@@ -174,42 +161,25 @@ class BookingController extends Controller
         return $price * $priceCoef;
     }
 
-    public function checkingDateAction(Booking $booking)
-    {
-        /** @var $date \DateTime **/
-        $dateVisit = $booking->getDate();
-        $dateToday = new \DateTime('now');
-        $hour = new \DateTime('14:00:00');
-        $day = $booking->getType('journee');
-        $halfDay = $booking->getType('demi-journee');
+//    public function checkingNumberVisitorAction(Ticket $ticket)
+//    {
+//        /** @var $ticket Ticket */
+//        $numberVisitor = count(array($ticket->getId()));
+//        $maxVisitor = 1000;
+//        $today = new \DateTime('now');
+//
+//        if($numberVisitor > $maxVisitor && $today) {
+//
+//            return new response (
+//                "Impossible de réserver ce jour car la limite de visiteurs est dépassée !"
+//            );
+//        }
+//
+//        return new response (
+//            "Il reste ... billets d'entrée pour aujourd'hui !"
+//        );
+//
+//    }
 
-        if ($dateVisit == $dateToday && $dateToday > $hour ) {
-
-            return $halfDay;
-        }
-        else ($dateVisit != $dateToday);
-
-        return $day and $halfDay;
-    }
-
-    public function checkingNumberVisitorAction(Ticket $ticket)
-    {
-        /** @var $ticket Ticket */
-        $numberVisitor = count(array($ticket->getId()));
-        $maxVisitor = 1000;
-        $today = new \DateTime('now');
-
-        if($numberVisitor > $maxVisitor && $today) {
-
-            return new response (
-                "Impossible de réserver ce jour car la limite de visiteurs est dépassée !"
-            );
-        }
-
-        return new response (
-            "Il reste ... billets d'entrée pour aujourd'hui !"
-        );
-
-    }
 
 }
