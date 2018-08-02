@@ -83,3 +83,22 @@ select {
     background-color: grey;
     height: auto;
 }
+
+/* Message d'enregistrement en bdd de la commande */
+
+.success {
+    color: green;
+    text-align: center;
+}
+
+/* Message date de commande non valide */
+
+.error {
+    color: red;
+    text-align: center;
+    background-color: #ffcdd2;
+}
+
+.banner {
+    background-color: #ff8f00 !important;
+}
