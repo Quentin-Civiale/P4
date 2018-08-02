@@ -62,52 +62,60 @@ class BookingController extends Controller
             $em->flush();
 
 
-            // Calcul de limite de 1000 visiteurs par jour
-            $bookingId = $booking->getId();
-            $bookingDate = $booking->getDate();
-
-            $bookingListByDate = $this->getDoctrine()
-                ->getRepository('GeneralBundle:Booking')
-                ->findBy(array('date' => $booking->getDate()));
-            $bookingNumberByDate = count($bookingListByDate);
-
-            $visitorFirstName = array($ticket->getPrenom());
-
-            $dateToday = new \DateTime('now');
-
-            $ticketListByBooking = $this->getDoctrine()
-                ->getRepository('GeneralBundle:Ticket')
-                ->findBy(array('booking' => $ticket->getBooking()));
-            $ticketNumberByBooking = count($ticketListByBooking);
-
-            var_dump($bookingId);
-            var_dump($bookingDate);
-
-            var_dump($bookingListByDate);
-            var_dump($bookingNumberByDate);
-
-            var_dump($visitorFirstName);
-
-            var_dump($ticketListByBooking);
-            var_dump($ticketNumberByBooking);
-
-            die();
-
-            if (($ticketNumberByBooking && $bookingDate === $dateToday) > 5) {
-
-                //ajout d'un message lors du dépassement de visiteurs par jour
-                $this->addFlash("error","Le nombre maximum de visiteurs pour cette date est atteint, veuillez sélectionner une nouvelle date !");
-
+//            // Calcul de limite de 1000 visiteurs par jour
+//            $bookingId = $booking->getId();
+//            $bookingDate = $booking->getDate();
+//
+//            $bookingListByDate = $this->getDoctrine()
+//                ->getRepository('GeneralBundle:Booking')
+//                ->findBy(array('date' => $booking->getDate()));
+//            $bookingNumberByDate = count($bookingListByDate);
+//
+//            $visitorFirstName = array($ticket->getPrenom());
+//
+//            $dateToday = new \DateTime('now');
+//
+//            $ticketListByBooking = $this->getDoctrine()
+//                ->getRepository('GeneralBundle:Ticket')
+//                ->findBy(array('booking' => $ticket->getBooking()));
+//            $totalTicketNumber = count($ticketListByBooking);
+//
+//            /** @var $booking Booking **/
+//            foreach ($bookingListByDate as $booking) {
+//                $totalTicketNumber += count($booking->getTickets());
+//            }
+//
+////            var_dump($totalTicketNumber);
+////            die();
+////
+////            var_dump($bookingId);
+////            var_dump($bookingDate);
+////
+////            var_dump($bookingListByDate);
+////            var_dump($bookingNumberByDate);
+////
+////            var_dump($visitorFirstName);
+////
+////            var_dump($ticketListByBooking);
+////            var_dump($totalTicketNumber);
+////
+////            die();
+//
+//            if ($totalTicketNumber > 5) {
+//
+//                //ajout d'un message lors du dépassement de visiteurs par jour
+//                $this->addFlash("error","Le nombre maximum de visiteurs pour cette date est atteint, veuillez sélectionner une nouvelle date !");
+//
 //                return $this->redirectToRoute("selection");
-            }
-
-
-            //ajout d'un message lors de l'enregistrement d'une commande
-            $this->addFlash("notice","Votre commande a bien été enregistrée !");
-
-            return $this->redirectToRoute('recapitulatif', [
-                'id' => $booking->getId()
-            ]);
+//            }
+//
+//
+//            //ajout d'un message lors de l'enregistrement d'une commande
+//            $this->addFlash("notice","Votre commande a bien été enregistrée !");
+//
+//            return $this->redirectToRoute('recapitulatif', [
+//                'id' => $booking->getId()
+//            ]);
 
         }
         
