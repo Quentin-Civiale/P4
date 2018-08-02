@@ -3,6 +3,7 @@
 namespace Louvre\GeneralBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Louvre\GeneralBundle\Entity\Booking;
 
 /**
  * TicketRepository
@@ -12,5 +13,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class TicketRepository extends EntityRepository
 {
+    public function getTodayTicketsCount()
+    {
+        $today = new \DateTime('now');
 
+        // stocker dans 1 var la date du jour à 00:01
+        // stocker dans 1 autre var la date du jour à 23h59
+        $qb = $this
+            ->createQueryBuilder('ticket')
+            ->select('COUNT(ticket)')
+            // faire une jointure avec l'ent booking
+            // rajouter la clause where qui check si la date est entre 00:01 et 23h59
+            // if > 1200 alors erreur
+        ;
+
+
+
+    }
 }
