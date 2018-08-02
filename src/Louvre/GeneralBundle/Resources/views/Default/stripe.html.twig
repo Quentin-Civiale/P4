@@ -37,7 +37,7 @@
                             document.write(" d'un montant de {{ booking.prixTotal }} €.</p>");
                         </script>
 
-                        <form action="{{ path('order_checkout') }}" method="POST">
+                        <form action="{{ path('order_checkout', {'id': booking.id}) }}" method="POST">
                             <script
                                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                 data-key="pk_test_rCP3SL76FiKDez8nzhtuMJNp"
@@ -57,7 +57,7 @@
                             <input type="hidden" name="visitType" value="{{ booking.type }}">
                             <input type="hidden" name="totalPrice" value="{{ booking.prixTotal*100 }}">
                             <input type="hidden" name="email" value="{{ booking.email }}">
-                            <input type="hidden" name="statut" value="{{ booking.statut }}">
+                            {#<input type="hidden" name="statut" value="{{ booking.statut }}">#}
                         </form>
 
                         {#ajout d'un message lors de la validation de paiement d'une commande#}
