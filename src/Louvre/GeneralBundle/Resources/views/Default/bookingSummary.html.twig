@@ -79,8 +79,10 @@
                 <p>
                     {#ajout d'un message lors de l'enregistrement ou la modification d'une commande#}
                     {% for message in app.flashes('notice') %}
-                        <div class="flash-notice">
-                            {{ message }}
+                        <div class="card-panel light-green lighten-2">
+                            <div class="success">
+                                <i class="material-icons left">check</i><p>{{ message }}</p>
+                            </div>
                         </div>
                     {% endfor %}
 
