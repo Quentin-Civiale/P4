@@ -16,7 +16,8 @@ use Louvre\GeneralBundle\Entity\Ticket;
  */
 class Booking
 {
-    const STATUT_EN_ATTENTE_DE_PAIEMENT = 'en_attente_de_paiement';
+    const STATUT_EN_ATTENTE_DE_PAIEMENT = 'en attente de paiement';
+    const STATUT_PAIEMENT_ACCEPTE = 'paiement accepté';
 
     /**
      * @var int
@@ -298,4 +299,53 @@ class Booking
     {
         return $this->user;
     }
+
+    /**
+     * @param ExecutionContextInterface $context
+     *
+     * @Assert\Callback()
+     */
+    public function validateVisitDate(ExecutionContextInterface $context)
+    {
+        $dateTimeLimit = clone $this->date;
+        $dateTimeLimit->setTime(14,0);
+
+//        var_dump($this->date);
+//        var_dump($dateTimeLimit);
+//        var_dump($this->type);
+//        die();
+
+        if(($this->date > $dateTimeLimit) && $this->type === 'journee'){
+            $context->buildViolation("L'heure limite de 14h00 étant dépassée, vous ne pouvez pas réservé pour la journée, mais uniquement pour la demi-journée !")
+                ->atPath('date')
+                ->addViolation();
+        }
+    }
+
+//    /**
+//     * @param ExecutionContextInterface $context
+//     *
+//     * @Assert\Callback()
+//     */
+//    public function validateVisitNumber(ExecutionContextInterface $context)
+//    {
+//        $visitNumber = $this->getId();
+//        $visitNumber = count($this->tickets);
+//        $visitNumberLimit = 3;
+//        $visitDate =
+//
+//        var_dump($this->getEmail());
+//        var_dump($visitNumber);
+////        var_dump($this->tickets);
+//        var_dump($this->date);
+////        var_dump($visitDate);
+//        die();
+//
+//        if (($visitNumber > $visitNumberLimit) && $visitDate){
+//            $context->buildViolation("Le nombre maximum de visiteurs pour cette date est atteint, veuillez sélectionner une nouvelle date !")
+//                ->atPath('Tickets')
+//                ->addViolation();
+//        }
+//    }
+
 }
