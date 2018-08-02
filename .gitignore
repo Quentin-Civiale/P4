@@ -1,9 +1,14 @@
-
+/bin
 
 /tests
 /vendor
 /var
-
+/web/.htaccess
+/web/app
+/web/app_dev
+/web/apple-touch-icon
+/web/config
+/web/favicon
 /web/robots
 
 .idea/
