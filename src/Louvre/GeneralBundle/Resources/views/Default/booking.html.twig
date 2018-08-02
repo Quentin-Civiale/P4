@@ -80,9 +80,10 @@
         <div class="col offset-s2 s8 grey lighten-2 z-depth-5">
             <h4>1) Choix de la date</h4>
             <hr/><br/>
-            <p>Choisissez la date de votre visite au Musée du Louvre :</p>
+            <p>Choisissez la date et l'heure de votre visite au Musée du Louvre :</p>
             <div class="col offset-s4 s4">
                 {{ form_widget(form.date) }}
+                {{ form_errors(form.date) }}
             </div>
             <div class="col offset-s2 s8">
                 <p>
