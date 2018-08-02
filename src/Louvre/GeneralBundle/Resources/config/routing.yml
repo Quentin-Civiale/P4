@@ -23,7 +23,7 @@ modification:
     defaults: { _controller: GeneralBundle:BookingSummary:edit }
 
 confirmation:
-    path:     /louvre/billetterie/confirmation
+    path:     /louvre/billetterie/{id}/confirmation
     defaults: { _controller: GeneralBundle:Confirmation:confirmation}
 
 
@@ -54,6 +54,6 @@ order_prepare:
     defaults: { _controller: GeneralBundle:Stripe:prepare }
     
 order_checkout:
-    path:     /louvre/billetterie/traitement
+    path:     /louvre/billetterie/{id}/traitement
     defaults: { _controller: GeneralBundle:Stripe:checkout }
     methods: [POST]
