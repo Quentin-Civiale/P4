@@ -48,6 +48,8 @@ class Ticket
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=25)
+     *
+     * @Assert\NotBlank(message="Veuillez renseigner votre prénom")
      */
     private $prenom;
 
@@ -56,6 +58,7 @@ class Ticket
      *
      * @ORM\column(name="country", type="string", length=40)
      *
+     * @Assert\NotBlank(message="Veuillez indiquer votre pays")
      */
     private $country;
 
@@ -65,6 +68,8 @@ class Ticket
      * @ORM\Column(name="dateNaissance", type="date")
      *
      * @Assert\Date()
+     *
+     * @Assert\NotBlank(message="Veuillez indiquer votre date de naissance")
      */
     private $dateNaissance;
 

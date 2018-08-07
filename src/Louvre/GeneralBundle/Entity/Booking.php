@@ -60,6 +60,8 @@ class Booking
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
+     *
+     * @Assert\NotBlank(message="Veuillez indiquer une date de visite")
      */
     private $date;
 
@@ -67,6 +69,8 @@ class Booking
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=40)
+     *
+     * @Assert\NotBlank(message="Veuillez indiquer une type de visite")
      */
     private $type;
 
@@ -74,6 +78,8 @@ class Booking
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=40)
+     *
+     * @Assert\NotBlank(message="Veuillez renseigner votre email")
      */
     private $email;
 
