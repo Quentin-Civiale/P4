@@ -8,6 +8,7 @@ use Louvre\GeneralBundle\Form\bookingType;
 use Louvre\GeneralBundle\Form\ticketType;
 use Louvre\GeneralBundle\Services\Price;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -52,70 +53,43 @@ class BookingController extends Controller
             $booking->setPrixTotal($totalPrix);
             $booking->setUser($user);
 
+            // Récupération du nombre de ticket par jour selon la date de commande
+            $ticketTotalCount = $this->getDoctrine()->getRepository('GeneralBundle:Ticket')->getTodayTicketsCount($booking->getDate());
+//            var_dump($ticketTotalCount);
 
+            // Changement du string en int pour le comparer à $limitTicket
+            $ticketTotalCount = $ticketTotalCount +0;
+//            var_dump($ticketTotalCount);
 
-            //on enregistre la commande en bdd
-            $em = $this->getDoctrine()->getManager();
-            //préparation à l'insertion dans la bdd
-            $em->persist($booking);
-            //envoi vers la bdd
-            $em->flush();
+            // Limite de tickets(de visites) par jour au musée
+            $limitTicket = 15;
+//            var_dump($limit);
+//            die();
 
+//            var_dump($ticketTotalCount);
+//            die();
 
-//            // Calcul de limite de 1000 visiteurs par jour
-//            $bookingId = $booking->getId();
-//            $bookingDate = $booking->getDate();
-//
-//            $bookingListByDate = $this->getDoctrine()
-//                ->getRepository('GeneralBundle:Booking')
-//                ->findBy(array('date' => $booking->getDate()));
-//            $bookingNumberByDate = count($bookingListByDate);
-//
-//            $visitorFirstName = array($ticket->getPrenom());
-//
-//            $dateToday = new \DateTime('now');
-//
-//            $ticketListByBooking = $this->getDoctrine()
-//                ->getRepository('GeneralBundle:Ticket')
-//                ->findBy(array('booking' => $ticket->getBooking()));
-//            $totalTicketNumber = count($ticketListByBooking);
-//
-//            /** @var $booking Booking **/
-//            foreach ($bookingListByDate as $booking) {
-//                $totalTicketNumber += count($booking->getTickets());
-//            }
-//
-////            var_dump($totalTicketNumber);
-////            die();
-////
-////            var_dump($bookingId);
-////            var_dump($bookingDate);
-////
-////            var_dump($bookingListByDate);
-////            var_dump($bookingNumberByDate);
-////
-////            var_dump($visitorFirstName);
-////
-////            var_dump($ticketListByBooking);
-////            var_dump($totalTicketNumber);
-////
-////            die();
-//
-//            if ($totalTicketNumber > 5) {
-//
-//                //ajout d'un message lors du dépassement de visiteurs par jour
-//                $this->addFlash("error","Le nombre maximum de visiteurs pour cette date est atteint, veuillez sélectionner une nouvelle date !");
-//
-//                return $this->redirectToRoute("selection");
-//            }
-//
-//
-//            //ajout d'un message lors de l'enregistrement d'une commande
-//            $this->addFlash("notice","Votre commande a bien été enregistrée !");
-//
-//            return $this->redirectToRoute('recapitulatif', [
-//                'id' => $booking->getId()
-//            ]);
+            if ( $ticketTotalCount >= $limitTicket )
+            {
+                $this->addFlash("error", "Le nombre maximum de visiteurs pour cette date est atteint, veuillez sélectionner une nouvelle date !");
+            }
+            else
+            {
+
+                //on enregistre la commande en bdd
+                $em = $this->getDoctrine()->getManager();
+                //préparation à l'insertion dans la bdd
+                $em->persist($booking);
+                //envoi vers la bdd
+                $em->flush();
+
+                //ajout d'un message lors de l'enregistrement d'une commande
+                $this->addFlash("notice","Votre commande a bien été enregistrée !");
+
+                return $this->redirectToRoute('recapitulatif', [
+                    'id' => $booking->getId()
+                ]);
+            }
 
         }
         
@@ -168,26 +142,5 @@ class BookingController extends Controller
 
         return $price * $priceCoef;
     }
-
-//    public function checkingNumberVisitorAction(Ticket $ticket)
-//    {
-//        /** @var $ticket Ticket */
-//        $numberVisitor = count(array($ticket->getId()));
-//        $maxVisitor = 1000;
-//        $today = new \DateTime('now');
-//
-//        if($numberVisitor > $maxVisitor && $today) {
-//
-//            return new response (
-//                "Impossible de réserver ce jour car la limite de visiteurs est dépassée !"
-//            );
-//        }
-//
-//        return new response (
-//            "Il reste ... billets d'entrée pour aujourd'hui !"
-//        );
-//
-//    }
-
 
 }
