@@ -315,37 +315,12 @@ class Booking
 //        var_dump($this->type);
 //        die();
 
-        if(($this->date > $dateTimeLimit) && $this->type === 'journee'){
+        if(($this->date > $dateTimeLimit) && $this->type === 'journee')
+        {
             $context->buildViolation("L'heure limite de 14h00 étant dépassée, vous ne pouvez pas réservé pour la journée, mais uniquement pour la demi-journée !")
                 ->atPath('date')
                 ->addViolation();
         }
     }
-
-//    /**
-//     * @param ExecutionContextInterface $context
-//     *
-//     * @Assert\Callback()
-//     */
-//    public function validateVisitNumber(ExecutionContextInterface $context)
-//    {
-//        $visitNumber = $this->getId();
-//        $visitNumber = count($this->tickets);
-//        $visitNumberLimit = 3;
-//        $visitDate =
-//
-//        var_dump($this->getEmail());
-//        var_dump($visitNumber);
-////        var_dump($this->tickets);
-//        var_dump($this->date);
-////        var_dump($visitDate);
-//        die();
-//
-//        if (($visitNumber > $visitNumberLimit) && $visitDate){
-//            $context->buildViolation("Le nombre maximum de visiteurs pour cette date est atteint, veuillez sélectionner une nouvelle date !")
-//                ->atPath('Tickets')
-//                ->addViolation();
-//        }
-//    }
 
 }
