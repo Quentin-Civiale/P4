@@ -79,11 +79,23 @@
     <div class="row">
         <div class="col offset-s2 s8 grey lighten-2 z-depth-5">
             <h4>1) Choix de la date</h4>
-            <hr/><br/>
+            <hr/>
+
+            {#ajout d'un message lors de l'enregistrement ou la modification d'une commande#}
+            {% for message in app.flashes('error') %}
+                <div class="card-panel red lighten-4">
+                    <div class="error">
+                        <i class="material-icons left">close</i><p>{{ message }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+            {{ form_errors(form.date) }}
+
             <p>Choisissez la date et l'heure de votre visite au Musée du Louvre :</p>
             <div class="col offset-s4 s4">
                 {{ form_widget(form.date) }}
-                {{ form_errors(form.date) }}
+
             </div>
             <div class="col offset-s2 s8">
                 <p>
@@ -120,6 +132,7 @@
                         {#{{ form_row(prototype_ticket.dateNaissance) }}#}
                         {#{{ form_row(prototype_ticket.tarifReduit) }}#}
                     {{ form_widget(form.tickets) }}
+                    {{ form_errors(form.tickets) }}
                 </div>
             </div>
 
