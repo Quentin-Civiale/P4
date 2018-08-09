@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+
+{% block error %}
+    <div class="row">
+        <div class="col offset-s1">
+            <h1>Page non trouvée</h1>
+            <h3>Vous vous êtes perdus dans les couloirs du Musée du Louvre !</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col offset-s1 s10 grey lighten-2 z-depth-5">
+            <div class="error_page">
+                <h4>
+                    La page demandée n'a pas pu être localisée. Veuillez retourner sur la <a href="{{ path('general_homepage')}}">page d'accueil</a> du site !
+                </h4>
+            </div>
+        </div>
+    </div>
+    <br/>
+{% endblock %}
