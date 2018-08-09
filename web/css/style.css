@@ -102,3 +102,7 @@ select {
 .banner {
     background-color: #ff8f00 !important;
 }
+
+.error_page {
+    text-align: center;
+}
