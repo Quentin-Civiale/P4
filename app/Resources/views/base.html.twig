@@ -23,44 +23,76 @@
             <div class="navbar-fixed">
                 <nav>
                     <div class="nav-wrapper amber darken-2">
-                        <a href="{{ path('general_homepage')}}" class="brand-logo"><img src="{{ asset('louvre_site.png') }}"> Le Louvre</a>
-                            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                                <li><a href="{{ path('general_homepage')}}"><i class="material-icons left">home</i>Accueil</a></li>
-                                {#<li><a href="#">Informations pratiques</a></li>#}
-                                <li><a href="#">Visites et Activités</a></li>
-                                <li><a href="#">Expositions et Actualités</a></li>
-                                <li><a href="#">Oeuvres et Palais</a></li>
-                                {#<li><a href="#">Arts et Education</a></li>#}
+                        <a href="{{ path('general_homepage') }}" class="brand-logo"><img src="{{ asset('louvre_site.png') }}"> Le Louvre</a>
+                        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                        <ul class="right hide-on-med-and-down">
+                            <li><a href="{{ path('general_homepage') }}"><i class="material-icons left">home</i>Accueil</a></li>
+                            <li><a href="#">Visites et Activités</a></li>
+                            <li><a href="#">Expositions et Actualités</a></li>
+                            <li><a href="#">Oeuvres et Palais</a></li>
 
-                                {% if is_granted('ROLE_USER') %}
-                                    {#noLink#}
-                                {% else %}
-                                    <li><a href="{{ path('register')}}">Inscription</a></li>
-                                {% endif %}
+                            {% if is_granted('ROLE_USER') %}
+                                noLink
+                            {% else %}
+                                <li><a href="{{ path('register')}}">Inscription</a></li>
+                            {% endif %}
 
-                                {% if is_granted('ROLE_USER') %}
-                                    <li><a href="{{ path('deconnexion') }}">Déconnexion</a></li>
-                                {% else %}
-                                    <li><a href="{{ path('connexion') }}">Connexion</a></li>
-                                {% endif %}
+                            {% if is_granted('ROLE_USER') %}
+                                <li><a href="{{ path('deconnexion') }}">Déconnexion</a></li>
+                            {% else %}
+                                <li><a href="{{ path('connexion') }}">Connexion</a></li>
+                            {% endif %}
 
-                                {% if is_granted('ROLE_USER') %}
-                                    <li class="active"><a class="waves-effect waves-light btn grey lighten-1" href="{{ path('selection')}}"><i class="material-icons left">store</i>Billetterie</a></li>
-                                {% else %}
-                                    <li class="active"><a class="waves-effect waves-light btn grey lighten-1" href="{{ path('connexion')}}"><i class="material-icons left">store</i>Billetterie</a></li>
-                                {% endif %}
+                            {% if is_granted('ROLE_USER') %}
+                                <li class="active"><a class="waves-effect waves-light btn grey lighten-1" href="{{ path('selection')}}"><i class="material-icons left">store</i>Billetterie</a></li>
+                            {% else %}
+                                <li class="active"><a class="waves-effect waves-light btn grey lighten-1" href="{{ path('connexion')}}"><i class="material-icons left">store</i>Billetterie</a></li>
+                            {% endif %}
 
-                                <li>
-                                    <div class="languages">
-                                        {#<i class="material-icons left">language</i>#}
-                                        <a class="waves-effect waves-light btn grey lighten-1" href="#">fr</a>
-                                        <a class="waves-effect waves-light btn grey lighten-1" href="#">en</a>
-                                    </div>
-                                </li>
-                            </ul>
+                            <li>
+                                <div class="languages">
+                                    {#<i class="material-icons left">language</i>#}
+                                    <a class="waves-effect waves-light btn grey lighten-1" href="#">fr</a>
+                                    <a class="waves-effect waves-light btn grey lighten-1" href="#">en</a>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </nav>
             </div>
+
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="{{ path('general_homepage') }}">Accueil</a></li>
+                <li><a href="#">Visites et Activités</a></li>
+                <li><a href="#">Expositions et Actualités</a></li>
+                <li><a href="#">Oeuvres et Palais</a></li>
+
+                {% if is_granted('ROLE_USER') %}
+                    noLink
+                {% else %}
+                    <li><a href="{{ path('register')}}">Inscription</a></li>
+                {% endif %}
+
+                {% if is_granted('ROLE_USER') %}
+                    <li><a href="{{ path('deconnexion') }}">Déconnexion</a></li>
+                {% else %}
+                    <li><a href="{{ path('connexion') }}">Connexion</a></li>
+                {% endif %}
+
+                {% if is_granted('ROLE_USER') %}
+                    <li class="active"><a class="waves-effect waves-light btn grey lighten-1" href="{{ path('selection')}}"><i class="material-icons left">store</i>Billetterie</a></li>
+                {% else %}
+                    <li class="active"><a class="waves-effect waves-light btn grey lighten-1" href="{{ path('connexion')}}"><i class="material-icons left">store</i>Billetterie</a></li>
+                {% endif %}
+
+                <li>
+                    <div class="languages">
+                        {#<i class="material-icons left">language</i>#}
+                        <a class="waves-effect waves-light btn grey lighten-1" href="#">fr</a>
+                        <a class="waves-effect waves-light btn grey lighten-1" href="#">en</a>
+                    </div>
+                </li>
+            </ul>
         </header>
 
         {% block navigation %}{% endblock %}  
@@ -113,6 +145,8 @@
         <script type="text/javascript" src="{{ asset('materialize-v0.98.2/materialize/js/materialize.min.js')}}"></script>
 
         <script type="text/javascript" src="{{ asset('js/addForm.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/hamburger_menu.js') }}"></script>
+
         
         {% block javascripts %}{% endblock %}
         
