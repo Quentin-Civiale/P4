@@ -3,9 +3,7 @@
 namespace Louvre\GeneralBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Louvre\GeneralBundle\Controller\BookingController;
 use Louvre\GeneralBundle\Entity\Booking;
-use Louvre\GeneralBundle\Entity\Ticket;
 
 /**
  * TicketRepository
@@ -19,12 +17,12 @@ class TicketRepository extends EntityRepository
     {
         // stocker dans 1 var la date du jour à 00:00
         $startOfDay = clone $dateTime;
-        $startOfDay->setTime(0,0, 0);
+        $startOfDay->setTime(0, 0, 0);
         $startOfDay->format('d/m/Y H:i:s');
 
         // stocker dans 1 autre var la date du jour à 23h59
         $endOfDay = clone $dateTime;
-        $endOfDay->setTime(23,59, 59);
+        $endOfDay->setTime(23, 59, 59);
         $endOfDay->format('d/m/Y H:i:s');
 
         // on construit la requête
@@ -34,27 +32,13 @@ class TicketRepository extends EntityRepository
 
             // faire une jointure avec l'ent booking
             ->innerJoin('ticket.booking', 'booking')
-//            ->addSelect('booking')
 
             // rajouter la clause where qui check si la date est entre 00:00 et 23h59
             ->where('booking.date >= :start')
-                ->andWhere('booking.date <= :end')
-                ->setParameter('start', $startOfDay)
-                ->setParameter('end', $endOfDay)
-//            ->where('booking.id = 284')
-//            ->where('booking.date = :today')
-//                ->setParameter('today', $today)
-        ;
+            ->andWhere('booking.date <= :end')
+            ->setParameter('start', $startOfDay)
+            ->setParameter('end', $endOfDay);
 
-//        // on récupère la requête à partir du QueryBuilder
-//        $query = $queryBuilder->getQuery();
-//
-//        // on récupère les résultats à partir de la requête
-//        $results = $query->getResult();
-//
-//        //on retourne les résultats
-//        return $results;
         return $queryBuilder->getQuery()->getSingleScalarResult();
-
     }
 }

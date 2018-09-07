@@ -5,37 +5,33 @@ namespace Louvre\GeneralBundle\Controller;
 use Louvre\GeneralBundle\Entity\Booking;
 use Louvre\GeneralBundle\Entity\Ticket;
 use Louvre\GeneralBundle\Form\bookingType;
-use Louvre\GeneralBundle\Form\ticketType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-
 
 class BookingSummaryController extends Controller
 {
     public function bookingSummaryAction(Booking $booking, Ticket $ticket)
     {
         $repository = $this->getDoctrine()->getRepository('GeneralBundle:Ticket');
-        $ticket = $repository->findBy(array('booking' => $booking->getId()));
+        $ticket = $repository->findBy(['booking' => $booking->getId()]);
 
         //on renvoi la vue
         return $this->render('@General/Default/bookingSummary.html.twig', [
             'booking' => $booking,
-            'ticket' => $ticket
+            'ticket' => $ticket,
         ]);
     }
 
     public function editAction(Request $request, Booking $booking)
     {
-         //on récupère le formulaire
+        //on récupère le formulaire
         $form = $this->createForm(bookingType::class, $booking);
 
         //requête lors de l'envoi du formulaire
         $form->handleRequest($request);
 
         //si le formulaire a été soumis
-        if($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             //on enregistre la commande en bdd
             $em = $this->getDoctrine()->getManager();
 
@@ -43,11 +39,11 @@ class BookingSummaryController extends Controller
             $em->flush();
 
             //ajout d'un message lors de la modification d'une commande
-            $this->addFlash("notice","Votre commande a été modifiée !");
+            $this->addFlash('notice', 'Votre commande a été modifiée !');
 
             //on renvoi la vue
             return $this->render('@General/Default/bookingSummary.html.twig', [
-                'booking' => $booking
+                'booking' => $booking,
             ]);
         }
 
@@ -55,7 +51,6 @@ class BookingSummaryController extends Controller
         $formView = $form->createView();
 
         //on rend la vue
-        return $this->render('@General/Default/booking.html.twig', array ('form' => $formView));
+        return $this->render('@General/Default/booking.html.twig', ['form' => $formView]);
     }
-
 }

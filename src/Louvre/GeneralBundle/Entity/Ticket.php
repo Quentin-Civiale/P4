@@ -4,9 +4,6 @@ namespace Louvre\GeneralBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
-use Doctrine\Common\Collections\ArrayCollection;
-use Louvre\GeneralBundle\Entity\Booking;
 
 /**
  * Ticket
@@ -24,9 +21,8 @@ class Ticket
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
-     * 
      * @var Booking
      *
      * @ORM\ManyToOne(targetEntity="Louvre\GeneralBundle\Entity\Booking", inversedBy="ticket", cascade={"persist"})
@@ -39,7 +35,7 @@ class Ticket
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=25)
-     * 
+     *
      * @Assert\NotBlank(message="Veuillez renseigner votre nom")
      */
     private $nom;
@@ -77,7 +73,6 @@ class Ticket
      * @var float
      *
      * @ORM\Column(name="prix", type="decimal", precision=10, scale=2)
-     *
      */
     private $prix;
 
@@ -85,7 +80,6 @@ class Ticket
      * @var bool
      *
      * @ORM\Column(name="tarifReduit", type="boolean", options={"default":false})
-     *
      */
     private $tarifReduit = false;
 

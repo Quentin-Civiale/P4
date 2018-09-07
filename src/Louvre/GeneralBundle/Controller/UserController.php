@@ -2,15 +2,10 @@
 
 namespace Louvre\GeneralBundle\Controller;
 
-
 use Louvre\GeneralBundle\Entity\User;
 use Louvre\GeneralBundle\Form\UserRegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Guard\AuthenticatorInterface;
-use Symfony\Component\Security\Guard\GuardAuthenticatorInterface;
-use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
-
 
 class UserController extends Controller
 {
@@ -26,7 +21,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $this->addFlash('success', 'Bienvenue' .$user->getUsername());
+            $this->addFlash('success', 'Bienvenue'.$user->getUsername());
 
 //            return $this->redirectToRoute('selection');
             return $this->get('security.authentication.guard_handler')
@@ -39,7 +34,7 @@ class UserController extends Controller
         }
 
         return $this->render('@General/Default/register.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 }

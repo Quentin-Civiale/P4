@@ -15,7 +15,7 @@ class HomepageController extends Controller
     {
 //        $test= 'test';
 //        var_dump($test);
-        
+
         // replace this example code with whatever you need
         return $this->render('@General/Default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,

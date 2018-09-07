@@ -20,7 +20,7 @@ class UserRegistrationFormType extends AbstractType
             ->add('lastname', TextType::class)
             ->add('email', EmailType::class)
             ->add('plainPassword', RepeatedType::class, [
-                'type' => PasswordType::class
+                'type' => PasswordType::class,
             ]);
     }
 
@@ -28,8 +28,7 @@ class UserRegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'validation_groups' => ['Default', 'Registration']
+            'validation_groups' => ['Default', 'Registration'],
         ]);
     }
-
 }

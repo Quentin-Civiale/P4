@@ -6,6 +6,7 @@
 }
 */
 
+/*Personnnalisation du css materialize sur les form*/
 /* label underline focus color */
 
 .input-field input[type=text]:focus {
@@ -106,3 +107,52 @@ select {
 .error_page {
     text-align: center;
 }
+
+/* Tunnel d'achat */
+.submenu1, .submenu2, .submenu3, .submenu4 {
+    text-align: center !important;
+}
+
+/*Media queries*/
+
+/* Fond pour menu hamburger */
+.side-nav {
+    background-color: #ffb300 !important;
+}
+
+.side-nav li > a {
+    color: white !important;
+}
+
+.languages_hamburger {
+    width: auto;
+    background-color: grey;
+    height: auto;
+}
+
+.side-nav li > a > i, .side-nav li > a > [class^="mdi-"], .side-nav li > a li > a > [class*="mdi-"], .side-nav li > a > i.material-icons {
+    color: white !important;
+}
+
+@media only screen and (max-width: 992px) {
+    .side-nav a {
+        padding: 0 60px !important;
+        margin-left: 7px !important;
+    }
+
+    /* Css Bouton formulaire */
+    .row .col.offset-s4 {
+        margin-left: 25% !important;
+    }
+
+    .row .col.offset-s8 {
+        margin-left: 38% !important;
+    }
+
+    .row .col.offset-s3 {
+        margin-left: 10% !important;
+        margin-right: 10% !important;
+    }
+
+}
+

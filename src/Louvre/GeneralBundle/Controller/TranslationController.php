@@ -8,8 +8,8 @@ class TranslationController extends Controller
 {
     public function translateAction($name)
     {
-        return $this->render('@General/Default/translation.html.twig', array(
-            'name' => $name
-        ));
+        return $this->render('@General/Default/translation.html.twig', [
+            'name' => $name,
+        ]);
     }
 }

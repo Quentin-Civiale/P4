@@ -2,11 +2,10 @@
 
 namespace Louvre\GeneralBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
-use Doctrine\Common\Collections\ArrayCollection;
-use Louvre\GeneralBundle\Entity\Ticket;
 
 /**
  * Booking
@@ -27,9 +26,8 @@ class Booking
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
+
     /**
-     * 
      * @var Ticket
      *
      * @ORM\OneToMany(targetEntity="Louvre\GeneralBundle\Entity\Ticket", mappedBy="booking", cascade={"persist", "remove"})
@@ -42,7 +40,7 @@ class Booking
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=25)
-     * 
+     *
      * @Assert\NotBlank(message="Veuillez renseigner votre nom")
      */
     private $nom;
@@ -51,7 +49,7 @@ class Booking
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=25)
-     * 
+     *
      * @Assert\NotBlank(message="Veuillez renseigner votre prénom")
      */
     private $prenom;
@@ -94,12 +92,10 @@ class Booking
      * @var float
      *
      * @ORM\Column(name="prixTotal", type="decimal", precision=10, scale=2)
-     *
      */
     private $prixTotal;
 
     /**
-     *
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="Louvre\GeneralBundle\Entity\User")
@@ -113,8 +109,7 @@ class Booking
         $newTicket = new Ticket();
         $this->addTicket($newTicket);
     }
-    
-    
+
     /**
      * @return int
      */
@@ -221,7 +216,6 @@ class Booking
     public function setStatut($statut)
     {
         $this->statut = $statut;
-
     }
 
     /**
@@ -249,7 +243,6 @@ class Booking
     {
         return $this->prixTotal;
     }
-    
 
     /**
      * Add ticket
@@ -261,13 +254,12 @@ class Booking
     public function addTicket(Ticket $ticket)
     {
         if ($this->tickets->contains($ticket)) {
-           return;
+            return;
         }
-        
+
         $this->tickets->add($ticket);
-        
+
         $ticket->setBooking($this);
-        
     }
 
     /**
@@ -314,19 +306,17 @@ class Booking
     public function validateVisitDate(ExecutionContextInterface $context)
     {
         $dateTimeLimit = clone $this->date;
-        $dateTimeLimit->setTime(14,0);
+        $dateTimeLimit->setTime(14, 0);
 
 //        var_dump($this->date);
 //        var_dump($dateTimeLimit);
 //        var_dump($this->type);
 //        die();
 
-        if(($this->date > $dateTimeLimit) && $this->type === 'journee')
-        {
+        if (($this->date > $dateTimeLimit) && $this->type === 'journee') {
             $context->buildViolation("L'heure limite de 14h00 étant dépassée, vous ne pouvez pas réservé pour la journée, mais uniquement pour la demi-journée !")
                 ->atPath('date')
                 ->addViolation();
         }
     }
-
 }

@@ -7,7 +7,6 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Louvre\GeneralBundle\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-
 class HashPasswordListener implements EventSubscriber
 {
     private $passwordEncoder;

@@ -2,12 +2,10 @@
 
 namespace Louvre\GeneralBundle\Entity;
 
-use Symfony\Component\Security\Core\Role\Role;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
@@ -16,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User implements UserInterface
 {
-    const ROLE_DEFAULT = "ROLE_USER";
+    const ROLE_DEFAULT = 'ROLE_USER';
 
     /**
      * @ORM\Id
@@ -40,7 +38,6 @@ class User implements UserInterface
     private $lastname;
 
     /**
-     *
      * @Assert\NotBlank(message="Veuillez indiquez un email valide !")
      * @Assert\Email()
      * @ORM\Column(type="string", unique=true)
@@ -59,13 +56,13 @@ class User implements UserInterface
      *
      * @ORM\Column(type="string")
      */
-
     private $role = self::ROLE_DEFAULT;
 
     /**
      * A non-persisted field that's used to create the encoded password.
      *
      * @Assert\NotBlank(groups={"Registration"}, message="Veuillez renseigner un mot de passe !")
+     *
      * @var string
      */
     private $plainPassword;
@@ -155,5 +152,4 @@ class User implements UserInterface
     {
         $this->role = $role;
     }
-
 }
