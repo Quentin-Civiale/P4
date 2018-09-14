@@ -22,7 +22,7 @@ class StripeController extends Controller
         $repository = $this->getDoctrine()->getRepository('GeneralBundle:Ticket');
         $ticket = $repository->findBy(['booking' => $booking->getId()]);
 
-        \Stripe\Stripe::setApiKey('sk_test_V9G72YZX893d8bKBrXH8k4Ts');
+        \Stripe\Stripe::setApiKey($this->getParameter('stripe_secret_key'));
 
         // Obtention des infos de carte bancaire soumises avec le formulaire
         $token = $request->request->get('stripeToken');

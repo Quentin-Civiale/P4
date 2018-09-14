@@ -10,3 +10,5 @@ parameters:
     mailer_user: devtestoc@gmail.com
     mailer_password: testquentin
     secret: 72719fd6477a159aeb0716af7652f7cda6f1c8e2
+    stripe_secret_key: sk_test_V9G72YZX893d8bKBrXH8k4Ts
+    stripe_public_key: pk_test_rCP3SL76FiKDez8nzhtuMJNp
