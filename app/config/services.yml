@@ -39,4 +39,4 @@ services:
         tags: ['doctrine.fixture.orm']
 
     louvre_general.price:
-        class: Louvre\GeneralBundle\Services\Price
+        class: Louvre\GeneralBundle\Services\TicketPriceCalculator
