@@ -6,11 +6,22 @@ use Louvre\GeneralBundle\Entity\Booking;
 use Louvre\GeneralBundle\Entity\Ticket;
 use Louvre\GeneralBundle\Form\bookingType;
 use Louvre\GeneralBundle\Services\Price;
+use Louvre\GeneralBundle\Services\TicketPriceCalculator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class BookingController extends Controller
 {
+    /**
+     * @var TicketPriceCalculator
+     */
+    private $ticketPriceCalculator;
+
+    public function __construct(TicketPriceCalculator $ticketPriceCalculator)
+    {
+        $this->ticketPriceCalculator = $ticketPriceCalculator;
+    }
+
     public function bookingFormAction(Request $request)
     {
         //on crée une commande
@@ -39,7 +50,7 @@ class BookingController extends Controller
 
             /** @var $ticket Ticket * */
             foreach ($booking->getTickets() as $ticket) {
-                $prixTicket = $this->calculTicketPriceAction($ticket, $booking);
+                $prixTicket = $this->ticketPriceCalculator->calculate($ticket, $booking);
 
                 $ticket->setPrix($prixTicket);
 
@@ -56,7 +67,7 @@ class BookingController extends Controller
             $ticketTotalCount = $ticketTotalCount + 0;
 
             // Limite de tickets(de visites) par jour au musée
-            $limitTicket = 15;
+            $limitTicket = 5;
 
             if ($ticketTotalCount >= $limitTicket) {
                 $this->addFlash('error', 'Le nombre maximum de visiteurs pour cette date est atteint, veuillez sélectionner une nouvelle date !');
@@ -84,44 +95,5 @@ class BookingController extends Controller
         return $this->render('@General/Default/booking.html.twig', ['form' => $formView]);
     }
 
-    private function calculTicketPriceAction(Ticket $ticket, Booking $booking): int
-    {
-        /** @var $dateDeNaissance \DateTime * */
-        $dateDeNaissance = $ticket->getDateNaissance();
-        $to = new \DateTime('today');
-        $age = $dateDeNaissance->diff($to)->y;
-        $price = 0;
-        $priceCoef = 1;
 
-        /* @var $tarifReduit Ticket **/
-
-        if ($booking->getType() == 'demi-journee') {
-            $priceCoef = Price::HALF_PRICE;
-        }
-
-        switch (true) {
-            case $age >= 4 && $age < 12:
-                $price = Price::CHILD_PRICE;
-                break;
-            case $age < 4:
-                $price = Price::FREE_PRICE;
-                break;
-            case $age >= 12 && $age < 60:
-                $price = Price::NORMAL_PRICE;
-                break;
-            case $age > 60:
-                $price = Price::SENIOR_PRICE;
-                break;
-            default:
-                break;
-        }
-
-        if ($ticket->isTarifReduit()) {
-            //Tarif réduit pour les personnes ayant un justificatif
-            $reducedPrice = Price::REDUCED_PRICE;
-            $price = min($price, $reducedPrice);
-        }
-
-        return $price * $priceCoef;
-    }
 }
