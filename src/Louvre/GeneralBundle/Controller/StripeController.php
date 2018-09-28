@@ -61,8 +61,15 @@ class StripeController extends Controller
             // vérifier que charge a la clé paid à true
             if ($charge->paid == true) {
                 // maj du statut de la commande booking
-                /* @var $booking Booking **/
+                /** @var $booking Booking */
                 $booking->setStatut(Booking::STATUT_PAIEMENT_ACCEPTE);
+
+                //on enregistre la commande en bdd
+                $em = $this->getDoctrine()->getManager();
+                //préparation à l'insertion dans la bdd
+                $em->persist($booking);
+                //envoi vers la bdd
+                $em->flush();
 
                 // associer l'id de transaction stripe à l'objet booking
 //                $charge->id;
