@@ -5,7 +5,6 @@ namespace Louvre\GeneralBundle\Controller;
 use Louvre\GeneralBundle\Entity\Booking;
 use Louvre\GeneralBundle\Entity\Ticket;
 use Louvre\GeneralBundle\Form\bookingType;
-use Louvre\GeneralBundle\Services\Price;
 use Louvre\GeneralBundle\Services\TicketPriceCalculator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,7 +36,7 @@ class BookingController extends Controller
         //si le formulaire a été soumis
         if ($form->isSubmitted() && $form->isValid()) {
             //Statut de la commande
-            /** @var $booking Booking * */
+            /** @var $booking Booking */
             $booking = $form->getData();
             $booking->setStatut(Booking::STATUT_EN_ATTENTE_DE_PAIEMENT);
 
@@ -48,7 +47,7 @@ class BookingController extends Controller
             //Calcul du prix du ticket
             $totalPrix = 0;
 
-            /** @var $ticket Ticket * */
+            /** @var $ticket Ticket */
             foreach ($booking->getTickets() as $ticket) {
                 $prixTicket = $this->ticketPriceCalculator->calculate($ticket, $booking);
 
