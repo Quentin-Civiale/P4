@@ -65,6 +65,27 @@ select {
     display: inherit !important;
 }
 
+.picker__weekday-display {
+    background-color: #ff6f00 !important;
+}
+
+.picker__date-display {
+    background-color: #ff8f00 !important;
+}
+
+.picker__day--selected {
+    background-color: #ff8f00 !important;
+}
+
+.picker__today {
+    color: #ff8f00 !important;
+}
+
+.picker__close {
+    color: #ff8f00 !important;
+}
+
+
 /* Affichage création de compte sur la page connexion */
 
 .account {
