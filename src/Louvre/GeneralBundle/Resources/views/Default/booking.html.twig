@@ -94,14 +94,17 @@
 
             <p>Choisissez la date et l'heure de votre visite au Musée du Louvre :</p>
             <div class="col offset-s4 s4">
-                {{ form_widget(form.date) }}
+
+                {{ form_label(form.date) }}
+                {{ form_widget(form.date, {
+                    'attr': {'class': 'datepicker'},
+                    })
+                }}
 
             </div>
             <div class="col offset-s2 s8">
                 <p>
                     Cochez le type de journée voulue :<br/>
-                    {#<input type="radio" name="day" id="journée" /> <label for="journée">Journée (de 9h à 18h)</label><br />#}
-                    {#<input type="radio" name="day" id="demi" /> <label for="demi">Demi-journée (de 14h à 18h)</label><br />#}
                     {{ form_widget(form.type) }}
                 </p>
                 <p></p>
@@ -126,13 +129,11 @@
                 <br/><hr/>
                 <h5>Billet N°1</h5>
                 <div class="col s12">
-                    {#{% set prototype_ticket = form.tickets.vars.prototype %}#}
-                        {#{{ form_row(prototype_ticket.nom) }}#}
-                        {#{{ form_row(prototype_ticket.prenom) }}#}
-                        {#{{ form_row(prototype_ticket.dateNaissance) }}#}
-                        {#{{ form_row(prototype_ticket.tarifReduit) }}#}
+
+                    {{ form_label(form.tickets) }}
                     {{ form_widget(form.tickets) }}
                     {{ form_errors(form.tickets) }}
+
                 </div>
             </div>
 

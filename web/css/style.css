@@ -69,6 +69,14 @@ select {
     background-color: #ff6f00 !important;
 }
 
+.picker__day.picker__day--today {
+    color: #ff6f00 !important;
+}
+
+.picker__day.picker__day--today.picker__day--selected {
+    color: #ffffff !important;
+}
+
 .picker__date-display {
     background-color: #ff8f00 !important;
 }
@@ -83,6 +91,15 @@ select {
 
 .picker__close {
     color: #ff8f00 !important;
+}
+
+.picker__select--month {
+    margin-left: 40px !important;
+}
+
+.picker__select--year {
+    margin-top: -32px !important;
+    margin-left: 150px !important;
 }
 
 

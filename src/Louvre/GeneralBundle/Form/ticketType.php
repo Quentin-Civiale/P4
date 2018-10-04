@@ -24,11 +24,10 @@ class ticketType extends AbstractType
                 'label' => 'Choix du pays',
             ])
             ->add('dateNaissance', BirthdayType::class, [
+                'attr' => array('class' => 'datepickerBirthday'),
                 'widget' => 'single_text',
                 'label' => 'Date de naissance',
-                'placeholder' => [
-                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
-                ],
+                'format' => 'dd/MM/yyyy',
             ])
             ->add('tarifReduit', CheckboxType::class, [
                 'label' => 'Tarif réduit *',
