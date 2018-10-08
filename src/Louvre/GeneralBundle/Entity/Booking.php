@@ -305,18 +305,17 @@ class Booking
      */
     public function validateVisitDate(ExecutionContextInterface $context)
     {
-        $dateTimeLimit = clone $this->date;
-        $dateTimeLimit->setTime(14, 0);
 
-//        var_dump($this->date);
-//        var_dump($dateTimeLimit);
-//        var_dump($this->type);
-//        die();
+        $now = new \DateTime('now');
+        $selectedDateHour = (int) $now->format('H');
 
-        if (($this->date > $dateTimeLimit) && $this->type === 'journee') {
+        if (($now->diff($this->date)->days === 0) && ($selectedDateHour >= 14) && $this->type === 'journee') {
             $context->buildViolation("L'heure limite de 14h00 étant dépassée, vous ne pouvez pas réservé pour la journée, mais uniquement pour la demi-journée !")
                 ->atPath('date')
                 ->addViolation();
         }
+
     }
+
+
 }

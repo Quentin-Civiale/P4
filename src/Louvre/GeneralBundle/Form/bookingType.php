@@ -21,7 +21,7 @@ class bookingType extends AbstractType
         $builder
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
-            ->add('date', DateType::class, [
+            ->add('date', DateTimeType::class, [
                  'attr' => array('class' => 'datepicker'),
                  'widget' => 'single_text',
                  'label' => 'Date de la visite',
