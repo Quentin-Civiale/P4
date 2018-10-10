@@ -38,24 +38,24 @@
                         <tbody>
                          <tr>
                              <th>Journée</th>
-                            <td>8€</td>
-                            <td>16€</td>
-                            <td>12€</td>
-                            <td>10€</td>
+                            <td>{{ child_price }}€</td>
+                            <td>{{ normal_price }}€</td>
+                            <td>{{ senior_price }}€</td>
+                            <td>{{ reduced_price }}€</td>
                          </tr>
                          <tr>
                              <th>Demi-journée</th>
-                             <td>4€</td>
-                             <td>8€</td>
-                             <td>6€</td>
-                             <td>5€</td>
+                             <td>{{ child_price * half_price }}€</td>
+                             <td>{{ normal_price * half_price }}€</td>
+                             <td>{{ senior_price * half_price }}€</td>
+                             <td>{{ reduced_price * half_price }}€</td>
                          </tr>
                          <tr>
                              <td></td>
-                            <td>de 4 ans à 12 ans <br/>(l’entrée est gratuite pour <br/>les enfants de moins de 4 ans)</td>
-                            <td>à partirde 12 ans</td>
-                            <td>à partir de 60 ans</td>
-                            <td>* tarif réservé sous présentation d'un justificatif <br/>(étudiant, employé du musée, d’un <br/>service du Ministère de la Culture, militaire…)</td>
+                            <td>{{ children }}<br>(l’entrée est gratuite pour les enfants de moins de 4 ans)</td>
+                            <td>{{ adult }}</td>
+                            <td>{{ senior }}</td>
+                            <td>{{ reduce }}<br>(étudiant, employé du musée, d’un service du Ministère de la Culture, militaire…)</td>
                          </tr>
                         </tbody>
                       </table>

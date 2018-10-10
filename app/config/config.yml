@@ -37,6 +37,20 @@ twig:
     strict_variables: '%kernel.debug%'
     form_themes:
         - 'materialize_form_theme.html.twig'
+    globals:
+        # price
+        reduced_price: 10
+        senior_price: 12
+        normal_price: 16
+        child_price: 8
+        half_price: 0.5
+        free_price: 0
+
+        # age
+        children: 'de 4 ans à 12 ans'
+        adult: 'à partir de 12 ans'
+        senior: 'à partir de 60 ans'
+        reduce: '* tarif réservé sous présentation d’un justificatif'
 
 # Doctrine Configuration
 doctrine:
