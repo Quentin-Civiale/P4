@@ -39,7 +39,7 @@ class TicketPriceCalculator
             case $age >= 12 && $age < 60:
                 $price = self::NORMAL_PRICE;
                 break;
-            case $age > 60:
+            case $age >= 60:
                 $price = self::SENIOR_PRICE;
                 break;
             default:
