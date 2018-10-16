@@ -4,18 +4,28 @@ namespace Louvre\GeneralBundle\Services;
 
 use Louvre\GeneralBundle\Entity\Booking;
 use Louvre\GeneralBundle\Entity\Ticket;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class TicketPriceCalculator
+class TicketPriceCalculator extends Controller
 {
-    const REDUCED_PRICE = 10;
-    const SENIOR_PRICE = 12;
-    const NORMAL_PRICE = 16;
-    const CHILD_PRICE = 8;
-    const HALF_PRICE = 1 / 2;
-    const FREE_PRICE = 0;
-
-    public function calculate(Ticket $ticket, Booking $booking): int
+    public function calculate(Ticket $ticket, Booking $booking, ContainerInterface $container): int
     {
+        $childPrice = $container->getParameter('child_price');
+        $normalPrice = $container->getParameter('normal_price');
+        $seniorPrice = $container->getParameter('senior_price');
+        $reducePrice = $container->getParameter('reduced_price');
+        $halfPrice = $container->getParameter('half_price');
+        $freePrice = $container->getParameter('free_price');
+
+        $childAgeMin = $container->getParameter('children.min');
+        $childAgeMax = $container->getParameter('children.max');
+        $adultAgeMin = $container->getParameter('adult.min');
+        $adultAgeMax = $container->getParameter('adult.max');
+        $seniorAgeMin = $container->getParameter('senior.min');
+        $seniorAgeMax = $container->getParameter('senior.max');
+
+
         /** @var $dateDeNaissance \DateTime * */
         $dateDeNaissance = $ticket->getDateNaissance();
         $to = new \DateTime('today');
@@ -26,21 +36,21 @@ class TicketPriceCalculator
         /* @var $tarifReduit Ticket **/
 
         if ($booking->getType() == 'demi-journee') {
-            $priceCoef = self::HALF_PRICE;
+            $priceCoef = $halfPrice;
         }
 
         switch (true) {
-            case $age >= 4 && $age < 12:
-                $price = self::CHILD_PRICE;
+            case $age >= $childAgeMin && $age < $childAgeMax:
+                $price = $childPrice;
                 break;
-            case $age < 4:
-                $price = self::FREE_PRICE;
+            case $age < $childAgeMin:
+                $price = $freePrice;
                 break;
-            case $age >= 12 && $age < 60:
-                $price = self::NORMAL_PRICE;
+            case $age >= $adultAgeMin && $age < $adultAgeMax:
+                $price = $normalPrice;
                 break;
-            case $age >= 60:
-                $price = self::SENIOR_PRICE;
+            case $age >= $seniorAgeMin:
+                $price = $seniorPrice;
                 break;
             default:
                 break;
@@ -48,7 +58,7 @@ class TicketPriceCalculator
 
         if ($ticket->isTarifReduit()) {
             //Tarif réduit pour les personnes ayant un justificatif
-            $reducedPrice = self::REDUCED_PRICE;
+            $reducedPrice = $reducePrice;
             $price = min($price, $reducedPrice);
         }
 

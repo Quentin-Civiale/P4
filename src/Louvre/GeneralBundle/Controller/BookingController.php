@@ -49,7 +49,7 @@ class BookingController extends Controller
 
             /** @var $ticket Ticket */
             foreach ($booking->getTickets() as $ticket) {
-                $prixTicket = $this->ticketPriceCalculator->calculate($ticket, $booking);
+                $prixTicket = $this->ticketPriceCalculator->calculate($ticket, $booking, $this->container);
 
                 $ticket->setPrix($prixTicket);
 

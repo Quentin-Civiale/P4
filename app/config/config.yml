@@ -39,17 +39,17 @@ twig:
         - 'materialize_form_theme.html.twig'
     globals:
         # price
-        reduced_price: 10
-        senior_price: 12
-        normal_price: 16
-        child_price: 8
-        half_price: 0.5
-        free_price: 0
+        reduced_price: %reduced_price%
+        senior_price: %senior_price%
+        normal_price: %normal_price%
+        child_price: %child_price%
+        half_price: %half_price%
+        free_price: %free_price%
 
         # age
-        children: 'de 4 ans à 12 ans'
-        adult: 'à partir de 12 ans'
-        senior: 'à partir de 60 ans'
+        children: 'de %children.min% à %children.max% ans'
+        adult: 'à partir de %adult.min% ans'
+        senior: 'à partir de %senior.min% ans'
         reduce: '* tarif réservé sous présentation d’un justificatif'
 
 # Doctrine Configuration
