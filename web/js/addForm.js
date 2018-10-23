@@ -4,6 +4,8 @@ var $collectionHolder;
 var $addTicketLink = $('<a href="#" class="add_ticket_link btn btn-default btn-sm amber darken-2 col offset-s4">Ajouter une personne<i class="material-icons right">person_add</i></a>');
 var $newLinkLi = $('<div></div>').append($addTicketLink);
 
+// configure le numéro du premier ticket à 1
+var ticketNumber = 1;
 
 function addTicketForm($collectionHolder, $newLinkLi) {
     // Récupère le prototype de données
@@ -19,13 +21,21 @@ function addTicketForm($collectionHolder, $newLinkLi) {
     // augmente l'index avec un pour l'élément suivant
     $collectionHolder.data('index', index + 1);
 
+    // Ajoute +1 à chaque nouveau ticket de la vue
+    ticketNumber++;
+
     // Affiche le formulaire dans un div, avant le lien et après chaque nouvel ajout de billets
-    var $newFormLi = $('<div class="ticketForm"><br/><br/><hr/><h5>Billet N°</h5></div>').append(newForm);
+    var $newFormLi = $('<div class="ticketForm"><br/><br/><hr/><h5>Billet N°'+ticketNumber+'</h5></div>').append(newForm);
 
     $newLinkLi.before($newFormLi);
 
     // Ajoute un lien de suppression au nouveau formulaire
     addTicketFormDeleteLink($newFormLi);
+
+    // Initialise l'affichage du datepicker.birthday
+    $('#booking_tickets_'+(ticketNumber+8)+'_dateNaissance').pickadate(
+        ticketDisableDate
+    );
 }
 
 
