@@ -15,12 +15,12 @@ class TicketRepository extends EntityRepository
 {
     public function getTodayTicketsCount(\DateTime $dateTime)
     {
-        // stocker dans 1 var la date du jour à 00:00
+        // stocker dans une var la date du jour à 00:00
         $startOfDay = clone $dateTime;
         $startOfDay->setTime(0, 0, 0);
         $startOfDay->format('d/m/Y H:i:s');
 
-        // stocker dans 1 autre var la date du jour à 23h59
+        // stocker dans une autre var la date du jour à 23h59
         $endOfDay = clone $dateTime;
         $endOfDay->setTime(23, 59, 59);
         $endOfDay->format('d/m/Y H:i:s');
@@ -30,7 +30,7 @@ class TicketRepository extends EntityRepository
             ->createQueryBuilder('ticket')
             ->select('COUNT(ticket)')
 
-            // faire une jointure avec l'ent booking
+            // faire une jointure avec l'entité booking
             ->innerJoin('ticket.booking', 'booking')
 
             // rajouter la clause where qui check si la date est entre 00:00 et 23h59
