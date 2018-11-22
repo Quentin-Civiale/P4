@@ -102,6 +102,62 @@
                 }}
 
             </div>
+
+            {#<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>#}
+            <script>
+                // récupération de la date sélectionnée
+                var currentDate = document.getElementById("booking_date").value;
+
+                // addEventListener ne fonctionnant pas avec la création d'un input avec id réalisé par materialize,
+                // il a fallut créer une fonction setInterval afin d'appeler la fonction checkDate pour vérifier le changement de date dans le picker
+                window.setInterval(function () {
+                    var newDate = document.getElementById("booking_date").value;
+                    if (currentDate !== newDate) {
+                        checkDate();
+                    }
+                    currentDate = newDate;
+                }, 1000);
+
+                function checkDate () {
+
+                    // window.onload = function () {
+
+                        var visitDate = document.getElementById("booking_date").value;
+
+                            var regex = /\//gm;
+                            var str = visitDate;
+                            var subst = `-`;
+
+                            // Remplacement des slash par des tirets dans l' affichage url de la date de visite
+                            visitDate = str.replace(regex, subst);
+
+                        // création d'une url pour récupérer des données (nombre de tickets par jour) de la bdd
+                        var url = "{{ app.request.getBaseURL()}}/louvre/billetterie/selection/visite/" + visitDate;
+
+                        // mise en place d'ajax pour afficher des messages sans réactualiser la page
+                        $.get(url, function(data) {
+                            var result = JSON.parse(data);
+
+                            console.log(result.remain);
+
+                            if (result.remain == 0){
+                                document.getElementById("checkDateMessage").innerHTML = "<div class=\"errorDate\">Le nombre maximum de visiteurs pour ce jour est atteint, veuillez sélectionner une nouvelle date !</div>";
+                            }
+                            else {
+                                document.getElementById("checkDateMessage").innerHTML = "<div class=\"successDate\">Il reste " + result.remain + " places pour cette date !</div>";
+                            }
+                        });
+
+                    // }
+
+                }
+            </script>
+
+            <div class="col offset-s2 s8">
+                <div id="checkDateMessage" class="successDate"></div>
+                <div id="checkDateMessage" class="errorDate"></div>
+            </div>
+
             <div class="col offset-s2 s8">
                 <p>
                     Cochez le type de journée voulue :<br/>
@@ -109,6 +165,8 @@
                 </p>
                 <p></p>
             </div>
+
+
         </div>
     </div>
 

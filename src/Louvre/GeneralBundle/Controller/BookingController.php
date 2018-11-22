@@ -8,6 +8,7 @@ use Louvre\GeneralBundle\Form\bookingType;
 use Louvre\GeneralBundle\Services\TicketPriceCalculator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class BookingController extends Controller
 {
@@ -94,5 +95,31 @@ class BookingController extends Controller
         return $this->render('@General/Default/booking.html.twig', ['form' => $formView]);
     }
 
+    public function checkingDateAction($date) {
+
+        $repository = $this->getDoctrine()->getRepository('GeneralBundle:Booking');
+        $formatTypeDate = new \DateTime($date);
+        $visitDate = $repository->findBy(['date' => $formatTypeDate ]);
+
+        $repository = $this->getDoctrine()->getRepository('GeneralBundle:Ticket');
+        $formatTypeDate = new \DateTime($date);
+        $ticketTotalCount = $repository->getTodayTicketsCount($formatTypeDate);
+
+        $limitTicket = 5;
+
+        $remainTicket = $limitTicket - $ticketTotalCount;
+
+        if ($ticketTotalCount >= $limitTicket) {
+            $data = '{"remain" :0}';
+        } else {
+            $data = '{"remain" :'.$remainTicket.'}';
+        }
+
+        $response = new Response();
+        $response->setContent($data);
+
+        return $response;
+
+    }
 
 }

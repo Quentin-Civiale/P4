@@ -11,7 +11,7 @@ general_homepage:
 #    defaults: { _controller: GeneralBundle:Ticket:ticketForm }
     
 selection:
-    path:     /louvre/billetterie/selection
+    path:     /louvre/billetterie/selection/
     defaults: { _controller: GeneralBundle:Booking:bookingForm }
     
 recapitulatif:
@@ -38,6 +38,13 @@ connexion:
 deconnexion:
     path:     /louvre/deconnexion
     defaults: { _controller: GeneralBundle:Security:logout}
+
+
+
+
+check_date:
+    path:     /louvre/billetterie/selection/visite/{date}/
+    defaults: { _controller: GeneralBundle:Booking:checkingDate }
 
 
 

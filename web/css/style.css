@@ -130,9 +130,33 @@ select {
     text-align: center;
 }
 
+#successDate {
+    color: green;
+    text-align: center;
+    background-color: #aed581;
+}
+
+.successDate {
+    color: green;
+    text-align: center;
+    background-color: #aed581;
+}
+
 /* Message date de commande non valide */
 
 .error {
+    color: red;
+    text-align: center;
+    background-color: #ffcdd2;
+}
+
+#errorDate {
+    color: red;
+    text-align: center;
+    background-color: #ffcdd2;
+}
+
+.errorDate {
     color: red;
     text-align: center;
     background-color: #ffcdd2;
