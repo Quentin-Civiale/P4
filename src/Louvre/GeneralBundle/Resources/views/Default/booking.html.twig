@@ -142,9 +142,11 @@
 
                             if (result.remain == 0){
                                 document.getElementById("checkDateMessage").innerHTML = "<div class=\"errorDate\">Le nombre maximum de visiteurs pour ce jour est atteint, veuillez sélectionner une nouvelle date !</div>";
+                                document.getElementById("bookingButton").setAttribute("disabled", "disabled");
                             }
                             else {
                                 document.getElementById("checkDateMessage").innerHTML = "<div class=\"successDate\">Il reste " + result.remain + " places pour cette date !</div>";
+                                document.getElementById("bookingButton").removeAttribute("disabled");
                             }
                         });
 
@@ -220,7 +222,7 @@
 
     <div class="row">
         <div class="col offset-s8 s2">
-            <button class="btn waves-effect waves-light amber darken-2" type="submit">Commander<i class="material-icons right">send</i></button>
+            <button id="bookingButton" class="btn waves-effect waves-light amber darken-2" type="submit">Commander<i class="material-icons right">send</i></button>
         </div>
     </div>
 
