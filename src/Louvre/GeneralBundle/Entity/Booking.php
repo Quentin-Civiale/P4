@@ -305,11 +305,10 @@ class Booking
      */
     public function validateVisitDate(ExecutionContextInterface $context)
     {
-
         $now = new \DateTime('now');
         $selectedDateHour = (int) $now->format('H');
 
-        if (($now->diff($this->date)->days === 0) && ($selectedDateHour >= 14) && $this->type === 'journee') {
+        if (($now = $this->date) && ($selectedDateHour >= 14) && $this->type === 'journee') {
             $context->buildViolation("L'heure limite de 14h00 étant dépassée, vous ne pouvez pas réservé pour la journée, mais uniquement pour la demi-journée !")
                 ->atPath('date')
                 ->addViolation();
