@@ -106,7 +106,7 @@
             {#<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>#}
             <script>
                 // récupération de la date sélectionnée
-                var currentDate = document.getElementById("booking_date").value;
+                var currentDate = null;
 
                 // addEventListener ne fonctionnant pas avec la création d'un input avec id réalisé par materialize,
                 // il a fallut créer une fonction setInterval afin d'appeler la fonction checkDate pour vérifier le changement de date dans le picker
@@ -136,16 +136,18 @@
 
                         // mise en place d'ajax pour afficher des messages sans réactualiser la page
                         $.get(url, function(data) {
-                            var result = JSON.parse(data);
+                            var ticketLimit = 5;
+                            var ticketAvailable = JSON.parse(data);
 
-                            console.log(result.remain);
+                            console.log(ticketLimit);
+                            console.log(ticketAvailable.available);
 
-                            if (result.remain == 0){
+                            if (ticketAvailable.available == 0){
                                 document.getElementById("checkDateMessage").innerHTML = "<div class=\"errorDate\">Le nombre maximum de visiteurs pour ce jour est atteint, veuillez sélectionner une nouvelle date !</div>";
                                 document.getElementById("bookingButton").setAttribute("disabled", "disabled");
                             }
                             else {
-                                document.getElementById("checkDateMessage").innerHTML = "<div class=\"successDate\">Il reste " + result.remain + " places pour cette date !</div>";
+                                document.getElementById("checkDateMessage").innerHTML = "<div class=\"successDate\">Il reste " + ticketAvailable.available + " places pour cette date !</div>";
                                 document.getElementById("bookingButton").removeAttribute("disabled");
                             }
                         });
@@ -185,15 +187,17 @@
                 {#</div>#}
             {#</div>#}
 
-            <div class="row">
-                <br/><hr/>
-                <h5>Billet N°1</h5>
-                <div class="col s12">
+            <div class="ticketForm">
+                <div class="row">
+                    <br/><hr/>
+                    <h5>Billet N°1</h5>
+                    <div class="col s12">
 
-                    {{ form_label(form.tickets) }}
-                    {{ form_widget(form.tickets) }}
-                    {{ form_errors(form.tickets) }}
+                        {{ form_label(form.tickets) }}
+                        {{ form_widget(form.tickets) }}
+                        {{ form_errors(form.tickets) }}
 
+                    </div>
                 </div>
             </div>
 

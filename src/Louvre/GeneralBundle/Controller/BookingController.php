@@ -107,12 +107,12 @@ class BookingController extends Controller
 
         $limitTicket = 5;
 
-        $remainTicket = $limitTicket - $ticketTotalCount;
+        $availableTicket = $limitTicket - $ticketTotalCount;
 
         if ($ticketTotalCount >= $limitTicket) {
-            $data = '{"remain" :0}';
+            $data = '{"available" :0}';
         } else {
-            $data = '{"remain" :'.$remainTicket.'}';
+            $data = '{"available" :'.$availableTicket.'}';
         }
 
         $response = new Response();
