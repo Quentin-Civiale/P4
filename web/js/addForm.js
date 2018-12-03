@@ -1,7 +1,7 @@
 var $collectionHolder;
 
 // configure le lien "Ajouter une personne"
-var $addTicketLink = $('<a href="#" class="add_ticket_link btn btn-default btn-sm amber darken-2 col offset-s4">Ajouter une personne<i class="material-icons right">person_add</i></a>');
+var $addTicketLink = $('<a href="#"  id="addTicketButton" class="add_ticket_link btn btn-default btn-sm amber darken-2 col offset-s4">Ajouter une personne<i class="material-icons right">person_add</i></a>');
 var $newLinkLi = $('<div></div>').append($addTicketLink);
 
 // configure le numéro du premier ticket à 1
@@ -60,7 +60,7 @@ jQuery(document).ready(function() {
 
 
 function addTicketFormDeleteLink($ticketFormLi) {
-    var $removeTicketLink = $('<a href="#" class="remove_ticket_link btn btn-default btn-sm red darken-2 col offset-s4">Supprimer ce billet<i class="material-icons right">close</i></a>');
+    var $removeTicketLink = $('<a href="#" class="remove_ticket_link btn btn-default btn-sm red darken-2 col offset-s4" style="margin-left: 34.5%"> Supprimer ce billet<i class="material-icons right">close</i></a><br/><br/>');
     $ticketFormLi.append($removeTicketLink);
 
     $removeTicketLink.on('click', function(e) {
@@ -69,6 +69,12 @@ function addTicketFormDeleteLink($ticketFormLi) {
 
         // supprimer le formulaire ticket
         $ticketFormLi.remove();
+
+        // Reduit de 1 à chaque suppression de ticket sur la commande
+        ticketNumber--;
+
+        document.getElementsByClassName("ticketForm").innerHTML = "<h5>Billet N°"+ticketNumber+"</h5>";
+
     });
 }
 
