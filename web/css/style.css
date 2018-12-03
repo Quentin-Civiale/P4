@@ -175,6 +175,14 @@ select {
     text-align: center !important;
 }
 
+/* Numérotation du billet visiteur */
+
+.ticketForm {
+    margin-top: 10px;
+    border-top: black solid 1px;
+    padding-top: 10px;
+}
+
 /*Media queries*/
 
 /* Fond pour menu hamburger */
@@ -216,5 +224,9 @@ select {
         margin-right: 10% !important;
     }
 
+
+
 }
+
+
 
