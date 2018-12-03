@@ -25,7 +25,7 @@ function addTicketForm($collectionHolder, $newLinkLi) {
     ticketNumber++;
 
     // Affiche le formulaire dans un div, avant le lien et après chaque nouvel ajout de billets
-    var $newFormLi = $('<div class="ticketForm"><br/><br/><hr/><h5>Billet N°'+ticketNumber+'</h5></div>').append(newForm);
+    var $newFormLi = $('<div><div class="ticketForm"><h5>Billet N°'+ticketNumber+'</h5></div></div>').append(newForm);
 
     $newLinkLi.before($newFormLi);
 
@@ -73,7 +73,11 @@ function addTicketFormDeleteLink($ticketFormLi) {
         // Reduit de 1 à chaque suppression de ticket sur la commande
         ticketNumber--;
 
-        document.getElementsByClassName("ticketForm").innerHTML = "<h5>Billet N°"+ticketNumber+"</h5>";
+        var tickets = document.getElementsByClassName("ticketForm");
+        for (var i = 0; i< tickets.length; i++)
+        {
+            tickets[i].innerHTML = "<h5>Billet N°"+(i+1)+"</h5>";
+        }
 
     });
 }
