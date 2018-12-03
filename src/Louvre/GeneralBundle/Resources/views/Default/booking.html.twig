@@ -128,8 +128,8 @@
                             var str = visitDate;
                             var subst = `-`;
 
-                            // Remplacement des slash par des tirets dans l' affichage url de la date de visite
-                            visitDate = str.replace(regex, subst);
+                        // Remplacement des slash par des tirets dans l' affichage url de la date de visite
+                        visitDate = str.replace(regex, subst);
 
                         // création d'une url pour récupérer des données (nombre de tickets par jour) de la bdd
                         var url = "{{ app.request.getBaseURL()}}/louvre/billetterie/selection/visite/" + visitDate;
@@ -142,7 +142,7 @@
                             console.log(ticketLimit);
                             console.log(ticketAvailable.available);
 
-                            if (ticketAvailable.available == 0){
+                            if (ticketAvailable.available == 0) {
                                 document.getElementById("checkDateMessage").innerHTML = "<div class=\"errorDate\">Le nombre maximum de visiteurs pour ce jour est atteint, veuillez sélectionner une nouvelle date !</div>";
                                 document.getElementById("bookingButton").setAttribute("disabled", "disabled");
                             }
@@ -150,10 +150,52 @@
                                 document.getElementById("checkDateMessage").innerHTML = "<div class=\"successDate\">Il reste " + ticketAvailable.available + " places pour cette date !</div>";
                                 document.getElementById("bookingButton").removeAttribute("disabled");
                             }
+
                         });
 
                     // }
 
+                }
+
+                window.setInterval(function () {
+                    var selectedTicket = document.getElementsByClassName("ticketForm").length;
+                    var ticketAvailable = null;
+                    if (selectedTicket !== ticketAvailable) {
+                        checkSelectedTicket();
+                    }
+                }, 5000);
+
+                function checkSelectedTicket () {
+
+                    var visitDate = document.getElementById("booking_date").value;
+
+                        var regex = /\//gm;
+                        var str = visitDate;
+                        var subst = `-`;
+
+                    // Remplacement des slash par des tirets dans l' affichage url de la date de visite
+                    visitDate = str.replace(regex, subst);
+
+                    // création d'une url pour récupérer des données (nombre de tickets par jour) de la bdd
+                    var url = "{{ app.request.getBaseURL()}}/louvre/billetterie/selection/visite/" + visitDate;
+
+                    // mise en place d'ajax pour afficher des messages sans réactualiser la page
+                    $.get(url, function(data) {
+                        var selectedTicket = document.getElementsByClassName("ticketForm").length;
+                        var ticketAvailable = JSON.parse(data);
+
+                        console.log(selectedTicket);
+                        console.log(ticketAvailable.available);
+
+                        if ((selectedTicket == ticketAvailable.available) || (ticketAvailable.available == 0)) {
+                            document.getElementById("checkSelectedTicket").innerHTML = "<div class=\"errorDate\">Il n'y a plus assez de tickets disponibles pour cette date !</div>";
+                            document.getElementById("addTicketButton").setAttribute("disabled", "disabled");
+                        }
+                        else {
+                            document.getElementById("checkSelectedTicket").innerHTML = "<div></div>";
+                            document.getElementById("addTicketButton").removeAttribute("disabled");
+                        }
+                    });
                 }
             </script>
 
@@ -200,6 +242,14 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col offset-s2 s8">
+                <div id="checkSelectedTicket" class="successDate"></div>
+                <div id="checkSelectedTicket" class="errorDate"></div>
+            </div>
+
+            <br/>
+            <br/>
 
         </div>
     </div>
