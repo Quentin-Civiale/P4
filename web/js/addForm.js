@@ -36,6 +36,8 @@ function addTicketForm($collectionHolder, $newLinkLi) {
     $('#booking_tickets_'+(ticketNumber+8)+'_dateNaissance').pickadate(
         ticketDisableDate
     );
+
+    checkDate();
 }
 
 
@@ -80,6 +82,8 @@ function addTicketFormDeleteLink($ticketFormLi) {
         }
 
     });
+
+    checkDate();
 }
 
 
