@@ -183,6 +183,14 @@ select {
     padding-top: 10px;
 }
 
+sup {
+    display: none;
+}
+
+#addInfo {
+    display: none;
+}
+
 /*Media queries*/
 
 /* Fond pour menu hamburger */
@@ -224,7 +232,31 @@ select {
         margin-right: 10% !important;
     }
 
+    /*Page d'accueil*/
 
+#hide {
+    display: none;
+}
+
+#expand {
+    width: 83% !important;
+}
+
+    /*Inscription*/
+
+h1 {
+    font-size: 250%;
+}
+
+    /*Connexion*/
+
+sup {
+    display: inline;
+}
+
+#addInfo {
+    display: inline;
+}
 
 }
 
