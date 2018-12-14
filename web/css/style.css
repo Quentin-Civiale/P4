@@ -183,6 +183,8 @@ select {
     padding-top: 10px;
 }
 
+    /*Tableau des tarifs*/
+
 sup {
     display: none;
 }
@@ -248,7 +250,7 @@ h1 {
     font-size: 250%;
 }
 
-    /*Connexion*/
+    /*Tableau des tarifs*/
 
 sup {
     display: inline;
@@ -256,6 +258,16 @@ sup {
 
 #addInfo {
     display: inline;
+}
+
+    /*Vue de la commande*/
+
+h3 {
+    font-size: 250%;
+}
+
+h4 {
+    font-size: 200%;
 }
 
 }

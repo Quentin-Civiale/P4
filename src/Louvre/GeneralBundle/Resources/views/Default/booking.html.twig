@@ -18,47 +18,54 @@
 {% endblock %}
 
 {% block tarifs %}
-   
-    <div class="part"> 
+
+    <div class="part">
         <div class="row">
             <div class="col offset-s1 s10 grey lighten-2 z-depth-5">
-                    <h4>Nos tarifs</h4>
-                    <br/>                    
-                      <table class="centered">
-                        <thead>
-                          <tr>
-                              <th>Type de visite</th>
-                              <th>Enfant</th>
-                              <th>Normal</th>
-                              <th>Sénior</th>
-                              <th>Réduit</th>
-                          </tr>
-                        </thead>
+                <h4>Nos tarifs</h4>
+                <br/>
+                <table class="centered">
+                    <thead>
+                    <tr>
+                        <th>Type de visite</th>
+                        <th>Enfant<sup>1</sup></th>
+                        <th>Normal<sup>2</sup></th>
+                        <th>Sénior<sup>3</sup></th>
+                        <th>Réduit<span id="hide">*</span><sup>4</sup></th>
+                    </tr>
+                    </thead>
 
-                        <tbody>
-                         <tr>
-                             <th>Journée</th>
-                            <td>{{ child_price }}€</td>
-                            <td>{{ normal_price }}€</td>
-                            <td>{{ senior_price }}€</td>
-                            <td>{{ reduced_price }}€</td>
-                         </tr>
-                         <tr>
-                             <th>Demi-journée</th>
-                             <td>{{ child_price * half_price }}€</td>
-                             <td>{{ normal_price * half_price }}€</td>
-                             <td>{{ senior_price * half_price }}€</td>
-                             <td>{{ reduced_price * half_price }}€</td>
-                         </tr>
-                         <tr>
-                             <td></td>
-                            <td>{{ children }}<br>(l’entrée est gratuite pour <br>les enfants de moins de 4 ans)</td>
-                            <td>{{ adult }}</td>
-                            <td>{{ senior }}</td>
-                            <td>{{ reduce }}<br>(étudiant, employé du musée, <br>d’un service du Ministère de la Culture, militaire…)</td>
-                         </tr>
-                        </tbody>
-                      </table>
+                    <tbody>
+                    <tr>
+                        <th>Journée</th>
+                        <td>{{ child_price }}€</td>
+                        <td>{{ normal_price }}€</td>
+                        <td>{{ senior_price }}€</td>
+                        <td>{{ reduced_price }}€</td>
+                    </tr>
+                    <tr>
+                        <th>Demi-journée</th>
+                        <td>{{ child_price * half_price }}€</td>
+                        <td>{{ normal_price * half_price }}€</td>
+                        <td>{{ senior_price * half_price }}€</td>
+                        <td>{{ reduced_price * half_price }}€</td>
+                    </tr>
+                    <tr id="hide">
+                        <td></td>
+                        <td>{{ children }}<br>(l’entrée est gratuite pour les enfants de moins de 4 ans)</td>
+                        <td>{{ adult }}</td>
+                        <td>{{ senior }}</td>
+                        <td>{{ reduce }}<br>(étudiant, employé du musée, d’un service du Ministère de la Culture, militaire…)</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="addInfo" class="col offset-s1 s10">
+                <p><sup>1</sup> de 4 à 12 ans (l’entrée est gratuite pour les enfants de moins de 4 ans)</p>
+                <p><sup>2</sup> à partir de 12 ans</p>
+                <p><sup>3</sup> à partir de 60 ans</p>
+                <p><sup>4</sup> tarif réservé sous présentation d’un justificatif (étudiant, employé du musée, d’un service du Ministère de la Culture, militaire…)</p>
             </div>
         </div>
     </div>
