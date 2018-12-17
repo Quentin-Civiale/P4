@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BookingSummaryController extends Controller
 {
-    public function bookingSummaryAction(Booking $booking, Ticket $ticket)
+    public function bookingSummaryAction(Booking $booking)
     {
         $repository = $this->getDoctrine()->getRepository('GeneralBundle:Ticket');
         $ticket = $repository->findBy(['booking' => $booking->getId()]);
