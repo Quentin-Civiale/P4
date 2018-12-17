@@ -4,6 +4,7 @@ namespace Louvre\GeneralBundle\Form;
 
 use Louvre\GeneralBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -21,7 +22,8 @@ class UserRegistrationFormType extends AbstractType
             ->add('email', EmailType::class)
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-            ]);
+            ])
+            ->add('registration', CheckboxType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)

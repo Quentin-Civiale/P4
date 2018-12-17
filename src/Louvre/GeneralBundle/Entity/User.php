@@ -17,9 +17,11 @@ class User implements UserInterface
     const ROLE_DEFAULT = 'ROLE_USER';
 
     /**
+     * @var int
+     *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="id", type="integer")
      */
     private $id;
 
@@ -50,6 +52,15 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @var bool
+     *
+     * @Assert\NotBlank(message="Merci de confirmer que vous acceptez les conditions générales d'utilisation du service en cochant la case !")
+     *
+     * @ORM\Column(name="registration", type="boolean", options={"default":false})
+     */
+    private $registration = false;
 
     /**
      * @var string
@@ -141,6 +152,24 @@ class User implements UserInterface
     public function setEmail($email)
     {
         $this->email = $email;
+    }
+
+    /**
+     * Set $registration
+     *
+     * @param bool $registration
+     */
+    public function setRegistration(bool $registration)
+    {
+        $this->registration = $registration;
+    }
+
+    /**
+     * @return \bool
+     */
+    public function isRegistration(): bool
+    {
+        return $this->registration;
     }
 
     public function getRole(): string
