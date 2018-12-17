@@ -193,6 +193,14 @@ sup {
     display: none;
 }
 
+#paymentMobile {
+    display: none;
+}
+
+#newBookingMobile {
+    display: none;
+}
+
 /*Media queries*/
 
 /* Fond pour menu hamburger */
@@ -268,6 +276,24 @@ h3 {
 
 h4 {
     font-size: 200%;
+}
+
+#paymentWeb {
+    display: none;
+}
+
+#paymentMobile {
+    display: block !important;
+    margin-left: 40%;
+}
+
+#newBookingWeb {
+    display: none;
+}
+
+#newBookingMobile {
+    display: block !important;
+    margin-left: 40%;
 }
 
 }

@@ -26,7 +26,7 @@
     </div>
 
     <div class="row">
-        <div class="col offset-s2">
+        <div class="col offset-s2 s8">
             <p>Paiement accepté et pris en compte par nos services.</p>
             <p>Votre commande a bien été validé par nos services, vous recevrez d'ici quelques minutes dans votre boîte mail, la ou les place(s) que vous avez commandé pécédemment.<br/>
                 Merci de votre achat et nous vous souhaitons une bonne visite au sein du Musée du Louvre.<br/></p>
@@ -38,10 +38,18 @@
 
 {% block logout %}
 
-    <div class="row">
+    <div id="newBookingWeb" class="row">
         <div class="col offset-s8 s4">
             <a class="waves-effect waves-light btn amber darken-2" href="{{ path('selection') }}"><i class="material-icons right">store</i>Commander à nouveau</a>
         </div>
     </div>
+
+    <div id="newBookingMobile">
+        {#<div class="col offset-s8 s4">#}
+            <a class="waves-effect waves-light btn amber darken-2" href="{{ path('selection') }}">Nouvel achat</a>
+        {#</div>#}
+    </div>
+
+    <br>
 
 {% endblock %}

@@ -28,10 +28,10 @@
                     <thead>
                     <tr>
                         <th>Type de visite</th>
-                        <th>Enfant</th>
-                        <th>Normal</th>
-                        <th>Sénior</th>
-                        <th>Réduit</th>
+                        <th>Enfant<sup>1</sup></th>
+                        <th>Normal<sup>2</sup></th>
+                        <th>Sénior<sup>3</sup></th>
+                        <th>Réduit<span id="hide">*</span><sup>4</sup></th>
                     </tr>
                     </thead>
 
@@ -50,7 +50,7 @@
                         <td>{{ senior_price * half_price }}€</td>
                         <td>{{ reduced_price * half_price }}€</td>
                     </tr>
-                    <tr>
+                    <tr id="hide">
                         <td></td>
                         <td>{{ children }}<br>(l’entrée est gratuite pour les enfants de moins de 4 ans)</td>
                         <td>{{ adult }}</td>
@@ -59,6 +59,13 @@
                     </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <div id="addInfo" class="col offset-s1 s10">
+                <p><sup>1</sup> de 4 à 12 ans (l’entrée est gratuite pour les enfants de moins de 4 ans)</p>
+                <p><sup>2</sup> à partir de 12 ans</p>
+                <p><sup>3</sup> à partir de 60 ans</p>
+                <p><sup>4</sup> tarif réservé sous présentation d’un justificatif (étudiant, employé du musée, d’un service du Ministère de la Culture, militaire…)</p>
             </div>
         </div>
     </div>
@@ -76,7 +83,7 @@
     <div class="row">
         <div class="col offset-s1 s10">
             {#{% for booking in booking %}#}
-                <p>
+
                     {#ajout d'un message lors de l'enregistrement ou la modification d'une commande#}
                     {% for message in app.flashes('notice') %}
                         <div class="card-panel light-green lighten-2">
@@ -154,14 +161,20 @@
                     <a href="{{ path('modification', {'id':booking.id}) }}">Modifier la commande</a>
                     <hr/>
 
-                    <div class="row">
+                    <div id="paymentWeb" class="row">
                         <div class="col offset-s9 s3">
-                            <a class="waves-effect waves-light btn amber darken-2" href="{{ path('order_prepare', {'id':booking.id}) }}"><i class="material-icons left">payment</i>Payer votre commande</a>
+                            <a class="waves-effect waves-light btn amber darken-2" href="{{ path('order_prepare', {'id':booking.id}) }}"><i class="material-icons left">payment</i>Paiement</a>
                         </div>
                     </div>
-                </p>
+
             {#{% endfor %}#}
         </div>
     </div>
+
+    <div id="paymentMobile">
+        <a class="waves-effect waves-light btn amber darken-2" href="{{ path('order_prepare', {'id':booking.id}) }}"><i class="material-icons left">payment</i>Payer</a>
+    </div>
+
+    <br>
 
 {% endblock %}
