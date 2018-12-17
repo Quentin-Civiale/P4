@@ -98,7 +98,7 @@ class Booking
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="Louvre\GeneralBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Louvre\GeneralBundle\Entity\User", inversedBy="booking", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
@@ -308,7 +308,7 @@ class Booking
         $now = new \DateTime('now');
         $selectedDateHour = (int) $now->format('H');
 
-        if (($now = $this->date) && ($selectedDateHour >= 14) && $this->type === 'journee') {
+        if (($now->diff($this->date)->days === 0) && ($selectedDateHour >= 14) && $this->type === 'journee') {
             $context->buildViolation("L'heure limite de 14h00 étant dépassée, vous ne pouvez pas réservé pour la journée, mais uniquement pour la demi-journée !")
                 ->atPath('date')
                 ->addViolation();
