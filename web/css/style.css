@@ -1,17 +1,27 @@
-/* label color nom prenom email */
 
-/*
-.input-field label {
+        /*Personnnalisation du css materialize sur les form*/
+
+    /* Sup text (exposant)*/
+
+
+[type="text"]:focus:not([readonly]) + label {
     color: #ff8f00 !important;
 }
-*/
 
-/*Personnnalisation du css materialize sur les form*/
-/* label underline focus color */
+[type="email"]:focus:not([readonly]) + label {
+    color: #ff8f00 !important;
+}
+
+[type="password"]:focus:not([readonly]) + label {
+    color: #ff8f00 !important;
+}
+
+    /* label underline focus color */
 
 .input-field input[type=text]:focus {
     border-bottom: 1px solid #ff8f00 !important;
     box-shadow: 0 1px 0 0 #ff8f00 !important;
+    /*color: #ff8f00 !important;*/
 }
 
 .input-field input[type=date]:focus {
@@ -39,9 +49,14 @@
     box-shadow: 0 1px 0 0 #ff8f00 !important;
 }
 
+.input-field input[type=password]:focus {
+    border-bottom: 1px solid #ff8f00 !important;
+    box-shadow: 0 1px 0 0 #ff8f00 !important;
+}
+
 /* Checkbox color */
 
-.checkbox[type="checkbox"].filled-in:checked + label:after {
+[type="checkbox"].filled-in:checked + label:after {
     border: 2px solid #ff8f00;
     background-color: #ff8f00;
 }
@@ -189,21 +204,17 @@ sup {
     display: none;
 }
 
-    /*Boutons de sélection*/
-
 #addInfo {
     display: none;
 }
 
-#paymentMobile {
+    /*Boutons de sélection*/
+
+#registrationButtonMobile {
     display: none;
 }
 
-#newBookingMobile {
-    display: none;
-}
-
-#bookingButtonMobile {
+#loginButtonMobile {
     display: none;
 }
 
@@ -215,11 +226,7 @@ sup {
     display: none;
 }
 
-#registrationButtonMobile {
-    display: none;
-}
-
-#loginButtonMobile {
+#bookingButtonMobile {
     display: none;
 }
 
@@ -227,9 +234,18 @@ sup {
     display: none;
 }
 
-/*Media queries*/
+#paymentMobile {
+    display: none;
+}
 
-/* Fond pour menu hamburger */
+#newBookingMobile {
+    display: none;
+}
+
+        /*Media queries*/
+
+    /* Fond pour menu hamburger */
+
 .side-nav {
     background-color: #ffb300 !important;
 }
@@ -255,6 +271,7 @@ sup {
     }
 
     /* Css Bouton formulaire */
+
     .row .col.offset-s4 {
         margin-left: 25% !important;
     }
