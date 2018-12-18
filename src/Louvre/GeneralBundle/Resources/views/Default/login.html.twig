@@ -71,17 +71,15 @@
                     {{ form_row(form._username) }}
                     {{ form_row(form._password) }}
 
-                    <div class="row">
+                    <div id="loginButtonWeb" class="row">
                         <div class="col offset-s8 s2">
                             <button class="btn waves-effect waves-light amber darken-2" type="submit">Connexion<i class="material-icons right">send</i></button>
                         </div>
                     </div>
 
-                {#<div class="newAccount">#}
-                    {#<h4>Nouveau sur le site du Louvre ? </h4> <br/>#}
-                    {#<button class="btn waves-effect waves-light amber darken-2" type="submit"><a href="{{ path('register') }}">Créer votre compte</a></button> <br/>#}
-                    {#<a href="{{ path('register') }}"><input type="button" class="btn waves-effect waves-light amber darken-2" value="Créer votre compte"/></a>#}
-                {#</div>#}
+                    <div id="loginButtonMobile" class="row">
+                        <button class="btn waves-effect waves-light amber darken-2" type="submit">Connexion</button>
+                    </div>
 
                 {{ form_end(form) }}
             </div>

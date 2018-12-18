@@ -189,6 +189,8 @@ sup {
     display: none;
 }
 
+    /*Boutons de sélection*/
+
 #addInfo {
     display: none;
 }
@@ -202,6 +204,26 @@ sup {
 }
 
 #bookingButtonMobile {
+    display: none;
+}
+
+#addTicketButtonMobile {
+    display: none;
+}
+
+#removeTicketButtonMobile {
+    display: none;
+}
+
+#registrationButtonMobile {
+    display: none;
+}
+
+#loginButtonMobile {
+    display: none;
+}
+
+#bookingTotalPriceMobile {
     display: none;
 }
 
@@ -282,22 +304,44 @@ h4 {
     font-size: 200%;
 }
 
-#paymentWeb {
+    /*Nouveaux formats boutons MQ*/
+
+#registrationButtonWeb {
     display: none;
 }
 
-#paymentMobile {
-    display: block !important;
-    margin-left: 40%;
+#registrationButtonMobile {
+    display: grid;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
-#newBookingWeb {
+#loginButtonWeb {
     display: none;
 }
 
-#newBookingMobile {
-    display: block !important;
-    margin-left: 40%;
+#loginButtonMobile {
+    display: grid;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#addTicketButton {
+    display: none;
+}
+
+#addTicketButtonMobile {
+    display: grid;
+}
+
+#removeTicketButtonWeb {
+    display: none;
+}
+
+#removeTicketButtonMobile {
+    display: grid;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 #bookingButtonWeb {
@@ -305,9 +349,48 @@ h4 {
 }
 
 #bookingButtonMobile {
-    display: block !important;
-    margin-left: 30%;
+    display: grid;
+    margin-left: 20%;
+    margin-right: 20%;
 }
+
+#bookingTotalPriceWeb {
+    display: none;
+}
+
+#bookingTotalPriceMobile {
+    display: grid;
+}
+
+#paymentWeb {
+    display: none;
+}
+
+#paymentMobile {
+    display: grid;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+#newBookingWeb {
+    display: none;
+}
+
+#newBookingMobile {
+    display: grid;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+    /*Vue Paiement de la commande*/
+
+#wrapper { width: 80%; margin: 2em auto; }
+#icon-book { display: inline-block; }
+#status a, #next a { display: block; }
+
+@-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+.sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
 
 }
 

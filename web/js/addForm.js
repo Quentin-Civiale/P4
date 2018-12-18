@@ -1,7 +1,7 @@
 var $collectionHolder;
 
 // configure le lien "Ajouter une personne"
-var $addTicketLink = $('<a href="#"  id="addTicketButton" class="add_ticket_link btn btn-default btn-sm amber darken-2 col offset-s4">Ajouter une personne<i class="material-icons right">person_add</i></a>');
+var $addTicketLink = $('<a href="#"  id="addTicketButton" class="add_ticket_link btn btn-default btn-sm amber darken-2 col offset-s4">Ajouter une personne<i class="material-icons right">person_add</i></a><a href="#"  id="addTicketButtonMobile" class="add_ticket_link btn btn-default btn-sm amber darken-2">Ajouter une personne</a>');
 var $newLinkLi = $('<div></div>').append($addTicketLink);
 
 // configure le numéro du premier ticket à 1
@@ -62,7 +62,7 @@ jQuery(document).ready(function() {
 
 
 function addTicketFormDeleteLink($ticketFormLi) {
-    var $removeTicketLink = $('<a href="#" class="remove_ticket_link btn btn-default btn-sm red darken-2 col offset-s4" style="margin-left: 34.5%"> Supprimer ce billet<i class="material-icons right">close</i></a><br/><br/>');
+    var $removeTicketLink = $('<a href="#" id="removeTicketButtonWeb" class="remove_ticket_link btn btn-default btn-sm red darken-2 col offset-s4" style="margin-left:34.5%"> Supprimer ce billet<i class="material-icons right">close</i></a><br/><br/><a href="#" id="removeTicketButtonMobile" class="remove_ticket_link btn btn-default btn-sm red darken-2"> Supprimer ce billet</a><br/><br/>');
     $ticketFormLi.append($removeTicketLink);
 
     $removeTicketLink.on('click', function(e) {
