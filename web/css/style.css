@@ -178,7 +178,12 @@ select {
 }
 
 .banner {
-    background-color: #ff8f00 !important;
+    /*background-color: #ff8f00 !important;*/
+}
+
+#banner {
+    width: 100%;
+    height: auto;
 }
 
 .error_page {
