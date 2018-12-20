@@ -271,6 +271,12 @@ sup {
     height: auto;
 }
 
+.homeHamburger {
+    background-color: #ff8f00 !important;
+}
+
+    /*Changement couleur icône side bar hamburger*/
+
 .side-nav li > a > i, .side-nav li > a > [class^="mdi-"], .side-nav li > a li > a > [class*="mdi-"], .side-nav li > a > i.material-icons {
     color: white !important;
 }
