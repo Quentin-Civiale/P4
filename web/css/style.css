@@ -130,6 +130,12 @@ select {
     text-align: justify;
 }
 
+/* Affichage confirmation de commande */
+
+#infos {
+    text-align: justify;
+}
+
 /* Affichage boutons des langues */
 
 .languages {
@@ -290,131 +296,119 @@ sup {
         margin-right: 10% !important;
     }
 
-    /*Page d'accueil*/
+        /*Page d'accueil*/
 
-#hide {
-    display: none;
-}
+    #hide {
+        display: none;
+    }
 
-#expand {
-    width: 83% !important;
-}
+    #expand {
+        width: 83% !important;
+    }
 
-    /*Inscription*/
+        /*Inscription*/
 
-h1 {
-    font-size: 250%;
-}
+    h1 {
+        font-size: 250%;
+    }
 
-    /*Tableau des tarifs*/
+        /*Tableau des tarifs*/
 
-sup {
-    display: inline;
-}
+    sup {
+        display: inline;
+    }
 
-#addInfo {
-    display: inline;
-}
+    #addInfo {
+        display: inline;
+        text-align: justify;
+    }
 
-    /*Vue de la commande*/
+        /*Vue de la commande*/
 
-h3 {
-    font-size: 250%;
-}
+    h3 {
+        font-size: 250%;
+    }
 
-h4 {
-    font-size: 200%;
-}
+    h4 {
+        font-size: 200%;
+    }
 
-    /*Nouveaux formats boutons MQ*/
+        /*Nouveaux formats boutons MQ*/
 
-#registrationButtonWeb {
-    display: none;
-}
+    #registrationButtonWeb {
+        display: none;
+    }
 
-#registrationButtonMobile {
-    display: grid;
-    margin-left: 5%;
-    margin-right: 5%;
-}
+    #registrationButtonMobile {
+        display: grid;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
 
-#loginButtonWeb {
-    display: none;
-}
+    #loginButtonWeb {
+        display: none;
+    }
 
-#loginButtonMobile {
-    display: grid;
-    margin-left: 5%;
-    margin-right: 5%;
-}
+    #loginButtonMobile {
+        display: grid;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
 
-#addTicketButton {
-    display: none;
-}
+    #addTicketButton {
+        display: none;
+    }
 
-#addTicketButtonMobile {
-    display: grid;
-}
+    #addTicketButtonMobile {
+        display: grid;
+    }
 
-#removeTicketButtonWeb {
-    display: none;
-}
+    #removeTicketButtonWeb {
+        display: none;
+    }
 
-#removeTicketButtonMobile {
-    display: grid;
-    margin-left: 5%;
-    margin-right: 5%;
-}
+    #removeTicketButtonMobile {
+        display: grid;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
 
-#bookingButtonWeb {
-    display: none;
-}
+    #bookingButtonWeb {
+        display: none;
+    }
 
-#bookingButtonMobile {
-    display: grid;
-    margin-left: 20%;
-    margin-right: 20%;
-}
+    #bookingButtonMobile {
+        display: grid;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
 
-#bookingTotalPriceWeb {
-    display: none;
-}
+    #bookingTotalPriceWeb {
+        display: none;
+    }
 
-#bookingTotalPriceMobile {
-    display: grid;
-}
+    #bookingTotalPriceMobile {
+        display: grid;
+    }
 
-#paymentWeb {
-    display: none;
-}
+    #paymentWeb {
+        display: none;
+    }
 
-#paymentMobile {
-    display: grid;
-    margin-left: 20%;
-    margin-right: 20%;
-}
+    #paymentMobile {
+        display: grid;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
 
-#newBookingWeb {
-    display: none;
-}
+    #newBookingWeb {
+        display: none;
+    }
 
-#newBookingMobile {
-    display: grid;
-    margin-left: 20%;
-    margin-right: 20%;
-}
-
-    /*Vue Paiement de la commande*/
-
-#wrapper { width: 80%; margin: 2em auto; }
-#icon-book { display: inline-block; }
-#status a, #next a { display: block; }
-
-@-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
-@keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
-.sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
+    #newBookingMobile {
+        display: grid;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
 
 }
-
-
-
