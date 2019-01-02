@@ -41,7 +41,7 @@ class BookingController extends Controller
             $booking = $form->getData();
             $booking->setStatut(Booking::STATUT_EN_ATTENTE_DE_PAIEMENT);
 
-            $user = $this->getUser();
+//            $user = $this->getUser();
 
 //            dump(Booking::STATUT_EN_ATTENTE_DE_PAIEMENT);
 
@@ -58,7 +58,7 @@ class BookingController extends Controller
             }
 
             $booking->setPrixTotal($totalPrix);
-            $booking->setUser($user);
+//            $booking->setUser($user);
 
             // Récupération du nombre de ticket par jour selon la date de commande
             $ticketTotalCount = $this->getDoctrine()->getRepository('GeneralBundle:Ticket')->getTodayTicketsCount($booking->getDate());
