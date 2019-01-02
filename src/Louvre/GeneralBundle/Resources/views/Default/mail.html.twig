@@ -16,6 +16,8 @@
 
         <h3><strong>Commande N°</strong>{{ booking.id }} , <strong>visite du</strong> {{ booking.date|date('d/m/Y') }}</h3>
 
+        <p><strong>Code de réservation:</strong> {{ booking.nom|slice(0, 3)|upper }}_{{ booking.date|date('Ym') }}{{ booking.id }}</p>
+
         <strong>Nom :</strong> {{ booking.nom }} <br/>
         <strong>Prénom :</strong> {{ booking.prenom }} <br/>
         <strong>Date de la visite :</strong> le {{  booking.date|date('d/m/Y') }} en <strong>{{ booking.type }}</strong> <br/>
