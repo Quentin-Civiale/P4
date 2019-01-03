@@ -95,13 +95,13 @@ class Booking
      */
     private $prixTotal;
 
-    /**
-     * @var User
-     *
-     * @ORM\ManyToOne(targetEntity="Louvre\GeneralBundle\Entity\User", inversedBy="booking", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
+//    /**
+//     * @var User
+//     *
+//     * @ORM\ManyToOne(targetEntity="Louvre\GeneralBundle\Entity\User", inversedBy="booking", cascade={"persist"})
+//     * @ORM\JoinColumn(nullable=false)
+//     */
+//    private $user;
 
     public function __construct()
     {
@@ -280,23 +280,23 @@ class Booking
         return $this->tickets;
     }
 
-    /**
-     * Set user
-     *
-     * @param \Louvre\GeneralBundle\Entity\User $user
-     */
-    public function setUser(User $user)
-    {
-        $this->user = $user;
-    }
-
-    /**
-     * @return \Louvre\GeneralBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
+//    /**
+//     * Set user
+//     *
+//     * @param \Louvre\GeneralBundle\Entity\User $user
+//     */
+//    public function setUser(User $user)
+//    {
+//        $this->user = $user;
+//    }
+//
+//    /**
+//     * @return \Louvre\GeneralBundle\Entity\User
+//     */
+//    public function getUser()
+//    {
+//        return $this->user;
+//    }
 
     /**
      * @param ExecutionContextInterface $context
