@@ -219,6 +219,16 @@ sup {
     display: none;
 }
 
+    /* Stripe bouton de paiement */
+
+.stripe-button-el {
+    background-image: linear-gradient(#ff8f00, grey) !important;
+}
+
+.stripe-button-el span {
+    background-image: linear-gradient(#ff8f00, #ff4f00) !important;
+}
+
     /*Boutons de sélection*/
 
 #registrationButtonMobile {
