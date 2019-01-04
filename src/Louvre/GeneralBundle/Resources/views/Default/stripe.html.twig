@@ -37,7 +37,7 @@
                             document.write(" d'un montant de {{ booking.prixTotal }} €.</p>");
                         </script>
 
-                        <form action="{{ path('order_checkout', {'id': booking.id}) }}" method="POST">
+                        <form action="{{ path('order_checkout', {'id': booking.id}) }}" method="POST" class="payment-button">
                             <script
                                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                 data-key="pk_test_rCP3SL76FiKDez8nzhtuMJNp"

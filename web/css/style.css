@@ -221,6 +221,12 @@ sup {
 
     /* Stripe bouton de paiement */
 
+.payment-button {
+    display: grid;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
 .stripe-button-el {
     background-image: linear-gradient(#ff8f00, grey) !important;
 }
@@ -425,6 +431,12 @@ sup {
         display: grid;
         margin-left: 20%;
         margin-right: 20%;
+    }
+
+    .payment-button {
+        display: grid;
+        margin-left: 10%;
+        margin-right: 10%;
     }
 
 }
