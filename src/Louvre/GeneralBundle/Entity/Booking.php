@@ -95,6 +95,15 @@ class Booking
      */
     private $prixTotal;
 
+    /**
+     * @var bool
+     *
+     * @Assert\NotBlank(message="Merci de confirmer que vous acceptez les conditions générales d'utilisation du service en cochant la case !")
+     *
+     * @ORM\Column(name="registration", type="boolean", options={"default":false})
+     */
+    private $registration = false;
+
 //    /**
 //     * @var User
 //     *
@@ -279,6 +288,24 @@ class Booking
     {
         return $this->tickets;
     }
+
+    /**
+     * Set $registration
+     *
+     * @param bool $registration
+     */
+    public function setRegistration(bool $registration)
+    {
+        $this->registration = $registration;
+    }
+    /**
+     * @return \bool
+     */
+    public function isRegistration(): bool
+    {
+        return $this->registration;
+    }
+
 
 //    /**
 //     * Set user
