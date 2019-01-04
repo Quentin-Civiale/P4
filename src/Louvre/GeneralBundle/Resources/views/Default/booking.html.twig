@@ -318,6 +318,11 @@
             <div class="col offset-l3 l6 s12">
                 {{ form_row(form.email) }}
             </div>
+            <div id="infos" class="col offset-l2 l8 s12">
+                {{ form_row(form.registration, {
+                    'label': 'En confirmant ma commande, j\'accepte que les informations saisies soient exploitées par le musée du Louvre (pour plus d\'informations, veuillez vous diriger vers les Conditions Générales de Vente du site)'
+                }) }}
+            </div>
             <br/>
         </div>
     </div>
