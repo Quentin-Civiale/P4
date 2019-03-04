@@ -83,18 +83,30 @@ class Ticket
      */
     private $tarifReduit = false;
 
-    public function __construct($booking, $nom, $prenom, $country, $dateNaissance, $prix, $tarifReduit)
+
+    private function __construct()
     {
-//        $this->tickets = new ArrayCollection();
-//        $newTicket = new Ticket();
-//        $this->addTicket($newTicket);
-        $this->setBooking($booking);
-        $this->setNom($nom);
-        $this->setPrenom($prenom);
-        $this->setCountry($country);
-        $this->setDateNaissance($dateNaissance);
-        $this->setPrix($prix);
-        $this->setTarifReduit($tarifReduit);
+    }
+
+    public static function createNewTicket()
+    {
+        $self = new self();
+
+        return $self;
+    }
+
+    public static function createTicket($booking, $nom, $prenom, $country, $dateNaissance, $tarifReduit)
+    {
+        $self = new self();
+        $self->booking = $booking;
+        $self->nom = $nom;
+        $self->prenom = $prenom;
+        $self->country = $country;
+        $self->dateNaissance = $dateNaissance;
+//        $self->prix = $prix;
+        $self->tarifReduit = $tarifReduit;
+
+        return $self;
     }
 
     /**
