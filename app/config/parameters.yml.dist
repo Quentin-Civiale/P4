@@ -20,3 +20,24 @@ parameters:
 
     stripe_secret_key: sk_test_V9G72YZX893d8bKBrXH8efgH
     stripe_public_key: pk_test_rCP3SL76FiKDez8nzhtuefgH
+
+    # price
+    reduced_price: 10
+    senior_price: 12
+    normal_price: 16
+    child_price: 8
+    half_price: 0.5
+    free_price: 0
+
+    # age
+    children.min: 4
+    children.max: 12
+
+    adult.min: 12
+    adult.max: 60
+
+    senior.min: 60
+    senior.max: 150
+
+    #exception
+    reduce: '* tarif réservé sous présentation d’un justificatif'

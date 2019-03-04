@@ -115,8 +115,24 @@ class Booking
     public function __construct()
     {
         $this->tickets = new ArrayCollection();
-        $newTicket = new Ticket();
+        $newTicket = Ticket::createNewTicket();
         $this->addTicket($newTicket);
+    }
+
+    public static function createNewBooking()
+    {
+        $self = new self();
+
+        return $self;
+    }
+
+    public static function createBooking($booking, $type)
+    {
+        $self = new self();
+        $self->booking = $booking;
+        $self->type = $type;
+
+        return $self;
     }
 
     /**
