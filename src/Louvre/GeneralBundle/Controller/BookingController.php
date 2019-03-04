@@ -95,11 +95,11 @@ class BookingController extends Controller
         return $this->render('@General/Default/booking.html.twig', ['form' => $formView]);
     }
 
-    public function checkingDateAction($date) {
-
+    public function checkingDateAction($date)
+    {
         $repository = $this->getDoctrine()->getRepository('GeneralBundle:Booking');
         $formatTypeDate = new \DateTime($date);
-        $visitDate = $repository->findBy(['date' => $formatTypeDate ]);
+        $visitDate = $repository->findBy(['date' => $formatTypeDate]);
 
         $repository = $this->getDoctrine()->getRepository('GeneralBundle:Ticket');
         $formatTypeDate = new \DateTime($date);
@@ -119,7 +119,5 @@ class BookingController extends Controller
         $response->setContent($data);
 
         return $response;
-
     }
-
 }

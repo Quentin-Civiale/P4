@@ -83,6 +83,32 @@ class Ticket
      */
     private $tarifReduit = false;
 
+
+    private function __construct()
+    {
+    }
+
+    public static function createNewTicket()
+    {
+        $self = new self();
+
+        return $self;
+    }
+
+    public static function createTicket($booking, $nom, $prenom, $country, $dateNaissance, $tarifReduit)
+    {
+        $self = new self();
+        $self->booking = $booking;
+        $self->nom = $nom;
+        $self->prenom = $prenom;
+        $self->country = $country;
+        $self->dateNaissance = $dateNaissance;
+//        $self->prix = $prix;
+        $self->tarifReduit = $tarifReduit;
+
+        return $self;
+    }
+
     /**
      * @return int
      */
