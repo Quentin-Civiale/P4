@@ -269,6 +269,20 @@ sup {
     display: none;
 }
 
+/* Retrait des label vue Booking */
+
+#booking_tickets > .row > .input-field:first-child > label {
+    display: none !important;
+}
+
+#booking_tickets > div >.row > .input-field:first-child > label {
+    display: none !important;
+}
+
+.input-field > select + label {
+    display: none !important;
+}
+
         /*Media queries*/
 
     /* Fond pour menu hamburger */
