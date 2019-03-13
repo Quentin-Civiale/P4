@@ -31,6 +31,6 @@ class SecurityController extends Controller
 
     public function logoutAction()
     {
-        throw new \Exception('This should not be reached!');
+        throw new \Exception('Ce message ne devrait pas s\'afficher!');
     }
 }

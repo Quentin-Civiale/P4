@@ -50,8 +50,6 @@ class BookingSummaryController extends Controller
 
             $user = $this->getUser();
 
-//            dump(Booking::STATUT_EN_ATTENTE_DE_PAIEMENT);
-
             //Calcul du prix du ticket
             $totalPrix = 0;
 

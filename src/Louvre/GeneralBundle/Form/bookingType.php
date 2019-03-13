@@ -38,7 +38,6 @@ class bookingType extends AbstractType
                 'data' => 'journee',
             ])
             ->add('email', EmailType::class)
-//            ->add('statut', TextType::class)
             ->add('tickets', CollectionType::class, [
                 'entry_type' => ticketType::class,
                 'allow_add' => true,
