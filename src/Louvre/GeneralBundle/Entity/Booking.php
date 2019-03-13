@@ -115,28 +115,28 @@ class Booking
     public function __construct()
     {
         $this->tickets = new ArrayCollection();
-//        $newTicket = new Ticket();
-//        $this->addTicket($newTicket);
+        $newTicket = new Ticket();
+        $this->addTicket($newTicket);
 
-        $newTicketTest = Ticket::createNewTicketTest();
-        $this->addTicket($newTicketTest);
+//        $newTicketTest = Ticket::createNewTicketTest();
+//        $this->addTicket($newTicketTest);
     }
 
-    public static function createNewBookingTest()
-    {
-        $self = new self();
-
-        return $self;
-    }
-
-    public static function createBookingTest($booking, $type)
-    {
-        $self = new self();
-        $self->booking = $booking;
-        $self->type = $type;
-
-        return $self;
-    }
+//    public static function createNewBookingTest()
+//    {
+//        $self = new self();
+//
+//        return $self;
+//    }
+//
+//    public static function createBookingTest($booking, $type)
+//    {
+//        $self = new self();
+//        $self->booking = $booking;
+//        $self->type = $type;
+//
+//        return $self;
+//    }
 
     /**
      * @return int
