@@ -20,6 +20,7 @@ class TicketController extends Controller
 
         //requête lors de l'envoi du formulaire
         $form->handleRequest($request);
+
         //si le formulaire a été soumis
         if ($form->isSubmitted() && $form->isValid()) {
             //on enregistre le ticket en bdd

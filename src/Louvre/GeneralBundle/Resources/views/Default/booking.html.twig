@@ -110,7 +110,6 @@
 
             </div>
 
-            {#<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>#}
             <script>
                 // récupération de la date sélectionnée
                 var currentDate = null;
@@ -144,18 +143,6 @@
                         var selectedTicket = document.getElementsByClassName("ticketForm").length;
                         var ticketAvailable = JSON.parse(data);
 
-                        // console.log(ticketLimit);
-                        // console.log(ticketAvailable.available);
-
-                        // if (ticketAvailable.available == 0) {
-                        //     document.getElementById("checkDateMessage").innerHTML = "<div class=\"errorDate\">Le nombre maximum de visiteurs pour ce jour est atteint, veuillez sélectionner une nouvelle date !</div>";
-                        //     document.getElementById("bookingButton").setAttribute("disabled", "disabled");
-                        // }
-                        // else {
-                        //     document.getElementById("checkDateMessage").innerHTML = "<div class=\"successDate\">Il reste " + ticketAvailable.available + " places pour cette date !</div>";
-                        //     document.getElementById("bookingButton").removeAttribute("disabled");
-                        // }
-
                         if ((selectedTicket == ticketAvailable.available) || (ticketAvailable.available == 0)) {
                             document.getElementById("checkSelectedTicket").innerHTML = "<div class=\"errorDate\">Il n'y a plus assez de tickets disponibles pour cette date !</div>";
                             document.getElementById("addTicketButton").setAttribute("disabled", "disabled");
@@ -173,80 +160,6 @@
 
                 }
 
-                // window.setInterval(function () {
-                //     var selectedTicket = document.getElementsByClassName("ticketForm").length;
-                //     var ticketAvailable = null;
-                //     if (selectedTicket !== ticketAvailable) {
-                //         checkSelectedTicket();
-                //     }
-                // }, 5000);
-
-
-                // var selectedTicket = document.getElementsByClassName("ticketForm").length;
-                // var ticketAvailable = null;
-                //
-                // if (selectedTicket !== ticketAvailable) {
-
-                    // var element = document.getElementById("ticketFormId");
-                    // element.addEventListener("mouseover", checkSelectedTicket);
-
-                    // var element = document.getElementById("booking_date");
-                    // element.addEventListener("mouseover", checkSelectedTicket);
-
-                    // checkSelectedTicket();
-
-                // }
-
-                {#window.onclick = function () {#}
-                    {#var selectedTicket = document.getElementsByClassName("ticketForm").length;#}
-                    {#var ticketAvailable = null;#}
-
-                    {#if (selectedTicket !== ticketAvailable) {#}
-                        {#checkSelectedTicket()#}
-                    {#}#}
-                {#};#}
-
-                {#function check () {#}
-                    {#var selectedTicket = document.getElementsByClassName("ticketForm").length;#}
-                    {#var ticketAvailable = null;#}
-
-                    {#if (selectedTicket !== ticketAvailable) {#}
-                        {#checkSelectedTicket()#}
-                    {#}#}
-                {#}#}
-
-                {#function checkSelectedTicket () {#}
-
-                    {#var visitDate = document.getElementById("booking_date").value;#}
-
-                        {#var regex = /\//gm;#}
-                        {#var str = visitDate;#}
-                        {#var subst = `-`;#}
-
-                    {#// Remplacement des slash par des tirets dans l' affichage url de la date de visite#}
-                    {#visitDate = str.replace(regex, subst);#}
-
-                    {#// création d'une url pour récupérer des données (nombre de tickets par jour) de la bdd#}
-                    {#var url = "{{ app.request.getBaseURL()}}/louvre/billetterie/selection/visite/" + visitDate;#}
-
-                    {#// mise en place d'ajax pour afficher des messages sans réactualiser la page#}
-                    {#$.get(url, function(data) {#}
-                        {#var selectedTicket = document.getElementsByClassName("ticketForm").length;#}
-                        {#var ticketAvailable = JSON.parse(data);#}
-
-                        {#// console.log(selectedTicket);#}
-                        {#// console.log(ticketAvailable.available);#}
-
-                        {#if ((selectedTicket == ticketAvailable.available) || (ticketAvailable.available == 0)) {#}
-                            {#document.getElementById("checkSelectedTicket").innerHTML = "<div class=\"errorDate\">Il n'y a plus assez de tickets disponibles pour cette date !</div>";#}
-                            {#document.getElementById("addTicketButton").setAttribute("disabled", "disabled");#}
-                        {#}#}
-                        {#else {#}
-                            {#document.getElementById("checkSelectedTicket").innerHTML = "<div></div>";#}
-                            {#document.getElementById("addTicketButton").removeAttribute("disabled");#}
-                        {#}#}
-                    {#});#}
-                // }
             </script>
 
             <div class="col offset-l2 l8 offset-m2 m8 offset-s1 s10">
@@ -271,17 +184,9 @@
     <div class="row">
         <div class="col offset-l2 l8 offset-m1 m10 s12 grey lighten-2 z-depth-5">
             <h4>2) Nombre de personnes</h4>
-            {#<hr/><br/>#}
-            {#<div class="row">#}
-                {#<div class="input-field col offset-s4 s4">#}
-                    {#<label for="nbBillet">Veuillez indiquer le nombre de billets souhaité</label>#}
-                    {#<input type="number" id="nbBillet" min="0" max="10"/>#}
-                {#</div>#}
-            {#</div>#}
-
                 <div id="ticketFormId" class="row">
                     <div class="ticketForm">
-                    <h5>Billet N°1</h5>
+                        <h5>Billet N°1</h5>
                     </div>
                     <div class="col s12">
 
@@ -326,9 +231,6 @@
             <br/>
         </div>
     </div>
-
-
-    {#{{ dump(form) }}#}
 
     <div id="bookingButtonWeb" class="row">
         <div class="col offset-l8 l2">
