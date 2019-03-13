@@ -2,7 +2,6 @@
 
 namespace tests\Louvre\GeneralBundle\Services;
 
-use Louvre\GeneralBundle\Controller\BookingController;
 use Louvre\GeneralBundle\Entity\Booking;
 use Louvre\GeneralBundle\Entity\Ticket;
 use Louvre\GeneralBundle\Services\TicketPriceCalculator;
@@ -20,14 +19,9 @@ class TicketPriceCalculatorTest extends TestCase
         $ticketPriceCalculator = $container->get(TicketPriceCalculator::class);
 
         $booking = new Booking();
-        $booking = Booking::createBooking(10, 'journee');
+        $booking = Booking::createBookingTest(10, 'journee');
         $date = new \DateTime('2017-05-20 00:00:00');
-        $ticket = Ticket::createTicket(10, 'Civiale', 'Quentin', 'FR', $date, false);
-
-        //        echo $ticket->getNom();
-        //        echo $ticket->getPrenom();
-        //        echo $ticket->getCountry();
-        //        echo 'Hello !';
+        $ticket = Ticket::createTicketTest(10, 'Civiale', 'Quentin', 'FR', $date, false);
 
         $calculatePrice = $ticketPriceCalculator->calculate($ticket, $booking, $container);
 
@@ -44,9 +38,9 @@ class TicketPriceCalculatorTest extends TestCase
         $ticketPriceCalculator = $container->get(TicketPriceCalculator::class);
 
         $booking = new Booking();
-        $booking = Booking::createBooking(11, 'journee');
+        $booking = Booking::createBookingTest(11, 'journee');
         $date = new \DateTime('2011-05-20 00:00:00');
-        $ticket = Ticket::createTicket(11, 'Civiale', 'Quentin', 'FR', $date, false);
+        $ticket = Ticket::createTicketTest(11, 'Civiale', 'Quentin', 'FR', $date, false);
 
         $calculatePrice = $ticketPriceCalculator->calculate($ticket, $booking, $container);
 
@@ -63,9 +57,9 @@ class TicketPriceCalculatorTest extends TestCase
         $ticketPriceCalculator = $container->get(TicketPriceCalculator::class);
 
         $booking = new Booking();
-        $booking = Booking::createBooking(12, 'demi-journee');
+        $booking = Booking::createBookingTest(12, 'demi-journee');
         $date = new \DateTime('2011-05-20 00:00:00');
-        $ticket = Ticket::createTicket(12, 'Civiale', 'Quentin', 'FR', $date, false);
+        $ticket = Ticket::createTicketTest(12, 'Civiale', 'Quentin', 'FR', $date, false);
 
         $calculatePrice = $ticketPriceCalculator->calculate($ticket, $booking, $container);
 
@@ -82,9 +76,9 @@ class TicketPriceCalculatorTest extends TestCase
         $ticketPriceCalculator = $container->get(TicketPriceCalculator::class);
 
         $booking = new Booking();
-        $booking = Booking::createBooking(13, 'journee');
+        $booking = Booking::createBookingTest(13, 'journee');
         $date = new \DateTime('1991-05-20 00:00:00');
-        $ticket = Ticket::createTicket(13, 'Civiale', 'Quentin', 'FR', $date, false);
+        $ticket = Ticket::createTicketTest(13, 'Civiale', 'Quentin', 'FR', $date, false);
 
         $calculatePrice = $ticketPriceCalculator->calculate($ticket, $booking, $container);
 
@@ -101,9 +95,9 @@ class TicketPriceCalculatorTest extends TestCase
         $ticketPriceCalculator = $container->get(TicketPriceCalculator::class);
 
         $booking = new Booking();
-        $booking = Booking::createBooking(14, 'demi-journee');
+        $booking = Booking::createBookingTest(14, 'demi-journee');
         $date = new \DateTime('1991-05-20 00:00:00');
-        $ticket = Ticket::createTicket(14, 'Civiale', 'Quentin', 'FR', $date, false);
+        $ticket = Ticket::createTicketTest(14, 'Civiale', 'Quentin', 'FR', $date, false);
 
         $calculatePrice = $ticketPriceCalculator->calculate($ticket, $booking, $container);
 
@@ -120,9 +114,9 @@ class TicketPriceCalculatorTest extends TestCase
         $ticketPriceCalculator = $container->get(TicketPriceCalculator::class);
 
         $booking = new Booking();
-        $booking = Booking::createBooking(15, 'journee');
+        $booking = Booking::createBookingTest(15, 'journee');
         $date = new \DateTime('1991-05-20 00:00:00');
-        $ticket = Ticket::createTicket(15, 'Civiale', 'Quentin', 'FR', $date, true);
+        $ticket = Ticket::createTicketTest(15, 'Civiale', 'Quentin', 'FR', $date, true);
 
         $calculatePrice = $ticketPriceCalculator->calculate($ticket, $booking, $container);
 
@@ -139,9 +133,9 @@ class TicketPriceCalculatorTest extends TestCase
         $ticketPriceCalculator = $container->get(TicketPriceCalculator::class);
 
         $booking = new Booking();
-        $booking = Booking::createBooking(16, 'demi-journee');
+        $booking = Booking::createBookingTest(16, 'demi-journee');
         $date = new \DateTime('1991-05-20 00:00:00');
-        $ticket = Ticket::createTicket(16, 'Civiale', 'Quentin', 'FR', $date, true);
+        $ticket = Ticket::createTicketTest(16, 'Civiale', 'Quentin', 'FR', $date, true);
 
         $calculatePrice = $ticketPriceCalculator->calculate($ticket, $booking, $container);
 
@@ -158,9 +152,9 @@ class TicketPriceCalculatorTest extends TestCase
         $ticketPriceCalculator = $container->get(TicketPriceCalculator::class);
 
         $booking = new Booking();
-        $booking = Booking::createBooking(17, 'journee');
+        $booking = Booking::createBookingTest(17, 'journee');
         $date = new \DateTime('1950-05-20 00:00:00');
-        $ticket = Ticket::createTicket(17, 'Civiale', 'Quentin', 'FR', $date, false);
+        $ticket = Ticket::createTicketTest(17, 'Civiale', 'Quentin', 'FR', $date, false);
 
         $calculatePrice = $ticketPriceCalculator->calculate($ticket, $booking, $container);
 
@@ -177,9 +171,9 @@ class TicketPriceCalculatorTest extends TestCase
         $ticketPriceCalculator = $container->get(TicketPriceCalculator::class);
 
         $booking = new Booking();
-        $booking = Booking::createBooking(18, 'demi-journee');
+        $booking = Booking::createBookingTest(18, 'demi-journee');
         $date = new \DateTime('1950-05-20 00:00:00');
-        $ticket = Ticket::createTicket(18, 'Civiale', 'Quentin', 'FR', $date, false);
+        $ticket = Ticket::createTicketTest(18, 'Civiale', 'Quentin', 'FR', $date, false);
 
         $calculatePrice = $ticketPriceCalculator->calculate($ticket, $booking, $container);
 

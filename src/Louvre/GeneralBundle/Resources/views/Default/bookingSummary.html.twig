@@ -82,96 +82,82 @@
 
     <div class="row">
         <div class="col offset-l1 l10 offset-m1 m10 s12">
-            {#{% for booking in booking %}#}
 
-                    {#ajout d'un message lors de l'enregistrement ou la modification d'une commande#}
-                    {% for message in app.flashes('notice') %}
-                        <div class="card-panel light-green lighten-2">
-                            <div class="success">
-                                <i class="material-icons left">check</i><p>{{ message }}</p>
-                            </div>
-                        </div>
-                    {% endfor %}
-
-                    <script type="text/javascript">
-                        today = new Date();
-                        document.write("<h5><strong>Commande N°</strong>{{ booking.id }} <strong>du </strong>");
-                        document.write(today.toLocaleDateString());
-                        document.write("</h5>");
-                    </script>
-
-                    <br/>
-
-                    <strong>Nom :</strong> {{ booking.nom }} <br/>
-                    <strong>Prénom :</strong> {{ booking.prenom }} <br/>
-                    <strong>Date de la visite :</strong> le {{  booking.date|date('d/m/Y') }} en <strong>{{ booking.type }}</strong> <br/>
-                    <strong>Email :</strong> {{ booking.email }} <br/>
-                    <strong>Statut de la commande :</strong> {{ booking.statut }} <br/>
-                    <strong>Prix total de la commande :</strong> {{ booking.prixTotal }} €<br/><br/>
-
-                    <table class="centered">
-                        <thead>
-                            <tr>
-                                <th>Nom</th>
-                                <th>Prénom</th>
-                                <th>Date de naissance</th>
-                                <th>Pays</th>
-                                <th>Réduction</th>
-                                <th>Tarifs</th>
-                                <th>Numéro de la commande</th>
-                            </tr>
-                        </thead>
-
-                        {% for ticket in ticket %}
-                        <tbody>
-                            <tr>
-                                <td> {{ ticket.nom }} </td>
-                                <td> {{ ticket.prenom }} </td>
-                                <td> {{ ticket.dateNaissance|date('d/m/Y') }} </td>
-                                <td> {{ ticket.country }} </td>
-                                <td> {{ ticket.tarifReduit }} </td>
-                                <td> {{ ticket.prix }} € </td>
-                                <td> {{ ticket.booking.id }} </td>
-                            </tr>
-                        </tbody>
-                        {% endfor %}
-
-                        {#<tbody>#}
-                            {#<tr>#}
-                                {#<td></td>#}
-                                {#<td></td>#}
-                                {#<td></td>#}
-                                {#<td></td>#}
-                                {#<td><strong>Total</strong></td>#}
-                                {#<td><strong> {{ booking.prixTotal }} € </strong></td>#}
-                            {#</tr>#}
-                        {#</tbody>#}
-                    </table>
-
-                    <br/>
-
-                    <div id="bookingTotalPriceWeb" class="row">
-                        <div class="col offset-s7 s5">
-                            <h5><strong>Total de la commande : </strong><strong>{{ booking.prixTotal }} €</strong></h5>
-                        </div>
+            {#ajout d'un message lors de l'enregistrement ou la modification d'une commande#}
+            {% for message in app.flashes('notice') %}
+                <div class="card-panel light-green lighten-2">
+                    <div class="success">
+                        <i class="material-icons left">check</i><p>{{ message }}</p>
                     </div>
+                </div>
+            {% endfor %}
 
-                    <div id="bookingTotalPriceMobile" class="row">
-                        <h5><strong>Total de la commande : </strong><strong>{{ booking.prixTotal }} €</strong></h5>
-                    </div>
+            <script type="text/javascript">
+                today = new Date();
+                document.write("<h5><strong>Commande N°</strong>{{ booking.id }} <strong>du </strong>");
+                document.write(today.toLocaleDateString());
+                document.write("</h5>");
+            </script>
 
-                    <br/>
+            <br/>
 
-                    <a href="{{ path('modification', {'id':booking.id}) }}">Modifier la commande</a>
-                    <hr/>
+            <strong>Nom :</strong> {{ booking.nom }} <br/>
+            <strong>Prénom :</strong> {{ booking.prenom }} <br/>
+            <strong>Date de la visite :</strong> le {{  booking.date|date('d/m/Y') }} en <strong>{{ booking.type }}</strong> <br/>
+            <strong>Email :</strong> {{ booking.email }} <br/>
+            <strong>Statut de la commande :</strong> {{ booking.statut }} <br/>
+            <strong>Prix total de la commande :</strong> {{ booking.prixTotal }} €<br/><br/>
 
-                    <div id="paymentWeb" class="row">
-                        <div class="col offset-s9 s3">
-                            <a class="waves-effect waves-light btn amber darken-2" href="{{ path('order_prepare', {'id':booking.id}) }}"><i class="material-icons left">payment</i>Paiement</a>
-                        </div>
-                    </div>
+            <table class="centered">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Date de naissance</th>
+                        <th>Pays</th>
+                        <th>Réduction</th>
+                        <th>Tarifs</th>
+                        <th>Numéro de la commande</th>
+                    </tr>
+                </thead>
 
-            {#{% endfor %}#}
+                {% for ticket in ticket %}
+                <tbody>
+                    <tr>
+                        <td> {{ ticket.nom }} </td>
+                        <td> {{ ticket.prenom }} </td>
+                        <td> {{ ticket.dateNaissance|date('d/m/Y') }} </td>
+                        <td> {{ ticket.country }} </td>
+                        <td> {{ ticket.tarifReduit }} </td>
+                        <td> {{ ticket.prix }} € </td>
+                        <td> {{ ticket.booking.id }} </td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+
+            <br/>
+
+            <div id="bookingTotalPriceWeb" class="row">
+                <div class="col offset-s7 s5">
+                    <h5><strong>Total de la commande : </strong><strong>{{ booking.prixTotal }} €</strong></h5>
+                </div>
+            </div>
+
+            <div id="bookingTotalPriceMobile" class="row">
+                <h5><strong>Total de la commande : </strong><strong>{{ booking.prixTotal }} €</strong></h5>
+            </div>
+
+            <br/>
+
+            {#<a href="{{ path('modification', {'id':booking.id}) }}">Modifier la commande</a>#}
+            <hr/>
+
+            <div id="paymentWeb" class="row">
+                <div class="col offset-s9 s3">
+                    <a class="waves-effect waves-light btn amber darken-2" href="{{ path('order_prepare', {'id':booking.id}) }}"><i class="material-icons left">payment</i>Paiement</a>
+                </div>
+            </div>
         </div>
     </div>
 

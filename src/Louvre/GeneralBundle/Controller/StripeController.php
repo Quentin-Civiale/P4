@@ -13,7 +13,6 @@ class StripeController extends Controller
     {
         return $this->render('@General/Default/stripe.html.twig', [
             'booking' => $booking,
-//            'ticket' => $ticket,
         ]);
     }
 
@@ -35,7 +34,6 @@ class StripeController extends Controller
         $bookingVisitType = $request->request->get('visitType');
         $recipientEmail = $request->request->get('email');
         $totalPrice = $request->request->get('totalPrice');
-//        $statut = $request->request->get('statut');
 
         $price = $totalPrice / 100;
 
@@ -54,7 +52,6 @@ class StripeController extends Controller
                     'booking_visit_type' => $bookingVisitType,
                     'booking_email' => $recipientEmail,
                     'booking_total_price' => ($totalPrice / 100),
-//                    "booking_statut" => $statut
                 ],
             ]);
 
@@ -70,7 +67,6 @@ class StripeController extends Controller
                 $em->persist($booking);
                 //envoi vers la bdd
                 $em->flush();
-
             }
 
             // Gestion et envoi du mail de confirmation de commande
@@ -87,9 +83,6 @@ class StripeController extends Controller
 //                ->attach(\Swift_Image::fromPath('....jpg'));
 
             $this->get('mailer')->send($message);
-
-            // Redirection vers la vue et message de confirmation de paiement
-//            $this->addFlash("success","Votre paiement a été accepté !");
 
             return $this->redirectToRoute('confirmation', [
                 'id' => $booking->getId(),

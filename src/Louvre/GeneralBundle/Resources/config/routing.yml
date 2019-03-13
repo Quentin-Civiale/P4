@@ -18,9 +18,9 @@ recapitulatif:
     path:     /louvre/billetterie/{id}/recapitulatif
     defaults: { _controller: GeneralBundle:BookingSummary:bookingSummary }
     
-modification:
-    path:     /louvre/billetterie/{id}/modification
-    defaults: { _controller: GeneralBundle:BookingSummary:edit }
+#modification:
+#    path:     /louvre/billetterie/{id}/modification
+#    defaults: { _controller: GeneralBundle:BookingSummary:edit }
 
 confirmation:
     path:     /louvre/billetterie/{id}/confirmation
@@ -49,9 +49,9 @@ check_date:
 
 
 
-louvre_test_translation:
-    path:     /traduction/{name}
-    defaults: { _controller: GeneralBundle:Translation:translate }
+#louvre_test_translation:
+#    path:     /traduction/{name}
+#    defaults: { _controller: GeneralBundle:Translation:translate }
 
 
 

@@ -28,10 +28,8 @@ class TicketPriceCalculator extends Controller
 
         /** @var $dateDeNaissance \DateTime * */
         $birthdate = $ticket->getDateNaissance();
-//        $birthdateTicket = new \DateTime($birthdate);
         $today = new \DateTime('now');
         $age = $birthdate->diff($today)->y;
-//        $age = date_diff($birthdate, $today)->y;
         $price = 0;
         $priceCoef = 1;
 

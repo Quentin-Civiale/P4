@@ -88,14 +88,14 @@ class Ticket
     {
     }
 
-    public static function createNewTicket()
+    public static function createNewTicketTest()
     {
         $self = new self();
 
         return $self;
     }
 
-    public static function createTicket($booking, $nom, $prenom, $country, $dateNaissance, $tarifReduit)
+    public static function createTicketTest($booking, $nom, $prenom, $country, $dateNaissance, $tarifReduit)
     {
         $self = new self();
         $self->booking = $booking;
@@ -103,7 +103,6 @@ class Ticket
         $self->prenom = $prenom;
         $self->country = $country;
         $self->dateNaissance = $dateNaissance;
-//        $self->prix = $prix;
         $self->tarifReduit = $tarifReduit;
 
         return $self;
